@@ -1,0 +1,17 @@
+# Examples
+
+Here are a few basic examples in C and Python to get you started. For detailed API information please see the [C reference](c_ref.md) page or the [Python reference](python_ref.md) page.
+
+````{tab} C
+
+```{literalinclude} _static/example.c
+:language: c
+```
+
+````
+
+````{tab} Python
+```{literalinclude} _static/example.py
+:language: python
+```
+````

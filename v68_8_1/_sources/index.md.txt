@@ -1,0 +1,45 @@
+# ADRV9002 Transceiver Profile Generator
+
+**libadrv9002-iio** is a software library used to generate configuration profiles for the ADRV9002/3/4 family of transceivers. This library is similar to the Transceiver Evaluation Software (TES) but instead has a programmatic interfaces and is provided in different compiled options to support different CPU architectures and operating systems. **libadrv9002-iio** is provided with and without **libiio** support as not all applications require direct use of the *IIO* driver. However, **libiio** is not shipped with the library and must be installed separately.
+
+:::{caution}
+This library is still in early development and is not feature complete. Please see the [Limitations](#limitations-target) section for more details. There may exists bugs and issues with the library. If you find any please report them to [GitHub Issues](https://github.com/analogdevicesinc/libadrv9002-iio/issues). For technical question please use the [ADI EngineerZone Software Interface Tools subforum](https://ez.analog.com/sw-interface-tools/).
+:::
+
+(limitations-target)=
+## Limitations
+
+Like TES, specific versions of the transceiver API are supported by this library. This is currently **{{api_version}}** for this version of the library. If you need a previous version of the API please look at previous releases. It is always recommended to use the latest version of the library when possible, and older versions will have limited support. Bug fixes will not be backported to older versions of the library.
+
+Note that the library will not contain FPGA specific features as available in TES which include Fast Frequencies Hopping and TDD FPGA IP configuration.
+
+The library is still under development and will lack other configuration options but the plan is to add these over time. The current missing features are:
+
+- DPD
+- Tracking calibrations
+- Power monitoring modes
+- GPIO controls
+- AUX ADC/DAC controls
+
+If you require these features please use TES.
+
+# Support
+
+If you have any questions or issues please reach out to [ADI EngineerZone Software Interface Tools subforum](https://ez.analog.com/sw-interface-tools/). **libadrv9002-iio** is **not** supported through the *Design Support ADRV9001 – ADRV9007* forum at this time.
+
+# License
+
+The library itself is under an ADI proprietary license. For details please see the available license files for details.
+
+# Documentation Contents
+
+```{toctree}
+:caption: Table of Contents
+:maxdepth: 2
+
+build_and_install
+examples
+c_ref
+python_ref
+cli
+```
