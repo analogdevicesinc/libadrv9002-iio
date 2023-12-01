@@ -2,12 +2,9 @@
 <html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="build_and_install.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="#" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
-        <title>libadrv9002-iio v0.1.0</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 --><title>Search - libadrv9002-iio v0.1.0</title><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
@@ -125,7 +122,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">libadrv9002-iio v0.1.0</div></a>
+      <a href="index.html"><div class="brand">libadrv9002-iio v0.1.0</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -136,7 +133,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -145,12 +142,12 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">libadrv9002-iio v0.1.0</span>
   
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="#" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -182,8 +179,7 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -191,87 +187,30 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="adrv9002-transceiver-profile-generator">
-<h1>ADRV9002 Transceiver Profile Generator<a class="headerlink" href="#adrv9002-transceiver-profile-generator" title="Permalink to this heading">#</a></h1>
-<p><strong>libadrv9002-iio</strong> is a software library used to generate configuration profiles for the ADRV9002/3/4 family of transceivers. This library is similar to the Transceiver Evaluation Software (TES) but instead has a programmatic interfaces and is provided in different compiled options to support different CPU architectures and operating systems. <strong>libadrv9002-iio</strong> is provided with and without <strong>libiio</strong> support as not all applications require direct use of the <em>IIO</em> driver. However, <strong>libiio</strong> is not shipped with the library and must be installed separately.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>This library is still in early development and is not feature complete. Please see the <a class="reference internal" href="#limitations-target">Limitations</a> section for more details. There may exists bugs and issues with the library. If you find any please report them to <a class="reference external" href="https://github.com/analogdevicesinc/libadrv9002-iio/issues">GitHub Issues</a>. For technical question please use the <a class="reference external" href="https://ez.analog.com/sw-interface-tools/">ADI EngineerZone Software Interface Tools subforum</a>.</p>
+          
+<noscript>
+<div class="admonition error">
+  <p class="admonition-title">Error</p>
+  <p>
+    Please activate JavaScript to enable the search functionality.
+  </p>
 </div>
-<section id="limitations">
-<span id="limitations-target"></span><h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
-<p>Like TES, specific versions of the transceiver API are supported by this library. This is currently <strong>68.8.1</strong> for this version of the library. If you need a previous version of the API please look at previous releases. It is always recommended to use the latest version of the library when possible, and older versions will have limited support. Bug fixes will not be backported to older versions of the library.</p>
-<p>Note that the library will not contain FPGA specific features as available in TES which include Fast Frequencies Hopping and TDD FPGA IP configuration.</p>
-<p>The library is still under development and will lack other configuration options but the plan is to add these over time. The current missing features are:</p>
-<ul class="simple">
-<li><p>DPD</p></li>
-<li><p>Tracking calibrations</p></li>
-<li><p>Power monitoring modes</p></li>
-<li><p>GPIO controls</p></li>
-<li><p>AUX ADC/DAC controls</p></li>
-</ul>
-<p>If you require these features please use TES.</p>
-</section>
-</section>
-<section id="support">
-<h1>Support<a class="headerlink" href="#support" title="Permalink to this heading">#</a></h1>
-<p>If you have any questions or issues please reach out to <a class="reference external" href="https://ez.analog.com/sw-interface-tools/">ADI EngineerZone Software Interface Tools subforum</a>. <strong>libadrv9002-iio</strong> is <strong>not</strong> supported through the <em>Design Support ADRV9001 – ADRV9007</em> forum at this time.</p>
-</section>
-<section id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h1>
-<p>The library itself is under an ADI proprietary license. For details please see the available license files for details.</p>
-</section>
-<section id="documentation-contents">
-<h1>Documentation Contents<a class="headerlink" href="#documentation-contents" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="build_and_install.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="build_and_install.html#table-of-build-variants">Table of build variants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_and_install.html#windows">Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_and_install.html#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_and_install.html#python">Python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="c_ref.html">C/C++ Reference API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="c_ref.html#structures">Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c_ref.html#functions">Functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python Bindings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="python_ref.html#configuration-objects">Configuration Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_ref.html#functions">Functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cli.html#usage">Usage</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
+</noscript>
+
+<div id="search-results"></div>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="build_and_install.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Installation</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
+          
           
         </div>
         <div class="bottom-of-page">
@@ -291,30 +230,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">ADRV9002 Transceiver Profile Generator</a><ul>
-<li><a class="reference internal" href="#limitations">Limitations</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#support">Support</a></li>
-<li><a class="reference internal" href="#license">License</a></li>
-<li><a class="reference internal" href="#documentation-contents">Documentation Contents</a></li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -327,5 +244,8 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
     <script src="_static/js/licensing.js?v=923900e1"></script>
-    </body>
+    
+<script src="_static/searchtools.js"></script>
+<script src="_static/language_data.js"></script>
+<script src="searchindex.js"></script></body>
 </html>
