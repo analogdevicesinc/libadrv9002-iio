@@ -23,7 +23,7 @@ Options:
 	-c, --config [arg]
 		Specify config file containing a adrv9002_config structure in libini format.
 
-	-i, --uri [arg]
+	-u, --uri [arg]
 		Set the iio device's uri.
 		eg: 'ip:192.168.2.1'
 		(Only available if build with libiio)
