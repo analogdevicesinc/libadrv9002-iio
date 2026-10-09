@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="libadrv9002-iio is a software library for generating configuration profiles for the ADRV9002/3/4 family of RF transceivers. It provides programmatic C and Python interfaces equivalent to the Transceiver Evaluation Software (TES), compiled for multiple CPU architectures and operating systems." name="description" />
+
+    <title>ADRV9002 Transceiver Profile Generator &#8212; libadrv9002-iio v0.3.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <script src="_static/js/licensing.js?v=5b6de748"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Downloads" href="downloads.html" />
+   
+  
+  
+  
+  <meta name="repository" content="libadrv9002-iio">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="#">
+          <div>libadrv9002-iio</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">ADRV9002 Transceiver Profile Generator</a><ul>
+<li><a class="reference internal" href="#what-s-new-in-v0-3-0">What’s New in v0.3.0</a></li>
+<li><a class="reference internal" href="#supported-platforms">Supported Platforms</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+<li><a class="reference internal" href="#license">License</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="#">
+      libadrv9002-iio
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_ref.html">C/C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="adrv9002-transceiver-profile-generator">
+<h1>ADRV9002 Transceiver Profile Generator<a class="headerlink" href="#adrv9002-transceiver-profile-generator" title="Link to this heading"></a></h1>
+<p><strong>libadrv9002-iio</strong> is a software library for generating configuration profiles for the ADRV9002/3/4 family of RF transceivers. It provides programmatic C and Python interfaces equivalent to the Transceiver Evaluation Software (TES), compiled for multiple CPU architectures and operating systems.</p>
+<p>The library takes a set of radio and clock parameters as input and produces two outputs:</p>
+<ul class="simple">
+<li><p>A <strong>profile JSON</strong> — the full device initialization structure</p></li>
+<li><p>A <strong>stream image</strong> — binary firmware loaded onto the transceiver’s stream processor</p></li>
+</ul>
+<p>These outputs can then be written to hardware via the IIO kernel driver, or saved to files for later use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This documentation involves three distinct, independently-versioned things — don’t
+confuse them:</p>
+<ul class="simple">
+<li><p><strong>libadrv9002-iio release version</strong> (e.g. <strong>v0.3.0</strong>) — this library’s own version,
+used to organize this documentation site.</p></li>
+<li><p><strong>ADRV9002 Device Driver API version</strong> (e.g. <strong>68.16.2</strong>) — the transceiver API
+version a given library release supports.</p></li>
+<li><p><strong>TES version</strong> — Transceiver Evaluation Software is a separate ADI product with its own,
+unrelated version numbers.</p></li>
+</ul>
+</div>
+<section id="what-s-new-in-v0-3-0">
+<h2>What’s New in v0.3.0<a class="headerlink" href="#what-s-new-in-v0-3-0" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Support for API version <strong>68.16.2</strong></p></li>
+<li><p>Rx Port Impedance Control stream settings</p></li>
+<li><p>Built-in stream template files (no external resource directory needed)</p></li>
+<li><p>Debian packages for Ubuntu 22.04/24.04 (x86_64, arm64, armv7)</p></li>
+<li><p>Windows installer with CLI tool</p></li>
+<li><p>Python wheels for Linux and Windows</p></li>
+<li><p>All packages available via the <a class="reference internal" href="downloads.html"><span class="doc std std-doc">Downloads</span></a> page</p></li>
+</ul>
+</section>
+<section id="supported-platforms">
+<h2>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Link to this heading"></a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Architecture</p></th>
+<th class="head"><p>Package Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ubuntu 22.04/24.04</p></td>
+<td><p>x86_64, arm64, armv7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.deb</span></code>, <code class="docutils literal notranslate"><span class="pre">.whl</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Windows 10/11</p></td>
+<td><p>x86_64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.exe</span></code> installer, <code class="docutils literal notranslate"><span class="pre">.whl</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora 34+</p></td>
+<td><p>x86_64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.rpm</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
+<p>Specific versions of the transceiver API are supported by this library. This is currently <strong>68.16.2</strong> for this version. If you need a previous version, see <a class="icon link reference external" href="https://github.com/analogdevicesinc/libadrv9002-iio/releases" target="_blank">previous releases</a>.</p>
+<p>Features not yet available:</p>
+<ul class="simple">
+<li><p>DPD</p></li>
+<li><p>Tracking calibrations</p></li>
+<li><p>Power monitoring modes</p></li>
+<li><p>GPIO controls</p></li>
+<li><p>AUX ADC/DAC controls</p></li>
+<li><p>FPGA-specific features (Fast Frequency Hopping, TDD FPGA IP)</p></li>
+</ul>
+<p>If you require these features, please use TES.</p>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
+<p>For questions or issues, use the <a class="icon link reference external" href="https://ez.analog.com/sw-interface-tools/" target="_blank">ADI EngineerZone Software Interface Tools subforum</a>.</p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>This library is provided under a proprietary Analog Devices, Inc. license. See the LICENSE files included with each package for details.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html#choosing-a-package">Choosing a Package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#debian-ubuntu">Debian / Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#library-zip-archives">Library ZIP Archives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#iio-support">IIO Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#c-example">C Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#python-example">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#loading-profiles-to-hardware-iio">Loading Profiles to Hardware (IIO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#configuration-reference">Configuration Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_ref.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_ref.html#configuration-objects">Configuration Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_ref.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="c_ref.html">C/C++ API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="c_ref.html#structures">Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c_ref.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#configuration-file-format">Configuration File Format</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <div></div>
+    <a href="downloads.html" title="Next document (Alt+Shift+RightArrow)" class="next">Downloads</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2025, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

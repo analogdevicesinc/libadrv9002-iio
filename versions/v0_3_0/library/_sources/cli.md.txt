@@ -1,0 +1,87 @@
+# Command Line Tool
+
+The `adrv9002-iio-cli` command-line tool lets you generate ADRV9002 profiles and stream images directly from a JSON configuration file, without writing any code. This is useful for scripting, CI/CD pipelines, and quick testing of configuration changes.
+
+## Installation
+
+The CLI is included in:
+- Linux `.deb` packages
+- Windows installer
+- Source builds with `-DENABLE_TOOLS=ON`
+
+It is **not** included in Python wheel packages.
+
+## Usage
+
+```
+adrv9002-iio-cli [OPTIONS]
+
+Options:
+  -c, --config <file>     Input JSON configuration file (required)
+  -p, --profile <file>    Output profile JSON file
+  -s, --stream <file>     Output stream binary file
+  -h, --help              Show help
+```
+
+## Example
+
+```bash
+# Generate profile and stream from config
+adrv9002-iio-cli -c config.json -p profile.json -s stream.bin
+```
+
+## Configuration File Format
+
+The JSON config file mirrors the C/Python API structure:
+
+```json
+{
+  "radio": {
+    "adc_rate_mode": 3,
+    "fdd": false,
+    "lvds": true,
+    "ssi_lanes": 2,
+    "ddr": true,
+    "short_strobe": true,
+    "rx": [
+      {
+        "enabled": true,
+        "sample_rate_hz": 30720000,
+        "channel_bandwidth_hz": 18000000,
+        "adc_high_performance_mode": true,
+        "nco_enable": false,
+        "rf_port": 0
+      },
+      {
+        "enabled": true,
+        "sample_rate_hz": 30720000,
+        "channel_bandwidth_hz": 18000000,
+        "adc_high_performance_mode": true,
+        "nco_enable": false,
+        "rf_port": 0
+      }
+    ],
+    "tx": [
+      {
+        "enabled": true,
+        "sample_rate_hz": 30720000,
+        "channel_bandwidth_hz": 18000000,
+        "orx_enabled": true,
+        "elb_type": 2
+      },
+      {
+        "enabled": true,
+        "sample_rate_hz": 30720000,
+        "channel_bandwidth_hz": 18000000,
+        "orx_enabled": true,
+        "elb_type": 2
+      }
+    ]
+  },
+  "clock": {
+    "device_clock_frequency_khz": 38400,
+    "clock_pll_high_performance_enable": true,
+    "processor_clock_divider": 1
+  }
+}
+```

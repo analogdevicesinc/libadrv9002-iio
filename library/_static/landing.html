@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>libadrv9002-iio — ADRV9002 Profile Generator</title>
+  <style>
+    :root {
+      --primary: #0066b2;
+      --primary-dark: #004d86;
+      --accent: #00a651;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
+      --text-muted: #6c757d;
+      --border: #e9ecef;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .releases {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .release-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .release-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .release-card.latest {
+      border-left: 4px solid var(--accent);
+    }
+
+    .release-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .release-version {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .release-tag {
+      font-size: 0.75rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .release-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .api-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .api-list li a {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: #e8f4fd;
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .api-list li a:hover {
+      background: #cce5ff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>libadrv9002-iio</h1>
+  <p class="subtitle">Profile generation library for the ADRV9002/3/4 family of RF transceivers</p>
+  <span class="badge">Latest: v0.3.0</span>
+</div>
+
+<div class="container">
+
+  <h2 class="section-title">Releases</h2>
+  <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+    Each release supports one or more ADRV9002 Device Driver API versions.
+    Select your API version to view the corresponding documentation.
+  </p>
+
+  <div class="releases">
+
+    <div class="release-card latest">
+      <div class="release-header">
+        <a class="release-version" href="library-public/index.html" style="text-decoration: none;">v0.3.0</a>
+        <span class="release-tag">Latest</span>
+      </div>
+      <p class="release-description">
+        Adds API 68.16.2 support, Rx Port Impedance Control, built-in stream templates,
+        ARM packages, and Cloudsmith distribution.
+      </p>
+      <ul class="api-list">
+        <li><a href="library-public/downloads.html#api-v68-20-12">v68.20.12</a></li>
+        <li><a href="library-public/downloads.html#api-v68-16-2-also-v68-13-7-v68-14-10">v68.16.2 (also v68.13.7, v68.14.10)</a></li>
+        <li><a href="library-public/downloads.html#api-v68-10-1">v68.10.1</a></li>
+      </ul>
+    </div>
+
+    <div class="release-card">
+      <div class="release-header">
+        <span class="release-version">v0.2.0</span>
+      </div>
+      <p class="release-description">
+        C and Python bindings, CLI tool, libiio integration, multi-platform packages.
+      </p>
+      <ul class="api-list">
+        <li><a href="https://analogdevicesinc.github.io/libadrv9002-iio/v0_2_0/v68_8_1/index.html">v68.8.1</a></li>
+        <li><a href="https://analogdevicesinc.github.io/libadrv9002-iio/v0_2_0/v68_10_1/index.html">v68.10.1</a></li>
+      </ul>
+    </div>
+
+    <div class="release-card">
+      <div class="release-header">
+        <span class="release-version">v0.1.0</span>
+      </div>
+      <p class="release-description">
+        Initial release with basic profile generation.
+      </p>
+      <ul class="api-list">
+        <li><a href="https://analogdevicesinc.github.io/libadrv9002-iio/v68_8_1/index.html">v68.8.1</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Quick Start</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Debian / Ubuntu</h3>
+      <p>.deb packages for x86_64, arm64, and armhf.<br><a href="library-public/installation.html">Installation guide →</a></p>
+    </div>
+    <div class="info-card">
+      <h3>Windows</h3>
+      <p>Installer with DLLs, headers, and CLI tool.<br><a href="library-public/installation.html">Installation guide →</a></p>
+    </div>
+    <div class="info-card">
+      <h3>Python</h3>
+      <p><code>pip install adrv9002</code><br><a href="library-public/installation.html">Installation guide →</a></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    <a href="https://www.analog.com">Analog Devices, Inc.</a> &middot;
+    <a href="https://ez.analog.com/sw-interface-tools/">Support Forum</a> &middot;
+    <a href="https://github.com/analogdevicesinc/libadrv9002-iio">GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>

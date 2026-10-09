@@ -1,0 +1,256 @@
+# Testing
+
+## Overview
+
+The repository has three levels of testing:
+
+1. **Unit tests** — C-based tests run via `ctest` as part of the CMake build
+2. **Profile generation tests** — Pytest tests that verify the profile generator reproduces reference outputs from blueprints
+3. **Hardware tests** — Pytest tests using `labgrid-plugins` that load profiles to real ADRV9002 hardware over IIO
+
+## Unit Tests (ctest)
+
+Unit tests are built with `-DENABLE_TESTS=ON` and run with `ctest -V`:
+
+| Test | What It Verifies |
+|------|-----------------|
+| `RxArbRateGenTest` | Filter designer arbitrary rate generation for RX |
+| `PassbandRippleTest` | Filter designer passband ripple constraints |
+| `TestGenProfile` | Profile generation matches reference |
+| `TestXXDProfileGen` | Embedded `profile.h` header matches the reference JSON file |
+
+## Profile Generation Tests
+
+The `test_profile_generation.py` module verifies that the profile generator can reproduce reference profiles from NuGet-packaged blueprints.
+
+### How It Works
+
+1. Reads `.blueprint` JSON files from `tests/profiles/{api_version}/`
+2. Populates an `adrv9002_config` struct using `blueprint_parser.py`
+3. Sets `EXT_PROFILE` environment variable to the blueprint path
+4. Calls `adrv9002.generate_profile(cfg)`
+5. Compares generated profile JSON against the reference `.profile` file
+
+### Prerequisites
+
+- Library built with `-DENABLE_EXT_PROFILE=ON`
+- Python bindings on `PYTHONPATH`, shared libraries on `LD_LIBRARY_PATH`
+- Reference profiles downloaded via `scripts/download_profiles.py`
+
+### Running
+
+```bash
+# Download reference profiles
+python scripts/download_profiles.py --all
+
+# Run tests (Linux only — requires .so built with EXT_PROFILE)
+PYTHONPATH=v68.16.2/.../bindings/python \
+LD_LIBRARY_PATH=v68.16.2/.../libs \
+pytest tests/test_profile_generation.py --api-version v68.16.2 -v
+```
+
+### Excluded Profiles
+
+Some blueprints are automatically excluded because the config struct cannot represent them:
+- **FM TX modes** (`channelSignalType != 0`)
+- **Narrowband RX** (`channelSignalSetup != 0`)
+
+### Results Interpretation
+
+- **PASSED** — Generated profile matches reference exactly
+- **SKIPPED (errno 132)** — Blueprint format incompatible with this library version
+- **SKIPPED (stream unavailable)** — Stream-gen resources not installed (expected locally)
+
+## Hardware Tests (pytest + labgrid)
+
+### Prebuilt Profile Load Tests
+
+The `test_prebuilt_profile_load.py` module loads ALL prebuilt profiles to hardware and verifies the kernel accepts them.
+
+#### Filtering Options
+
+```bash
+# Filter by interface (default: lvds)
+pytest tests/test_prebuilt_profile_load.py --interface lvds
+
+# Filter by device clock (match your board's reference clock)
+pytest tests/test_prebuilt_profile_load.py --device-clock 38400
+
+# Both filters together
+pytest tests/test_prebuilt_profile_load.py --interface lvds --device-clock 38400
+```
+
+The interface filter parses the `.profile` JSON's `ssiType` field (2=LVDS, 1=CMOS). The device clock filter checks `deviceClock_kHz`. Profiles without explicit interface info in their filename (use_case, asr) are parsed from their JSON content.
+
+#### Running Against a Board
+
+```bash
+# Direct connection (no labgrid required)
+pytest tests/test_prebuilt_profile_load.py \
+    --iiod-uri ip:192.168.2.1 \
+    --api-version v68.14.10 \
+    --interface lvds \
+    --device-clock 38400 \
+    --skip-boot -v
+
+# With labgrid coordinator
+pytest tests/ \
+    --lg-env tests/labgrid/env_zcu102_adrv9002.yaml \
+    --api-version v68.14.10 -v
+```
+
+### Other Hardware Test Modules
+
+| Module | What It Verifies |
+|--------|-----------------|
+| `test_profile_load.py` | Profile generation via Python bindings + IIO load |
+| `test_interface_mode.py` | Digital interface reports LVDS after LVDS profile load |
+| `test_attribute_readback.py` | RX sampling_frequency and rf_bandwidth match expected |
+
+### Downloading Reference Profiles
+
+```bash
+# Download for all known API versions
+python scripts/download_profiles.py --all
+
+# Download for a specific version
+python scripts/download_profiles.py --version 68.16.2
+```
+
+This downloads NuGet packages from ADI Artifactory and extracts `.bin`, `.profile`, `.blueprint`, and `.streamsettings` files.
+
+## Release Validation Run
+
+`scripts/run_release_hw_tests.sh` runs the whole suite against real hardware for
+every API version in the release and reports a pass/fail matrix. This is the
+release gate; the scripts above are for working on a single case.
+
+```bash
+# Everything: all testable versions, both interfaces
+bash scripts/run_release_hw_tests.sh
+
+# One version / one interface
+bash scripts/run_release_hw_tests.sh --version v68.16.2 --interface lvds
+
+# Hardware only, no host-side profile generation
+bash scripts/run_release_hw_tests.sh --skip-profile-gen
+```
+
+### What it runs
+
+The version list comes from `tests/version_map.yaml` — every entry without a
+`skip_reason` — so adding a version to that file is enough. Each combination of
+API version and SSI interface runs as its own pytest process ("leg"):
+
+| Phase | Legs | Hardware |
+|---|---|---|
+| Profile generation | one per version | no |
+| Prebuilt profile load + native-library tests | one per version per interface | yes |
+
+Separate processes per leg are required, not merely tidier:
+
+- The `adrv9002` binding resolves exactly one native library per process, and
+  each API version needs a different one.
+- `BootFPGASoC` is wrapped in `never_retry`, which latches the strategy as broken
+  after its first failed transition — one bad boot in a shared process would
+  poison every later leg.
+- `--interface both` produces **no CMOS coverage**: collection uses LVDS profile
+  ids and the LVDS/CMOS id sets are disjoint, so every CMOS-phase test skips.
+
+### Prerequisites
+
+```bash
+# Build a library with both ENABLE_IIO and ENABLE_EXT_PROFILE on. This single
+# configuration serves both test groups: the profile-generation tests need
+# EXT_PROFILE, and the native-library tests call adrv9002_generate_load_profile_iio,
+# which only exists when ENABLE_IIO=ON.
+bash scripts/build_linux_libs.sh --with-iio v68.10.1 v68.14.10 v68.16.2
+```
+
+The default `build_linux_libs.sh` build (`ENABLE_IIO=OFF`, into `build-linux`) is
+for profile generation only — staging it makes the native-library tests fail on a
+missing symbol. `scripts/stage_native_lib.sh` prefers the `build-hwtest` build and
+warns when it has to fall back.
+
+Also needed:
+
+- `gcc` (or `cc`) and `binutils`. `ctypes.util.find_library()` shells out to the
+  compiler and linker, and that is the only path by which `LD_LIBRARY_PATH` is
+  honoured on Linux — without them the binding cannot find its library at all.
+- `pmount` and `pumount` **on the exporter host**, not locally. `MassStorageDriver`
+  runs them over SSH to mount the SD card while it is muxed to the host.
+- libiio development files for the `--with-iio` build (`pkg-config libiio`).
+
+The preflight phase checks each of these and names what is missing.
+
+### Library selection
+
+`tests/version_map.yaml` carries a `library_source` key per version. Most versions
+name themselves; v68.13.7 has no source directory of its own and points at
+`v68.16.2` (see [Multi-Version Support](versioning.md)). `stage_native_lib.sh`
+resolves it, falls back to `v68.16.2` when the named directory is not checked out,
+and prints the build directory, library md5 and whether the IIO entry point is
+present — so a report can always be traced to a specific binary.
+
+Libraries are staged into `.stage/<version>/libs` rather than into the bindings
+package, because several versions share one bindings directory and in-tree staging
+would let legs silently overwrite each other's libraries.
+
+### Reports
+
+| File | Contents |
+|---|---|
+| `reports/junit-profgen-<version>.xml` | profile generation |
+| `reports/junit-hw-<version>-<interface>.xml` | hardware leg, JUnit |
+| `reports/hw-<version>-<interface>.html` | hardware leg, self-contained HTML |
+| `reports/junit-smoke-<version>.xml` | the single-profile smoke leg |
+
+The script prints a matrix at the end and exits non-zero if any leg failed. A
+smoke leg runs first and aborts the matrix if the boot path is broken — pass
+`--no-smoke` to force the full run anyway.
+
+### Kuiper image cache
+
+`BootFPGASoC` downloads and unpacks the Kuiper image in `__attrs_post_init__`,
+i.e. while the labgrid `Environment` is constructed and before any fixture runs,
+using the `cache_path` the exporter published (`/tmp/kuiper_cache`). It therefore
+cannot be redirected from `conftest.py`. The orchestrator symlinks that path to
+`~/.cache/navassa-kuiper` (override with `NAVASSA_KUIPER_CACHE`) so the ~20 GB of
+image survives a reboot, and warms the cache *before* acquiring the board rather
+than letting the first leg pay for it while holding hardware.
+
+### Board sharing
+
+Each leg acquires and releases the place itself, so the board is briefly free
+between legs and another user could take it mid-run. For a contended board, wrap
+the run in a labgrid reservation (`labgrid-client reserve name=<place>`); note
+that an allocated-but-unacquired reservation expires after 60 s, so it needs a
+`labgrid-client wait` poller to survive long gaps.
+
+
+## Test Infrastructure
+
+### Fixtures
+
+| Fixture | Scope | Description |
+|---------|-------|-------------|
+| `version_map` | session | YAML mapping of API versions to Kuiper branches |
+| `booted_target` | session | labgrid target booted with correct image |
+| `board_uri` | session | IIO URI (from `--iiod-uri` or labgrid discovery) |
+| `iio_context` | function | Connected `iio.Context` |
+| `adrv9002_device` | function | The `adrv9002-phy` IIO device |
+| `interface_type` | session | Selected interface filter (lvds/cmos) |
+
+### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `--api-version` | Run tests for a specific API version |
+| `--iiod-uri` | Direct IIO connection (bypasses labgrid) |
+| `--skip-boot` | Assume board is already running correct image |
+| `--interface` | Filter profiles by LVDS or CMOS (default: lvds) |
+| `--device-clock` | Filter profiles by device clock in kHz |
+
+### Blueprint Parser
+
+`tests/helpers/blueprint_parser.py` provides `blueprint_to_config(bp, adrv9002_module)` which converts a blueprint JSON dict into a populated `adrv9002_config` struct. Used by `test_profile_generation.py` to drive the profile generator with parameters matching the reference blueprint.

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The repository has three levels of testing:" name="description" />
+
+    <title>Testing &#8212; navassa-pg-library</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CI Pipeline" href="ci_pipeline.html" />
+    <link rel="prev" title="Building" href="building.html" />
+   
+  
+  
+  
+  <meta name="repository" content="navassa-pg-library">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>navassa-pg-library</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Testing</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#unit-tests-ctest">Unit Tests (ctest)</a></li>
+<li><a class="reference internal" href="#profile-generation-tests">Profile Generation Tests</a><ul>
+<li><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#running">Running</a></li>
+<li><a class="reference internal" href="#excluded-profiles">Excluded Profiles</a></li>
+<li><a class="reference internal" href="#results-interpretation">Results Interpretation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hardware-tests-pytest-labgrid">Hardware Tests (pytest + labgrid)</a><ul>
+<li><a class="reference internal" href="#prebuilt-profile-load-tests">Prebuilt Profile Load Tests</a><ul>
+<li><a class="reference internal" href="#filtering-options">Filtering Options</a></li>
+<li><a class="reference internal" href="#running-against-a-board">Running Against a Board</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-hardware-test-modules">Other Hardware Test Modules</a></li>
+<li><a class="reference internal" href="#downloading-reference-profiles">Downloading Reference Profiles</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#release-validation-run">Release Validation Run</a><ul>
+<li><a class="reference internal" href="#what-it-runs">What it runs</a></li>
+<li><a class="reference internal" href="#id1">Prerequisites</a></li>
+<li><a class="reference internal" href="#library-selection">Library selection</a></li>
+<li><a class="reference internal" href="#reports">Reports</a></li>
+<li><a class="reference internal" href="#kuiper-image-cache">Kuiper image cache</a></li>
+<li><a class="reference internal" href="#board-sharing">Board sharing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#test-infrastructure">Test Infrastructure</a><ul>
+<li><a class="reference internal" href="#fixtures">Fixtures</a></li>
+<li><a class="reference internal" href="#cli-options">CLI Options</a></li>
+<li><a class="reference internal" href="#blueprint-parser">Blueprint Parser</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      navassa-pg-library
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Developer Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Repository Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Multi-Version Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Testing &amp; CI</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ci_pipeline.html">CI Pipeline</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Reference</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="known_gaps.html">Known Gaps &amp; Limitations</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The repository has three levels of testing:</p>
+<ol class="arabic simple">
+<li><p><strong>Unit tests</strong> — C-based tests run via <code class="docutils literal notranslate"><span class="pre">ctest</span></code> as part of the CMake build</p></li>
+<li><p><strong>Profile generation tests</strong> — Pytest tests that verify the profile generator reproduces reference outputs from blueprints</p></li>
+<li><p><strong>Hardware tests</strong> — Pytest tests using <code class="docutils literal notranslate"><span class="pre">labgrid-plugins</span></code> that load profiles to real ADRV9002 hardware over IIO</p></li>
+</ol>
+</section>
+<section id="unit-tests-ctest">
+<h2>Unit Tests (ctest)<a class="headerlink" href="#unit-tests-ctest" title="Link to this heading"></a></h2>
+<p>Unit tests are built with <code class="docutils literal notranslate"><span class="pre">-DENABLE_TESTS=ON</span></code> and run with <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-V</span></code>:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Test</p></th>
+<th class="head"><p>What It Verifies</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RxArbRateGenTest</span></code></p></td>
+<td><p>Filter designer arbitrary rate generation for RX</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PassbandRippleTest</span></code></p></td>
+<td><p>Filter designer passband ripple constraints</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TestGenProfile</span></code></p></td>
+<td><p>Profile generation matches reference</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TestXXDProfileGen</span></code></p></td>
+<td><p>Embedded <code class="docutils literal notranslate"><span class="pre">profile.h</span></code> header matches the reference JSON file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="profile-generation-tests">
+<h2>Profile Generation Tests<a class="headerlink" href="#profile-generation-tests" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_profile_generation.py</span></code> module verifies that the profile generator can reproduce reference profiles from NuGet-packaged blueprints.</p>
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Reads <code class="docutils literal notranslate"><span class="pre">.blueprint</span></code> JSON files from <code class="docutils literal notranslate"><span class="pre">tests/profiles/{api_version}/</span></code></p></li>
+<li><p>Populates an <code class="docutils literal notranslate"><span class="pre">adrv9002_config</span></code> struct using <code class="docutils literal notranslate"><span class="pre">blueprint_parser.py</span></code></p></li>
+<li><p>Sets <code class="docutils literal notranslate"><span class="pre">EXT_PROFILE</span></code> environment variable to the blueprint path</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">adrv9002.generate_profile(cfg)</span></code></p></li>
+<li><p>Compares generated profile JSON against the reference <code class="docutils literal notranslate"><span class="pre">.profile</span></code> file</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Library built with <code class="docutils literal notranslate"><span class="pre">-DENABLE_EXT_PROFILE=ON</span></code></p></li>
+<li><p>Python bindings on <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>, shared libraries on <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code></p></li>
+<li><p>Reference profiles downloaded via <code class="docutils literal notranslate"><span class="pre">scripts/download_profiles.py</span></code></p></li>
+</ul>
+</section>
+<section id="running">
+<h3>Running<a class="headerlink" href="#running" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download reference profiles</span>
+python<span class="w"> </span>scripts/download_profiles.py<span class="w"> </span>--all
+
+<span class="c1"># Run tests (Linux only — requires .so built with EXT_PROFILE)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>v68.16.2/.../bindings/python<span class="w"> </span><span class="se">\</span>
+<span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>v68.16.2/.../libs<span class="w"> </span><span class="se">\</span>
+pytest<span class="w"> </span>tests/test_profile_generation.py<span class="w"> </span>--api-version<span class="w"> </span>v68.16.2<span class="w"> </span>-v
+</pre></div>
+</div>
+</section>
+<section id="excluded-profiles">
+<h3>Excluded Profiles<a class="headerlink" href="#excluded-profiles" title="Link to this heading"></a></h3>
+<p>Some blueprints are automatically excluded because the config struct cannot represent them:</p>
+<ul class="simple">
+<li><p><strong>FM TX modes</strong> (<code class="docutils literal notranslate"><span class="pre">channelSignalType</span> <span class="pre">!=</span> <span class="pre">0</span></code>)</p></li>
+<li><p><strong>Narrowband RX</strong> (<code class="docutils literal notranslate"><span class="pre">channelSignalSetup</span> <span class="pre">!=</span> <span class="pre">0</span></code>)</p></li>
+</ul>
+</section>
+<section id="results-interpretation">
+<h3>Results Interpretation<a class="headerlink" href="#results-interpretation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>PASSED</strong> — Generated profile matches reference exactly</p></li>
+<li><p><strong>SKIPPED (errno 132)</strong> — Blueprint format incompatible with this library version</p></li>
+<li><p><strong>SKIPPED (stream unavailable)</strong> — Stream-gen resources not installed (expected locally)</p></li>
+</ul>
+</section>
+</section>
+<section id="hardware-tests-pytest-labgrid">
+<h2>Hardware Tests (pytest + labgrid)<a class="headerlink" href="#hardware-tests-pytest-labgrid" title="Link to this heading"></a></h2>
+<section id="prebuilt-profile-load-tests">
+<h3>Prebuilt Profile Load Tests<a class="headerlink" href="#prebuilt-profile-load-tests" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_prebuilt_profile_load.py</span></code> module loads ALL prebuilt profiles to hardware and verifies the kernel accepts them.</p>
+<section id="filtering-options">
+<h4>Filtering Options<a class="headerlink" href="#filtering-options" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter by interface (default: lvds)</span>
+pytest<span class="w"> </span>tests/test_prebuilt_profile_load.py<span class="w"> </span>--interface<span class="w"> </span>lvds
+
+<span class="c1"># Filter by device clock (match your board's reference clock)</span>
+pytest<span class="w"> </span>tests/test_prebuilt_profile_load.py<span class="w"> </span>--device-clock<span class="w"> </span><span class="m">38400</span>
+
+<span class="c1"># Both filters together</span>
+pytest<span class="w"> </span>tests/test_prebuilt_profile_load.py<span class="w"> </span>--interface<span class="w"> </span>lvds<span class="w"> </span>--device-clock<span class="w"> </span><span class="m">38400</span>
+</pre></div>
+</div>
+<p>The interface filter parses the <code class="docutils literal notranslate"><span class="pre">.profile</span></code> JSON’s <code class="docutils literal notranslate"><span class="pre">ssiType</span></code> field (2=LVDS, 1=CMOS). The device clock filter checks <code class="docutils literal notranslate"><span class="pre">deviceClock_kHz</span></code>. Profiles without explicit interface info in their filename (use_case, asr) are parsed from their JSON content.</p>
+</section>
+<section id="running-against-a-board">
+<h4>Running Against a Board<a class="headerlink" href="#running-against-a-board" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Direct connection (no labgrid required)</span>
+pytest<span class="w"> </span>tests/test_prebuilt_profile_load.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--iiod-uri<span class="w"> </span>ip:192.168.2.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--api-version<span class="w"> </span>v68.14.10<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--interface<span class="w"> </span>lvds<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device-clock<span class="w"> </span><span class="m">38400</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--skip-boot<span class="w"> </span>-v
+
+<span class="c1"># With labgrid coordinator</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--lg-env<span class="w"> </span>tests/labgrid/env_zcu102_adrv9002.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--api-version<span class="w"> </span>v68.14.10<span class="w"> </span>-v
+</pre></div>
+</div>
+</section>
+</section>
+<section id="other-hardware-test-modules">
+<h3>Other Hardware Test Modules<a class="headerlink" href="#other-hardware-test-modules" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>What It Verifies</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_profile_load.py</span></code></p></td>
+<td><p>Profile generation via Python bindings + IIO load</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_interface_mode.py</span></code></p></td>
+<td><p>Digital interface reports LVDS after LVDS profile load</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_attribute_readback.py</span></code></p></td>
+<td><p>RX sampling_frequency and rf_bandwidth match expected</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="downloading-reference-profiles">
+<h3>Downloading Reference Profiles<a class="headerlink" href="#downloading-reference-profiles" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download for all known API versions</span>
+python<span class="w"> </span>scripts/download_profiles.py<span class="w"> </span>--all
+
+<span class="c1"># Download for a specific version</span>
+python<span class="w"> </span>scripts/download_profiles.py<span class="w"> </span>--version<span class="w"> </span><span class="m">68</span>.16.2
+</pre></div>
+</div>
+<p>This downloads NuGet packages from ADI Artifactory and extracts <code class="docutils literal notranslate"><span class="pre">.bin</span></code>, <code class="docutils literal notranslate"><span class="pre">.profile</span></code>, <code class="docutils literal notranslate"><span class="pre">.blueprint</span></code>, and <code class="docutils literal notranslate"><span class="pre">.streamsettings</span></code> files.</p>
+</section>
+</section>
+<section id="release-validation-run">
+<h2>Release Validation Run<a class="headerlink" href="#release-validation-run" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">scripts/run_release_hw_tests.sh</span></code> runs the whole suite against real hardware for
+every API version in the release and reports a pass/fail matrix. This is the
+release gate; the scripts above are for working on a single case.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Everything: all testable versions, both interfaces</span>
+bash<span class="w"> </span>scripts/run_release_hw_tests.sh
+
+<span class="c1"># One version / one interface</span>
+bash<span class="w"> </span>scripts/run_release_hw_tests.sh<span class="w"> </span>--version<span class="w"> </span>v68.16.2<span class="w"> </span>--interface<span class="w"> </span>lvds
+
+<span class="c1"># Hardware only, no host-side profile generation</span>
+bash<span class="w"> </span>scripts/run_release_hw_tests.sh<span class="w"> </span>--skip-profile-gen
+</pre></div>
+</div>
+<section id="what-it-runs">
+<h3>What it runs<a class="headerlink" href="#what-it-runs" title="Link to this heading"></a></h3>
+<p>The version list comes from <code class="docutils literal notranslate"><span class="pre">tests/version_map.yaml</span></code> — every entry without a
+<code class="docutils literal notranslate"><span class="pre">skip_reason</span></code> — so adding a version to that file is enough. Each combination of
+API version and SSI interface runs as its own pytest process (“leg”):</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Phase</p></th>
+<th class="head"><p>Legs</p></th>
+<th class="head"><p>Hardware</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Profile generation</p></td>
+<td><p>one per version</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>Prebuilt profile load + native-library tests</p></td>
+<td><p>one per version per interface</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Separate processes per leg are required, not merely tidier:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">adrv9002</span></code> binding resolves exactly one native library per process, and
+each API version needs a different one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BootFPGASoC</span></code> is wrapped in <code class="docutils literal notranslate"><span class="pre">never_retry</span></code>, which latches the strategy as broken
+after its first failed transition — one bad boot in a shared process would
+poison every later leg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--interface</span> <span class="pre">both</span></code> produces <strong>no CMOS coverage</strong>: collection uses LVDS profile
+ids and the LVDS/CMOS id sets are disjoint, so every CMOS-phase test skips.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build a library with both ENABLE_IIO and ENABLE_EXT_PROFILE on. This single</span>
+<span class="c1"># configuration serves both test groups: the profile-generation tests need</span>
+<span class="c1"># EXT_PROFILE, and the native-library tests call adrv9002_generate_load_profile_iio,</span>
+<span class="c1"># which only exists when ENABLE_IIO=ON.</span>
+bash<span class="w"> </span>scripts/build_linux_libs.sh<span class="w"> </span>--with-iio<span class="w"> </span>v68.10.1<span class="w"> </span>v68.14.10<span class="w"> </span>v68.16.2
+</pre></div>
+</div>
+<p>The default <code class="docutils literal notranslate"><span class="pre">build_linux_libs.sh</span></code> build (<code class="docutils literal notranslate"><span class="pre">ENABLE_IIO=OFF</span></code>, into <code class="docutils literal notranslate"><span class="pre">build-linux</span></code>) is
+for profile generation only — staging it makes the native-library tests fail on a
+missing symbol. <code class="docutils literal notranslate"><span class="pre">scripts/stage_native_lib.sh</span></code> prefers the <code class="docutils literal notranslate"><span class="pre">build-hwtest</span></code> build and
+warns when it has to fall back.</p>
+<p>Also needed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gcc</span></code> (or <code class="docutils literal notranslate"><span class="pre">cc</span></code>) and <code class="docutils literal notranslate"><span class="pre">binutils</span></code>. <code class="docutils literal notranslate"><span class="pre">ctypes.util.find_library()</span></code> shells out to the
+compiler and linker, and that is the only path by which <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> is
+honoured on Linux — without them the binding cannot find its library at all.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pmount</span></code> and <code class="docutils literal notranslate"><span class="pre">pumount</span></code> <strong>on the exporter host</strong>, not locally. <code class="docutils literal notranslate"><span class="pre">MassStorageDriver</span></code>
+runs them over SSH to mount the SD card while it is muxed to the host.</p></li>
+<li><p>libiio development files for the <code class="docutils literal notranslate"><span class="pre">--with-iio</span></code> build (<code class="docutils literal notranslate"><span class="pre">pkg-config</span> <span class="pre">libiio</span></code>).</p></li>
+</ul>
+<p>The preflight phase checks each of these and names what is missing.</p>
+</section>
+<section id="library-selection">
+<h3>Library selection<a class="headerlink" href="#library-selection" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tests/version_map.yaml</span></code> carries a <code class="docutils literal notranslate"><span class="pre">library_source</span></code> key per version. Most versions
+name themselves; v68.13.7 has no source directory of its own and points at
+<code class="docutils literal notranslate"><span class="pre">v68.16.2</span></code> (see <a class="reference internal" href="versioning.html"><span class="std std-doc">Multi-Version Support</span></a>). <code class="docutils literal notranslate"><span class="pre">stage_native_lib.sh</span></code>
+resolves it, falls back to <code class="docutils literal notranslate"><span class="pre">v68.16.2</span></code> when the named directory is not checked out,
+and prints the build directory, library md5 and whether the IIO entry point is
+present — so a report can always be traced to a specific binary.</p>
+<p>Libraries are staged into <code class="docutils literal notranslate"><span class="pre">.stage/&lt;version&gt;/libs</span></code> rather than into the bindings
+package, because several versions share one bindings directory and in-tree staging
+would let legs silently overwrite each other’s libraries.</p>
+</section>
+<section id="reports">
+<h3>Reports<a class="headerlink" href="#reports" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reports/junit-profgen-&lt;version&gt;.xml</span></code></p></td>
+<td><p>profile generation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reports/junit-hw-&lt;version&gt;-&lt;interface&gt;.xml</span></code></p></td>
+<td><p>hardware leg, JUnit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reports/hw-&lt;version&gt;-&lt;interface&gt;.html</span></code></p></td>
+<td><p>hardware leg, self-contained HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reports/junit-smoke-&lt;version&gt;.xml</span></code></p></td>
+<td><p>the single-profile smoke leg</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The script prints a matrix at the end and exits non-zero if any leg failed. A
+smoke leg runs first and aborts the matrix if the boot path is broken — pass
+<code class="docutils literal notranslate"><span class="pre">--no-smoke</span></code> to force the full run anyway.</p>
+</section>
+<section id="kuiper-image-cache">
+<h3>Kuiper image cache<a class="headerlink" href="#kuiper-image-cache" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">BootFPGASoC</span></code> downloads and unpacks the Kuiper image in <code class="docutils literal notranslate"><span class="pre">__attrs_post_init__</span></code>,
+i.e. while the labgrid <code class="docutils literal notranslate"><span class="pre">Environment</span></code> is constructed and before any fixture runs,
+using the <code class="docutils literal notranslate"><span class="pre">cache_path</span></code> the exporter published (<code class="docutils literal notranslate"><span class="pre">/tmp/kuiper_cache</span></code>). It therefore
+cannot be redirected from <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>. The orchestrator symlinks that path to
+<code class="docutils literal notranslate"><span class="pre">~/.cache/navassa-kuiper</span></code> (override with <code class="docutils literal notranslate"><span class="pre">NAVASSA_KUIPER_CACHE</span></code>) so the ~20 GB of
+image survives a reboot, and warms the cache <em>before</em> acquiring the board rather
+than letting the first leg pay for it while holding hardware.</p>
+</section>
+<section id="board-sharing">
+<h3>Board sharing<a class="headerlink" href="#board-sharing" title="Link to this heading"></a></h3>
+<p>Each leg acquires and releases the place itself, so the board is briefly free
+between legs and another user could take it mid-run. For a contended board, wrap
+the run in a labgrid reservation (<code class="docutils literal notranslate"><span class="pre">labgrid-client</span> <span class="pre">reserve</span> <span class="pre">name=&lt;place&gt;</span></code>); note
+that an allocated-but-unacquired reservation expires after 60 s, so it needs a
+<code class="docutils literal notranslate"><span class="pre">labgrid-client</span> <span class="pre">wait</span></code> poller to survive long gaps.</p>
+</section>
+</section>
+<section id="test-infrastructure">
+<h2>Test Infrastructure<a class="headerlink" href="#test-infrastructure" title="Link to this heading"></a></h2>
+<section id="fixtures">
+<h3>Fixtures<a class="headerlink" href="#fixtures" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fixture</p></th>
+<th class="head"><p>Scope</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version_map</span></code></p></td>
+<td><p>session</p></td>
+<td><p>YAML mapping of API versions to Kuiper branches</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">booted_target</span></code></p></td>
+<td><p>session</p></td>
+<td><p>labgrid target booted with correct image</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">board_uri</span></code></p></td>
+<td><p>session</p></td>
+<td><p>IIO URI (from <code class="docutils literal notranslate"><span class="pre">--iiod-uri</span></code> or labgrid discovery)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iio_context</span></code></p></td>
+<td><p>function</p></td>
+<td><p>Connected <code class="docutils literal notranslate"><span class="pre">iio.Context</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">adrv9002_device</span></code></p></td>
+<td><p>function</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">adrv9002-phy</span></code> IIO device</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">interface_type</span></code></p></td>
+<td><p>session</p></td>
+<td><p>Selected interface filter (lvds/cmos)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cli-options">
+<h3>CLI Options<a class="headerlink" href="#cli-options" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--api-version</span></code></p></td>
+<td><p>Run tests for a specific API version</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--iiod-uri</span></code></p></td>
+<td><p>Direct IIO connection (bypasses labgrid)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--skip-boot</span></code></p></td>
+<td><p>Assume board is already running correct image</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--interface</span></code></p></td>
+<td><p>Filter profiles by LVDS or CMOS (default: lvds)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--device-clock</span></code></p></td>
+<td><p>Filter profiles by device clock in kHz</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="blueprint-parser">
+<h3>Blueprint Parser<a class="headerlink" href="#blueprint-parser" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tests/helpers/blueprint_parser.py</span></code> provides <code class="docutils literal notranslate"><span class="pre">blueprint_to_config(bp,</span> <span class="pre">adrv9002_module)</span></code> which converts a blueprint JSON dict into a populated <code class="docutils literal notranslate"><span class="pre">adrv9002_config</span></code> struct. Used by <code class="docutils literal notranslate"><span class="pre">test_profile_generation.py</span></code> to drive the profile generator with parameters matching the reference blueprint.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="building.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Building</a>
+    <a href="ci_pipeline.html" title="Next document (Alt+Shift+RightArrow)" class="next">CI Pipeline</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

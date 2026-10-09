@@ -1,0 +1,113 @@
+# Multi-Version Support
+
+## API Version Origins
+
+API version numbers (e.g., 68.10.1, 68.14.10, 68.16.2) originate from the `adi_adrv9001_version.h` header in release branches of the [ADI Linux kernel](https://github.com/analogdevicesinc/linux) driver. Each version corresponds to a specific set of device driver capabilities and firmware compatibility.
+
+## Supported API Versions
+
+| API Version | Status | Profiles Package (NuGet) | Library Source Dir |
+|---|---|---|---|
+| **v68.10.1** | Supported | Adi.Adrv9001.Profiles 67.3.0.10 | `v68.10.1/` |
+| **v68.13.7** | Supported | Adi.Adrv9001.Profiles 67.3.0.16 | `v68.16.2/` |
+| **v68.14.10** | Supported | Adi.Adrv9001.Profiles 67.3.0.21 | `v68.16.2/` |
+| **v68.16.2** | Supported | Adi.Adrv9001.Profiles 67.3.0.21 | `v68.16.2/` |
+| **v68.20.12** | Supported | Adi.Adrv9001.Profiles 67.3.0.26 | `v68.20.12/` |
+| ~~v68.8.1~~ | Deprecated | — | `v68.8.1/` |
+
+All supported versions use **Format B** profiles (67.3.0.x JSON) which are forward/backward-compatible across kernels >= 68.10.1. Versions v68.13.7 and v68.14.10 are built from the `v68.16.2/` source directory since they share the same profile generation library. v68.20.12 has its own source directory (Pattern A) because it bumps the Profile Generator library itself (0.53.11 → 0.53.13).
+
+## Version-to-Kuiper Mapping
+
+Each library API version maps to a specific ADI Kuiper Linux release branch and kernel commit:
+
+| API Version | Kuiper Branch | Linux Commit | Notes |
+|---|---|---|---|
+| ~~v68.8.1~~ | `2021_R2` | — | Deprecated; requires Linux 4.19 + older FPGA |
+| v68.10.1 | `2023_R2_P1` | `a2116338368c` | Cross-compiled kernel on 2023_R2_P1 base |
+| v68.13.7 | `2023_R2_P1` | `560c7cd2ef6e` | Cross-compiled kernel on 2023_R2_P1 base |
+| v68.14.10 | `2023_R2_P1` | — | Uses 2023_R2_P1 stock kernel (6.1.70) |
+| v68.16.2 | `2023_R2_P1` | — | Uses 2023_R2_P1 stock kernel (6.1.70) |
+| v68.20.12 | `2023_R2_P1` | — | No kernel reports this API version yet; uses 2023_R2_P1 stock kernel (6.1.70) |
+
+This mapping is maintained in `tests/version_map.yaml` and used by the hardware test infrastructure to boot boards with the correct firmware for each API version under test.
+
+## v68.8.1 Deprecation
+
+API 68.8.1 requires the 2021_R1 Kuiper image (Linux 4.19 + older FPGA). It is not testable on current hardware:
+- Linux 4.19 kernel lacks the MMC driver for ZCU102 rev10 (rootfs won't mount)
+- Linux 6.1+ kernel's ADRV9002 driver rejects the 2021_R1 FPGA bitstream
+- Only testable on the original 2021_R1 Kuiper release with matching hardware
+
+## Adding a New Version
+
+There are two patterns for adding a new API version:
+
+### Pattern A: New source directory (distinct library codebase)
+
+Use when the new version requires a different `navassa-profile-gen` commit.
+
+1. **Create the version directory:**
+
+   ```bash
+   mkdir v{VERSION}
+   ```
+
+2. **Add the submodule:**
+
+   ```bash
+   git submodule add <repo-url> v{VERSION}/navassa-profile-gen
+   cd v{VERSION}/navassa-profile-gen
+   git checkout <target-commit>
+   ```
+
+3. **Create the patch:**
+
+   Start from the v68.10.1 patch as a base. Apply it (possibly with `--reject`), resolve conflicts, then regenerate:
+
+   ```bash
+   git diff <base-commit> > ../profile_gen.patch
+   ```
+
+4. **Add vendored deps:**
+
+   Copy the matching `AnalogDevices.CommonApi` headers into `v{VERSION}/deps/`.
+
+5. **Add reference profiles** (in `v{VERSION}/ref/`):
+
+   - `lte_10_lvds_nco_api_{VERSION_UNDERSCORE}.json`
+   - `ref_profile.json`
+
+6. **Update `apply_updates.sh`** with the correct submodule commit pins.
+
+7. **Update `.gitmodules`** with the new submodule entry.
+
+8. **Update CI** — add entries in `JenkinsfileScripts` for the new version in all build loops (Linux, ARM, Windows).
+
+9. **Update `tests/version_map.yaml`** with the Kuiper branch mapping for the new version.
+
+### Pattern B: Alias to an existing source directory (forward-compatible profiles)
+
+Use when the new API version's profiles are compatible with an existing library build (e.g., v68.13.7 and v68.14.10 both use the `v68.16.2/` source). In this case:
+
+1. Add a `tests/version_map.yaml` entry with the correct Kuiper branch and linux commit.
+2. Add the NuGet profile package mapping (if different from the source version).
+3. No new source directory, submodule, or CI build entries are needed — the existing source directory produces compatible binaries.
+
+## Version Directory Contents
+
+Full source directories (`v68.8.1/`, `v68.10.1/`, `v68.16.2/`, `v68.20.12/`) contain:
+
+| File | Purpose |
+|------|---------|
+| `navassa-profile-gen` | Git submodule pinned at matching commit |
+| `profile_gen.patch` | Patch applied to navassa-profile-gen (adds libadrv9002-iio integration, Windows support, export symbols) |
+| `stream_gen.patch` | (v68.16.2 only) Unused/orphaned patch for stream-gen-src sub-dependency; not applied by any apply_updates.sh and not carried into v68.20.12 |
+| `deps/AnalogDevices.CommonApi/` | Vendored Common API headers for the release |
+| `ref/` | Reference profiles for build and test (profile JSON, stream binary) |
+| `apply_updates.sh` | Script that applies patches, copies deps, clones pinned sub-repos |
+| `setup_submodule.sh` | (GitHub versions only) Initial submodule clone helper |
+| `LICENSE.pdf` / `LICENSE.rtf` | License files copied into build |
+| `README.md` | Component versions for the release |
+
+Alias directories (e.g., `v68.14.10/`) contain only the submodule checkout — they share the library source and patches of their parent version (`v68.16.2/`) and exist primarily for testing with version-specific NuGet profile packages.

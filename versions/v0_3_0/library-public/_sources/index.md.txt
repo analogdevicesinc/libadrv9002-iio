@@ -1,0 +1,81 @@
+# ADRV9002 Transceiver Profile Generator
+
+**libadrv9002-iio** is a software library for generating configuration profiles for the ADRV9002/3/4 family of RF transceivers. It provides programmatic C and Python interfaces equivalent to the Transceiver Evaluation Software (TES), compiled for multiple CPU architectures and operating systems.
+
+The library takes a set of radio and clock parameters as input and produces two outputs:
+- A **profile JSON** — the full device initialization structure
+- A **stream image** — binary firmware loaded onto the transceiver's stream processor
+
+These outputs can then be written to hardware via the IIO kernel driver, or saved to files for later use.
+
+```{note}
+This documentation involves three distinct, independently-versioned things — don't
+confuse them:
+- **libadrv9002-iio release version** (e.g. **{{release}}**) — this library's own version,
+  used to organize this documentation site.
+- **ADRV9002 Device Driver API version** (e.g. **{{api_version}}**) — the transceiver API
+  version a given library release supports.
+- **TES version** — Transceiver Evaluation Software is a separate ADI product with its own,
+  unrelated version numbers.
+```
+
+## What's New in v0.3.0
+
+- Support for API version **{{api_version}}**
+- Rx Port Impedance Control stream settings
+- Built-in stream template files (no external resource directory needed)
+- Debian packages for Ubuntu 22.04/24.04 (x86_64, arm64, armv7)
+- Windows installer with CLI tool
+- Python wheels for Linux and Windows
+- All packages available via the [Downloads](downloads) page
+
+## Supported Platforms
+
+| Platform | Architecture | Package Format |
+|----------|-------------|----------------|
+| Ubuntu 22.04/24.04 | x86_64, arm64, armv7 | `.deb`, `.whl` |
+| Windows 10/11 | x86_64 | `.exe` installer, `.whl` |
+| Fedora 34+ | x86_64 | `.rpm` |
+
+## Limitations
+
+Specific versions of the transceiver API are supported by this library. This is currently **{{api_version}}** for this version. If you need a previous version, see [previous releases](https://github.com/analogdevicesinc/libadrv9002-iio/releases).
+
+Features not yet available:
+- DPD
+- Tracking calibrations
+- Power monitoring modes
+- GPIO controls
+- AUX ADC/DAC controls
+- FPGA-specific features (Fast Frequency Hopping, TDD FPGA IP)
+
+If you require these features, please use TES.
+
+## Support
+
+For questions or issues, use the [ADI EngineerZone Software Interface Tools subforum](https://ez.analog.com/sw-interface-tools/).
+
+## License
+
+This library is provided under a proprietary Analog Devices, Inc. license. See the LICENSE files included with each package for details.
+
+```{toctree}
+:caption: User Guide
+:maxdepth: 2
+
+downloads
+installation
+examples
+python_ref
+c_ref
+cli
+```
+
+```{toctree}
+:caption: Development
+:maxdepth: 2
+:hidden:
+
+building
+changelog
+```

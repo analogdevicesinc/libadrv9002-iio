@@ -1,0 +1,116 @@
+# CI Pipeline
+
+## Build Pipeline (`JenkinsfileScripts`)
+
+The main CI pipeline builds all API versions across a matrix of platforms:
+
+### Execution Order
+
+1. **Windows builds** — run first (sequential via `parallel deployments_win`)
+2. **Linux + ARM builds** — run in parallel
+3. **Table generation** — `packaging/gen_table.py` downloads artifacts per API version from Artifactory
+4. **Documentation** — builds Sphinx docs (unstashes `table.md` from step 3)
+
+### Build Matrix
+
+| Platform | Variants |
+|----------|----------|
+| **Linux x86_64** | Ubuntu 20.04, Ubuntu 22.04, Fedora 28, Fedora 34 |
+| **ARM** | manylinux2014_aarch64, arm64v8/debian bullseye, arm32v7/debian bullseye |
+| **Windows** | Windows 10 with VS2019 |
+
+Each variant builds **with and without IIO** support, and all three API versions (v68.8.1, v68.10.1, v68.16.2) are built in every configuration.
+
+### Artifacts
+
+Packages are uploaded to Artifactory under `NavassaProfileGen/{branch}/{build}/{api_version}/`:
+- DEB packages (Ubuntu)
+- RPM packages (Fedora)
+- ZIP archives (all platforms)
+- Windows installers (.exe via Inno Setup)
+- Python wheels
+
+## Hardware Test Pipeline (`JenkinsfileHW`)
+
+The hardware test pipeline runs on physical ADRV9002 boards:
+
+### Boards
+
+| Board | Interface Mode |
+|-------|---------------|
+| `zynq-zed-adv7511-adrv9002-vcmos` | CMOS |
+| `zynqmp-zcu102-rev10-adrv9002-vcmos` | CMOS |
+| `zynqmp-zcu102-rev10-adrv9002-vlvds` | LVDS |
+
+### Infrastructure
+
+- **Gauntlet** (`sdgtt-lib@adgt-test-harness`) — test orchestration framework
+- **Nebula** — board boot and provisioning
+- **Netbox** — network device database for board IP discovery (at `primary.englab:8000`)
+
+### Flow
+
+1. Boot boards via Nebula (firmware version `v0.34`, boot files from Artifactory)
+2. Discover board IP via Nebula config
+3. Build library inside Docker container with `-DHARDWARE_TEST=ON -DENABLE_IIO=ON`
+4. Install library (`make install && ldconfig`)
+5. Run `ctest -V` with `IIOD_URI=ip:<board_ip>` set
+
+### Pytest Hardware Tests
+
+The newer pytest-based tests in `tests/` can also be run in CI:
+
+```groovy
+stage('Pytest Hardware') {
+    sh '''
+    pip install -r tests/requirements.txt
+    pytest tests/ \
+        --lg-env tests/labgrid/env_zcu102_adrv9002.yaml \
+        --lg-coordinator=${LG_CROSSBAR_URL} \
+        --junitxml=results.xml -v
+    '''
+}
+```
+
+## Packaging (`packaging/gen_table.py`)
+
+After all builds complete, `gen_table.py` runs to:
+
+1. Download all build artifacts from Artifactory for the current branch/build
+2. Generate a Markdown table of available packages using Jinja2 templates
+3. Stash the table for inclusion in documentation builds
+
+Environment variables: `LIBREV` (library revision tag), `API` (API version), `GIT_COMMIT`.
+
+## GitHub Actions Development Release
+
+`.github/workflows/build-and-test.yml` runs a separate, newer pipeline that builds on
+every push and attaches a rolling `development` GitHub Release. Every build job (`build`,
+`build-windows`, `build-arm`) runs a `matrix.iio: ["OFF", "ON"]` dimension, so each
+platform/API version combination produces **two** raw library variants. These are zipped
+per-variant as `<variant>_libs.zip` and combined into a single `all_packages_*.zip`:
+
+| Variant folder | Platform | libiio | Also includes |
+|---|---|---|---|
+| `windows_x86_64` | Windows x86_64 | No | `libadrv9002-iio-api<ver>-setup.exe` |
+| `windows_x86_64_iio` | Windows x86_64 | Yes | `libadrv9002-iio-api<ver>-iio-setup.exe` |
+| `linux_x86_64` | Linux x86_64 | No | `.deb` |
+| `linux_x86_64_iio` | Linux x86_64 | Yes | — |
+| `linux_arm64` | Linux ARM64 | No | `.deb` |
+| `linux_arm64_iio` | Linux ARM64 | Yes | — |
+| `linux_armv7` | Linux ARMv7 | No | `.deb` |
+| `linux_armv7_iio` | Linux ARMv7 | Yes | — |
+| `baremetal_arm` | Cortex-M4F (bare-metal) | N/A | static lib only — no OS/userspace stack, so no IIO variant |
+| `python_wheels` | — | — | Python wheels (always built non-IIO) |
+
+`libiio` variants link against
+[libiio v0.25](https://github.com/analogdevicesinc/libiio/releases/tag/v0.25) and enable
+`adrv9002_generate_load_profile_iio()` to push a generated profile straight to hardware
+over network/USB; non-IIO variants only produce profile JSON/stream binaries on disk and
+carry no libiio dependency. DEB packages and the plain Windows installer are still built
+from the non-IIO leg only — the IIO-enabled Windows installer (`*-iio-setup.exe`) is built
+separately and additionally bundles `libiio.dll`, `libxml2.dll`, `libusb-1.0.dll`, and
+`libserialport-0.dll` so it works without a separate libiio install.
+
+This release is for CI/development consumption. The officially released end-user
+packages are documented separately in the versioned library docs' Downloads page.

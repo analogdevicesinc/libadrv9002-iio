@@ -1,0 +1,85 @@
+# Installation
+
+**libadrv9002-iio** is distributed as pre-built binaries for all major platforms. Choose the installation method that matches your environment. No compilation is required — all packages include the shared libraries, header files, and command-line tool ready to use.
+
+## Debian / Ubuntu
+
+Debian packages provide system-wide installation of the shared libraries, C header, and CLI tool. This is the recommended approach for embedded Linux targets and CI environments. Packages are available for x86_64, ARM64, and ARMv7.
+
+```bash
+# x86_64
+sudo dpkg -i libadrv9002-iio_0.3.0_amd64.deb
+
+# ARM64 (e.g., ZCU102, Raspberry Pi 4)
+sudo dpkg -i libadrv9002-iio_0.3.0_arm64.deb
+
+# ARMv7 (e.g., Zynq-7000)
+sudo dpkg -i libadrv9002-iio_0.3.0_armhf.deb
+```
+
+The package installs:
+- Shared libraries (`.so`) to `/usr/lib/`
+- Header file `adrv9002_iio.h` to `/usr/include/`
+- CLI tool `adrv9002-iio-cli` to `/usr/bin/`
+
+## Windows
+
+The Windows installer provides a one-click setup for development on Windows. It includes DLLs, import libraries (`.lib`), the C header, and the CLI tool.
+
+Download and run `libadrv9002-iio-setup.exe` to install. The installer places:
+- DLLs and import libraries in the system directory
+- Header file in the Visual Studio include path
+- CLI tool on the system PATH
+- MSVC runtime dependencies (msvcp140.dll, vcruntime140.dll)
+
+## Python
+
+The Python package bundles the native libraries and provides a clean Python API for profile generation.
+
+```bash
+pip install adrv9002
+```
+
+Pre-built wheels are available for:
+- Linux x86_64 (Python 3.10–3.12)
+- Linux aarch64 (Python 3.10–3.12)
+- Windows x86_64 (Python 3.10–3.12)
+
+After installation, verify with:
+```python
+import adrv9002
+print("libadrv9002-iio ready")
+```
+
+## Library ZIP Archives
+
+Every platform also has a `.zip` alternative to the installer/`.deb`, such as
+`libadrv9002-iio-api<version>-windows.zip` for Windows (see the [Downloads](downloads)
+page for the exact name per platform). It contains the same shared library, header, and
+CLI tool as the installer, unpacked — use it to embed the library into another build
+system or install to a non-standard location without a system-wide install.
+
+## IIO Support
+
+**libadrv9002-iio** is built twice for every platform: once **without** libiio (the
+default — only produces profile JSON/stream binaries on disk) and once **with** libiio
+linked in (adds `adrv9002_generate_load_profile_iio()` to push a profile straight to
+hardware over network/USB). The two variants are distinguished by an `iio` suffix on the
+package name, e.g. `<platform>_libs.zip` (non-libiio) vs. `<platform>_iio_libs.zip`
+(libiio-enabled), and `...-setup.exe` vs. `...-iio-setup.exe` for the Windows installer.
+The IIO-enabled Windows installer bundles `libiio.dll` and its runtime dependencies, so no
+separate libiio install is required on Windows; on Linux, install libiio v0.25 yourself
+before using an IIO-enabled build.
+
+To use IIO-enabled packages:
+
+1. On Linux, install [libiio v0.25](https://github.com/analogdevicesinc/libiio/releases/tag/v0.25) on your system (Windows installers already bundle it)
+2. Download the `iio` variant of the package for your platform
+
+With IIO support, you can load profiles directly:
+```python
+import adrv9002
+cfg = adrv9002.adrv9002_config()
+# ... configure ...
+adrv9002.generate_load_profile_iio(cfg, "ip:192.168.2.1")
+```

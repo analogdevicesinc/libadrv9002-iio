@@ -1,0 +1,37 @@
+# navassa-pg-library
+
+Developer and user documentation for the ADRV9002 profile generation library packaging repository.
+
+This repository wraps the `navassa-profile-gen` library source (via git submodules) with version-specific patches, dependencies, and CI/CD infrastructure to produce multi-platform packages (DEB, RPM, ZIP, Windows installer, Python wheels) for **libadrv9002-iio**.
+
+```{toctree}
+:maxdepth: 2
+:caption: User Guide
+
+user_guide
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Developer Guide
+
+architecture
+developer_guide
+versioning
+building
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Testing & CI
+
+testing
+ci_pipeline
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Reference
+
+known_gaps
+```

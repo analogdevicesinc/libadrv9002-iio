@@ -1,0 +1,161 @@
+# User Guide
+
+## What is libadrv9002-iio?
+
+**libadrv9002-iio** is a C library that generates radio profiles and stream images for the Analog Devices ADRV9002 transceiver. It provides:
+
+- A C API for programmatic profile generation
+- A CLI tool (`adrv9002-iio-cli`) for scripted profile creation
+- Python bindings (`adrv9002` package) for rapid prototyping
+- Direct IIO integration for loading profiles to hardware
+
+## Installation
+
+### Pre-built Packages
+
+Packages are available from ADI Artifactory for multiple platforms:
+
+::::{tab-set}
+
+:::{tab-item} Ubuntu/Debian
+```bash
+sudo dpkg -i libadrv9002-iio-ubuntu_22_04_x86_64.deb
+```
+:::
+
+:::{tab-item} Fedora/RHEL
+```bash
+sudo rpm -i libadrv9002-iio-fedora_34_x86_64.rpm
+```
+:::
+
+:::{tab-item} Python Wheel
+```bash
+pip install adrv9002-0.2.0-py3-none-linux_x86_64.whl
+```
+:::
+
+:::{tab-item} Windows
+Run the Inno Setup installer, or extract the ZIP to a location on your PATH.
+:::
+
+::::
+
+### From Source
+
+See {doc}`building` for full build instructions.
+
+## CLI Tool
+
+The `adrv9002-iio-cli` generates profiles and stream images from a JSON configuration:
+
+```bash
+# Generate profile JSON
+adrv9002-iio-cli --config my_config.json --profile output.profile
+
+# Generate stream binary
+adrv9002-iio-cli --config my_config.json --stream output.bin
+
+# Load directly to IIO device
+adrv9002-iio-cli --config my_config.json --uri ip:192.168.2.1
+```
+
+## Python Bindings
+
+```python
+import adrv9002
+
+# Create configuration
+cfg = adrv9002.adrv9002_config()
+
+# Clock settings
+cfg.clk_cfg.device_clock_frequency_khz = 38400
+cfg.clk_cfg.clock_pll_high_performance_enable = True
+cfg.clk_cfg.clock_pll_power_mode = 2
+cfg.clk_cfg.processor_clock_divider = 1
+
+# Radio settings
+cfg.radio_cfg.adc_rate_mode = 3  # HIGH
+cfg.radio_cfg.fdd = False         # TDD
+cfg.radio_cfg.lvds = True
+cfg.radio_cfg.ssi_lanes = 2
+cfg.radio_cfg.ddr = True
+cfg.radio_cfg.short_strobe = True
+
+# RX channel
+cfg.radio_cfg.rx_config[0].enabled = True
+cfg.radio_cfg.rx_config[0].adc_high_performance_mode = True
+cfg.radio_cfg.rx_config[0].channel_bandwidth_hz = 18000000
+cfg.radio_cfg.rx_config[0].sample_rate_hz = 30720000
+cfg.radio_cfg.rx_config[0].analog_filter_power_mode = 2
+cfg.radio_cfg.rx_config[0].analog_filter_bandwidth_hz = 18000000
+
+# TX channel
+cfg.radio_cfg.tx_config[0].enabled = True
+cfg.radio_cfg.tx_config[0].sample_rate_hz = 30720000
+cfg.radio_cfg.tx_config[0].channel_bandwidth_hz = 18000000
+cfg.radio_cfg.tx_config[0].analog_filter_power_mode = 2
+cfg.radio_cfg.tx_config[0].orx_enabled = True
+cfg.radio_cfg.tx_config[0].elb_type = 2
+
+# Generate
+profile_json, stream_bin = adrv9002.generate_profile(cfg)
+
+# Load to hardware
+import iio
+ctx = iio.Context("ip:192.168.2.1")
+dev = ctx.find_device("adrv9002-phy")
+adrv9002.generate_load_profile_iio(cfg, dev._device)
+```
+
+## Configuration Reference
+
+### clock_config
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `device_clock_frequency_khz` | uint32 | Device reference clock in kHz (typically 38400) |
+| `device_clock_output_enable` | bool | Enable reference clock output |
+| `device_clock_output_divider` | uint8 | Clock output divider |
+| `clock_pll_high_performance_enable` | bool | High performance PLL mode |
+| `clock_pll_power_mode` | uint8 | 0=low, 1=medium, 2=high |
+| `processor_clock_divider` | uint8 | Valid: 1,2,4,8,16,32,64,128,256 |
+
+### radio_config
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `ssi_lanes` | uint8 | 1 (CMOS), 2 (LVDS), 4 (CMOS) |
+| `ddr` | bool | DDR mode at digital interface |
+| `short_strobe` | bool | Short strobe mode |
+| `lvds` | bool | LVDS (true) or CMOS (false) |
+| `adc_rate_mode` | uint8 | 1=LOW, 2=MEDIUM, 3=HIGH |
+| `fdd` | bool | FDD (true) or TDD (false) |
+
+### rx_radio_channel_config
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `enabled` | bool | Enable this RX channel |
+| `adc_high_performance_mode` | bool | HP ADC (true) or LP ADC |
+| `frequency_offset_correction_enable` | bool | ADC frequency offset correction |
+| `analog_filter_power_mode` | uint8 | 0=low, 1=medium, 2=high |
+| `analog_filter_biquad` | bool | Biquad (true) or TIA (false) |
+| `analog_filter_bandwidth_hz` | uint32 | Filter corner frequency in Hz (0 = use default) |
+| `channel_bandwidth_hz` | uint32 | Signal bandwidth at ADC in Hz |
+| `sample_rate_hz` | uint32 | Output sample rate in Hz |
+| `nco_enable` | bool | Enable frequency translation NCO |
+| `nco_frequency_hz` | int32 | NCO shift frequency in Hz |
+| `rf_port` | uint8 | 0=RX_A, 1=RX_B |
+
+### tx_radio_channel_config
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `enabled` | bool | Enable this TX channel |
+| `sample_rate_hz` | uint32 | Input sample rate in Hz |
+| `frequency_offset_correction_enable` | bool | DAC frequency offset correction |
+| `analog_filter_power_mode` | uint8 | 0=low, 1=medium, 2=high |
+| `channel_bandwidth_hz` | uint32 | Signal bandwidth at DAC in Hz |
+| `orx_enabled` | bool | Enable observation path |
+| `elb_type` | uint8 | 0=disabled, 1=before PA, 2=after PA |

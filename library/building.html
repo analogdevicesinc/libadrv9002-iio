@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="This page covers building libadrv9002-iio from source. This is only needed for development or if pre-built packages are not available for your platform." name="description" />
+
+    <title>Building from Source &#8212; libadrv9002-iio v0.3.0 (Internal)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <script src="_static/js/licensing.js?v=5b6de748"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Command Line Tool" href="cli.html" />
+   
+  
+  
+  
+  <meta name="repository" content="libadrv9002-iio">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>libadrv9002-iio</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Building from Source</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#build-steps">Build Steps</a></li>
+<li><a class="reference internal" href="#cmake-options">CMake Options</a></li>
+<li><a class="reference internal" href="#iio-support">IIO Support</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      libadrv9002-iio
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_ref.html">C/C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Development</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building from Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="building-from-source">
+<h1>Building from Source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h1>
+<p>This page covers building libadrv9002-iio from source. This is only needed for development or if pre-built packages are not available for your platform.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<div class="tab-set docutils"><input checked="checked" id="tab-item-85d82d47bb6dd747f8de665a2061b15e72cc8b03-0" name="tab-set-85d82d47bb6dd747f8de665a2061b15e72cc8b03" type="radio"></input><label class="tab-label" for="tab-item-85d82d47bb6dd747f8de665a2061b15e72cc8b03-0">Ubuntu/Debian</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>build-essential<span class="w"> </span>git<span class="w"> </span>xxd<span class="w"> </span>python3-dev
+<span class="c1"># For IIO support:</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libavahi-common-dev<span class="w"> </span>libavahi-client-dev<span class="w"> </span>libaio-dev<span class="w"> </span>libusb-1.0-0-dev<span class="w"> </span>libxml2-dev
+</pre></div>
+</div>
+</div><input id="tab-item-85d82d47bb6dd747f8de665a2061b15e72cc8b03-1" name="tab-set-85d82d47bb6dd747f8de665a2061b15e72cc8b03" type="radio"></input><label class="tab-label" for="tab-item-85d82d47bb6dd747f8de665a2061b15e72cc8b03-1">Windows</label><div class="tab-content docutils"><ul class="simple">
+<li><p>Visual Studio 2019/2022 Build Tools (C++ workload)</p></li>
+<li><p>CMake 3.16+</p></li>
+<li><p>Git for Windows</p></li>
+</ul>
+</div></div></section>
+<section id="build-steps">
+<h2>Build Steps<a class="headerlink" href="#build-steps" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/adi-innersource/cse-navassa-pg-library.git
+<span class="nb">cd</span><span class="w"> </span>cse-navassa-pg-library/v68.16.2
+bash<span class="w"> </span>apply_updates.sh
+<span class="nb">cd</span><span class="w"> </span>navassa-profile-gen
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..<span class="w"> </span>-DENABLE_IIO<span class="o">=</span>OFF<span class="w"> </span>-DENABLE_TOOLS<span class="o">=</span>ON<span class="w"> </span>-DADRV9002_API_VERSION<span class="o">=</span><span class="m">68</span>.16.2
+make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="cmake-options">
+<h2>CMake Options<a class="headerlink" href="#cmake-options" title="Link to this heading"></a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE_IIO</span></code></p></td>
+<td><p>OFF</p></td>
+<td><p>Enable libiio integration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE_TOOLS</span></code></p></td>
+<td><p>OFF</p></td>
+<td><p>Build the CLI tool</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE_TESTS</span></code></p></td>
+<td><p>OFF</p></td>
+<td><p>Build unit tests</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DADRV9002_API_VERSION</span></code></p></td>
+<td><p>—</p></td>
+<td><p>API version string (e.g., 68.16.2)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="iio-support">
+<h2>IIO Support<a class="headerlink" href="#iio-support" title="Link to this heading"></a></h2>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">adrv9002_generate_load_profile_iio()</span></code> function, you need libiio v0.25 installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.25<span class="w"> </span>https://github.com/analogdevicesinc/libiio.git
+<span class="nb">cd</span><span class="w"> </span>libiio<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Then rebuild with <code class="docutils literal notranslate"><span class="pre">-DENABLE_IIO=ON</span></code>.</p>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="cli.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Command Line Tool</a>
+    <a href="changelog.html" title="Next document (Alt+Shift+RightArrow)" class="next">Changelog</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2025, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="libadrv9002-iio is a C library that generates radio profiles and stream images for the Analog Devices ADRV9002 transceiver. It provides:" name="description" />
+
+    <title>User Guide &#8212; navassa-pg-library</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Repository Architecture" href="architecture.html" />
+    <link rel="prev" title="navassa-pg-library" href="index.html" />
+   
+  
+  
+  
+  <meta name="repository" content="navassa-pg-library">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>navassa-pg-library</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">User Guide</a><ul>
+<li><a class="reference internal" href="#what-is-libadrv9002-iio">What is libadrv9002-iio?</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#pre-built-packages">Pre-built Packages</a></li>
+<li><a class="reference internal" href="#from-source">From Source</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cli-tool">CLI Tool</a></li>
+<li><a class="reference internal" href="#python-bindings">Python Bindings</a></li>
+<li><a class="reference internal" href="#configuration-reference">Configuration Reference</a><ul>
+<li><a class="reference internal" href="#clock-config">clock_config</a></li>
+<li><a class="reference internal" href="#radio-config">radio_config</a></li>
+<li><a class="reference internal" href="#rx-radio-channel-config">rx_radio_channel_config</a></li>
+<li><a class="reference internal" href="#tx-radio-channel-config">tx_radio_channel_config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      navassa-pg-library
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Developer Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Repository Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Multi-Version Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Testing &amp; CI</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ci_pipeline.html">CI Pipeline</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Reference</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="known_gaps.html">Known Gaps &amp; Limitations</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
+<section id="what-is-libadrv9002-iio">
+<h2>What is libadrv9002-iio?<a class="headerlink" href="#what-is-libadrv9002-iio" title="Link to this heading"></a></h2>
+<p><strong>libadrv9002-iio</strong> is a C library that generates radio profiles and stream images for the Analog Devices ADRV9002 transceiver. It provides:</p>
+<ul class="simple">
+<li><p>A C API for programmatic profile generation</p></li>
+<li><p>A CLI tool (<code class="docutils literal notranslate"><span class="pre">adrv9002-iio-cli</span></code>) for scripted profile creation</p></li>
+<li><p>Python bindings (<code class="docutils literal notranslate"><span class="pre">adrv9002</span></code> package) for rapid prototyping</p></li>
+<li><p>Direct IIO integration for loading profiles to hardware</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<section id="pre-built-packages">
+<h3>Pre-built Packages<a class="headerlink" href="#pre-built-packages" title="Link to this heading"></a></h3>
+<p>Packages are available from ADI Artifactory for multiple platforms:</p>
+<div class="tab-set docutils"><input checked="checked" id="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-0" name="tab-set-c3c1a8ccc32ad00359285b49404421c212296403" type="radio"></input><label class="tab-label" for="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-0">Ubuntu/Debian</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>libadrv9002-iio-ubuntu_22_04_x86_64.deb
+</pre></div>
+</div>
+</div><input id="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-1" name="tab-set-c3c1a8ccc32ad00359285b49404421c212296403" type="radio"></input><label class="tab-label" for="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-1">Fedora/RHEL</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rpm<span class="w"> </span>-i<span class="w"> </span>libadrv9002-iio-fedora_34_x86_64.rpm
+</pre></div>
+</div>
+</div><input id="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-2" name="tab-set-c3c1a8ccc32ad00359285b49404421c212296403" type="radio"></input><label class="tab-label" for="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-2">Python Wheel</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>adrv9002-0.2.0-py3-none-linux_x86_64.whl
+</pre></div>
+</div>
+</div><input id="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-3" name="tab-set-c3c1a8ccc32ad00359285b49404421c212296403" type="radio"></input><label class="tab-label" for="tab-item-c3c1a8ccc32ad00359285b49404421c212296403-3">Windows</label><div class="tab-content docutils"><p>Run the Inno Setup installer, or extract the ZIP to a location on your PATH.</p>
+</div></div></section>
+<section id="from-source">
+<h3>From Source<a class="headerlink" href="#from-source" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="building.html"><span class="doc">Building</span></a> for full build instructions.</p>
+</section>
+</section>
+<section id="cli-tool">
+<h2>CLI Tool<a class="headerlink" href="#cli-tool" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">adrv9002-iio-cli</span></code> generates profiles and stream images from a JSON configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate profile JSON</span>
+adrv9002-iio-cli<span class="w"> </span>--config<span class="w"> </span>my_config.json<span class="w"> </span>--profile<span class="w"> </span>output.profile
+
+<span class="c1"># Generate stream binary</span>
+adrv9002-iio-cli<span class="w"> </span>--config<span class="w"> </span>my_config.json<span class="w"> </span>--stream<span class="w"> </span>output.bin
+
+<span class="c1"># Load directly to IIO device</span>
+adrv9002-iio-cli<span class="w"> </span>--config<span class="w"> </span>my_config.json<span class="w"> </span>--uri<span class="w"> </span>ip:192.168.2.1
+</pre></div>
+</div>
+</section>
+<section id="python-bindings">
+<h2>Python Bindings<a class="headerlink" href="#python-bindings" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">adrv9002</span>
+
+<span class="c1"># Create configuration</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">adrv9002</span><span class="o">.</span><span class="n">adrv9002_config</span><span class="p">()</span>
+
+<span class="c1"># Clock settings</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">clk_cfg</span><span class="o">.</span><span class="n">device_clock_frequency_khz</span> <span class="o">=</span> <span class="mi">38400</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">clk_cfg</span><span class="o">.</span><span class="n">clock_pll_high_performance_enable</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">clk_cfg</span><span class="o">.</span><span class="n">clock_pll_power_mode</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">clk_cfg</span><span class="o">.</span><span class="n">processor_clock_divider</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Radio settings</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">adc_rate_mode</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># HIGH</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">fdd</span> <span class="o">=</span> <span class="kc">False</span>         <span class="c1"># TDD</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">lvds</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">ssi_lanes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">ddr</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">short_strobe</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># RX channel</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">adc_high_performance_mode</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">channel_bandwidth_hz</span> <span class="o">=</span> <span class="mi">18000000</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sample_rate_hz</span> <span class="o">=</span> <span class="mi">30720000</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">analog_filter_power_mode</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">rx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">analog_filter_bandwidth_hz</span> <span class="o">=</span> <span class="mi">18000000</span>
+
+<span class="c1"># TX channel</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sample_rate_hz</span> <span class="o">=</span> <span class="mi">30720000</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">channel_bandwidth_hz</span> <span class="o">=</span> <span class="mi">18000000</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">analog_filter_power_mode</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">orx_enabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">radio_cfg</span><span class="o">.</span><span class="n">tx_config</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">elb_type</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Generate</span>
+<span class="n">profile_json</span><span class="p">,</span> <span class="n">stream_bin</span> <span class="o">=</span> <span class="n">adrv9002</span><span class="o">.</span><span class="n">generate_profile</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+
+<span class="c1"># Load to hardware</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">iio</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">iio</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span><span class="s2">"ip:192.168.2.1"</span><span class="p">)</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">find_device</span><span class="p">(</span><span class="s2">"adrv9002-phy"</span><span class="p">)</span>
+<span class="n">adrv9002</span><span class="o">.</span><span class="n">generate_load_profile_iio</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">dev</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-reference">
+<h2>Configuration Reference<a class="headerlink" href="#configuration-reference" title="Link to this heading"></a></h2>
+<section id="clock-config">
+<h3>clock_config<a class="headerlink" href="#clock-config" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">device_clock_frequency_khz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Device reference clock in kHz (typically 38400)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">device_clock_output_enable</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable reference clock output</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">device_clock_output_divider</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>Clock output divider</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clock_pll_high_performance_enable</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>High performance PLL mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clock_pll_power_mode</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>0=low, 1=medium, 2=high</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">processor_clock_divider</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>Valid: 1,2,4,8,16,32,64,128,256</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="radio-config">
+<h3>radio_config<a class="headerlink" href="#radio-config" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ssi_lanes</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>1 (CMOS), 2 (LVDS), 4 (CMOS)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ddr</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>DDR mode at digital interface</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short_strobe</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Short strobe mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lvds</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>LVDS (true) or CMOS (false)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">adc_rate_mode</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>1=LOW, 2=MEDIUM, 3=HIGH</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fdd</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>FDD (true) or TDD (false)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="rx-radio-channel-config">
+<h3>rx_radio_channel_config<a class="headerlink" href="#rx-radio-channel-config" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable this RX channel</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">adc_high_performance_mode</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>HP ADC (true) or LP ADC</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">frequency_offset_correction_enable</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>ADC frequency offset correction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">analog_filter_power_mode</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>0=low, 1=medium, 2=high</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">analog_filter_biquad</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Biquad (true) or TIA (false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">analog_filter_bandwidth_hz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Filter corner frequency in Hz (0 = use default)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">channel_bandwidth_hz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Signal bandwidth at ADC in Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Output sample rate in Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nco_enable</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable frequency translation NCO</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nco_frequency_hz</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>NCO shift frequency in Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rf_port</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>0=RX_A, 1=RX_B</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tx-radio-channel-config">
+<h3>tx_radio_channel_config<a class="headerlink" href="#tx-radio-channel-config" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable this TX channel</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Input sample rate in Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">frequency_offset_correction_enable</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>DAC frequency offset correction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">analog_filter_power_mode</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>0=low, 1=medium, 2=high</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">channel_bandwidth_hz</span></code></p></td>
+<td><p>uint32</p></td>
+<td><p>Signal bandwidth at DAC in Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">orx_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable observation path</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">elb_type</span></code></p></td>
+<td><p>uint8</p></td>
+<td><p>0=disabled, 1=before PA, 2=after PA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="index.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">navassa-pg-library</a>
+    <a href="architecture.html" title="Next document (Alt+Shift+RightArrow)" class="next">Repository Architecture</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

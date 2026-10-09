@@ -1,0 +1,161 @@
+# Developer Guide
+
+## Build System Overview
+
+The build system has three layers:
+
+1. **This repository** — packaging, patches, CI scripts
+2. **navassa-profile-gen** — the C++ profile generation library (submodule, read-only)
+3. **libadrv9002-iio** — the C API wrapper we maintain (cloned by `apply_updates.sh`)
+
+```{mermaid}
+graph TD
+    A[navassa-pg-library] --> B[apply_updates.sh]
+    B --> C[navassa-profile-gen submodule]
+    B --> D[profile_gen.patch]
+    B --> E[Clone libadrv9002-iio]
+    B --> F[Clone stream-gen-src]
+    B --> G[Clone profile-types-c]
+    D --> C
+    C --> H[CMake Build]
+    E --> H
+    F --> H
+    G --> H
+    H --> I[libadrv9002-iio.so / .dll]
+    I --> J[Python wheel]
+    I --> K[DEB/RPM packages]
+    I --> L[adrv9002-iio-cli]
+```
+
+## Profile Generation Pipeline
+
+When `adrv9002_generate_profile()` is called, the following happens internally:
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant clocks.cpp
+    participant Blueprint
+    participant ProfileArchitect
+    participant StreamGen
+
+    User->>clocks.cpp: adrv9002_generate_profile(cfg)
+    clocks.cpp->>Blueprint: Load reference (embedded or EXT_PROFILE)
+    clocks.cpp->>Blueprint: Override fields from cfg struct
+    clocks.cpp->>Blueprint: Refresh()
+    clocks.cpp->>ProfileArchitect: Profile_Develop(blueprint)
+    ProfileArchitect-->>clocks.cpp: Profile object
+    clocks.cpp->>clocks.cpp: profile.Export() → JSON
+    clocks.cpp->>StreamGen: profile.StreamImage_Get("MEMORY")
+    StreamGen-->>clocks.cpp: binary stream image
+    clocks.cpp-->>User: (profile_json, stream_binary)
+```
+
+## Config Struct → Blueprint Mapping
+
+The `adrv9002_config` struct is a simplified interface. Internally, `clocks.cpp` maps these fields onto an `Adrv9001Blueprint` object:
+
+| Config Field | Blueprint Method | Notes |
+|---|---|---|
+| `clk_cfg.device_clock_frequency_khz` | `deviceClockInput_kHz()` | |
+| `clk_cfg.clock_pll_high_performance_enable` | `clockPllMode()` | true→HIGH_PERFORMANCE |
+| `clk_cfg.clock_pll_power_mode` | `clockPllPower()` | 0/1/2 |
+| `clk_cfg.processor_clock_divider` | `processorClockDivisor()` | power of 2 |
+| `radio_cfg.fdd` | `duplex()` | FDD/TDD |
+| `radio_cfg.adc_rate_mode` | `adcRate()` | 1/2/3 |
+| `radio_cfg.lvds` | `rxChannels[].ssiType()` | Applied to all channels |
+| `radio_cfg.ssi_lanes` | `rxChannels[].ssiNumLane()` | 1/2/4 |
+| `radio_cfg.ddr` | `rxChannels[].ssiDataRate()` | |
+| `radio_cfg.short_strobe` | `rxChannels[].ssiStrobeType()` | |
+| `rx_config[].channel_bandwidth_hz` | `rxChannels[].rfChannelBandwidth_Hz()` | |
+| `rx_config[].sample_rate_hz` | `rxChannels[].samplingRate_Hz()` | |
+| `rx_config[].analog_filter_bandwidth_hz` | `rxChannels[].analogFilterCorner_kHz()` | Hz→kHz, only when > 0 |
+| `rx_config[].nco_enable` | `rxChannels[].ncoEnable()` | |
+| `rx_config[].nco_frequency_hz` | `rxChannels[].intermediateFrequency_Hz()` | |
+| `tx_config[].channel_bandwidth_hz` | `txChannels[].rfChannelBandwidth_Hz()` | |
+| `tx_config[].orx_enabled` | `txChannels[].orxEnabled()` | |
+| `tx_config[].elb_type` | `txChannels[].elbType()` | |
+
+Fields NOT in the config struct (left at blueprint defaults): channel filter coefficients, gain table type, LO source, FM deviation, SSI data format, peak loopback power.
+
+## Adding a New API Version
+
+1. Create directory `v{VERSION}/` with:
+   - `profile_gen.patch`
+   - `deps/AnalogDevices.CommonApi/` (vendored headers)
+   - `apply_updates.sh` (clone commands with pinned commits)
+   - `LICENSE.pdf`, `LICENSE.rtf`, `README.md`
+
+2. Add `.gitmodules` entry pointing to the navassa-profile-gen commit
+
+3. Add reference profile JSON to `src/libadrv9002-iio/profiles/`
+
+4. Update CI:
+   - Add entries in `JenkinsfileScripts` (Linux, ARM, Windows loops)
+   - Add entry in `packaging/gen_table.py` API mapping
+
+5. Update tests:
+   - Add entry in `tests/version_map.yaml`
+   - Add profile package mapping in `scripts/download_profiles.py`
+
+6. Build and verify:
+   ```bash
+   cd v{VERSION}
+   bash apply_updates.sh
+   cd navassa-profile-gen && mkdir build && cd build
+   cmake -DENABLE_TESTS=ON -DENABLE_IIO=OFF -DGENERATE_REF_PROFILE_HEADER=ON \
+         -DADRV9002_API_VERSION={VERSION} ..
+   make -j4 && ctest -V
+   ```
+
+## EXT_PROFILE Mode (Testing)
+
+When built with `-DENABLE_EXT_PROFILE=ON`, the library reads blueprints from the `EXT_PROFILE` environment variable instead of using the embedded reference:
+
+```bash
+export EXT_PROFILE=/path/to/blueprint.json
+# Library loads this blueprint and applies config struct overrides
+```
+
+This enables regression testing against reference NuGet profiles. When `EXT_PROFILE` is active:
+- LO mapping is preserved from the blueprint (not overridden)
+- `diversity`, `allowPllRetuning`, `pllCalibration` are preserved from the blueprint
+- Config struct fields still override their mapped blueprint fields
+
+## Modifying clocks.cpp
+
+When adding new mappings:
+
+1. Add the field to the appropriate struct in `adrv9002_iio.h`
+2. Add the ctypes field to the Python bindings (`adrv9002/__init__.py`)
+3. Add the mapping in `clocks.cpp` within the `#ifndef BYPASS_PROFILE_UPDATE` block
+4. Add validation (range checks, error codes) following existing patterns
+5. Update `blueprint_parser.py` in tests to populate the new field
+6. Update `test_profile_generation.py` if needed
+7. Run the test suite to verify no regressions
+
+## Repository Maintenance
+
+### Submodule Rules
+
+- **navassa-profile-gen**: Read-only. Changes go in `profile_gen.patch`.
+- **stream-gen-src**: Read-only. Changes go in `stream_gen.patch`.
+- **profile-types-c**: Read-only. Pinned at specific commit.
+- **libadrv9002-iio**: We own this. Commit directly to the upstream repo.
+- **libadrv9002** (filter designer): Read-only. Pinned at specific commit.
+
+### Regenerating Patches
+
+If you need to update a patch:
+
+```bash
+cd v68.16.2/navassa-profile-gen
+# Make changes
+git diff > ../profile_gen.patch
+```
+
+For stream-gen-src:
+```bash
+cd src/stream-gen-src
+git diff > ../../../stream_gen.patch
+```

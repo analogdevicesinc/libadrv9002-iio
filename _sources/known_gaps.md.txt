@@ -1,0 +1,84 @@
+# Known Gaps & Limitations
+
+## Config Struct Limitations
+
+The `adrv9002_config` struct provides a simplified interface to the full `Adrv9001Blueprint`. The following blueprint features are **not controllable** through the config struct:
+
+### TX FM Modes
+
+The config struct hardcodes `channelSignalType = TX_IQ`. FM modes (Direct FM-FSK, IQ FM-FSK) require:
+- `channelSignalType` field in `tx_radio_channel_config`
+- `frequencyDeviation_Hz` mapping
+
+**Affected profiles**: Any blueprint with `txChannel.channelSignalType != 0`
+
+### Narrowband RX Mode
+
+Narrowband (real-output) mode uses pulse shaping filters and narrowband NCO that are not exposed:
+- `channelSignalSetup` (0=wideband IQ, 1=narrowband)
+- `pfirRxNbPulShp` filter coefficients
+- `rxNbDem` demodulator settings
+
+**Affected profiles**: Any blueprint with `rxChannel.channelSignalSetup != 0`
+
+### External LO Configuration
+
+The `handle_lo_mapping()` function assigns LO1/LO2 based on channel enable states and duplex mode. It does not support:
+- External LO sources (`loExternal1`, `loExternal2`)
+- Per-channel LO source selection (`loSource`)
+- Custom LO divisor settings
+
+**Workaround**: When using `EXT_PROFILE`, LO settings are preserved from the blueprint.
+
+### Channel Filter Coefficients
+
+Digital channel filters (FIR coefficients) are computed by `ProfileArchitect` based on sample rates and bandwidths. Custom filter coefficients from blueprints are not passed through the config struct.
+
+### Stream Generation Resources
+
+The stream image assembler (`StreamImage_Get`) needs per-release SPI register map and
+top-level processor configuration resources. For **v68.16.2, v68.13.7, v68.14.10, and
+v68.20.12** this is resolved: `apply_updates.sh` vendors pinned checkouts of
+`github.com/adi-innersource/navassa-stream-gen-asm` (0.7.15 for v68.16.2/v68.14.10,
+0.7.11 for v68.13.7, 0.7.18 for v68.20.12), and `CMakeLists.txt` selects the matching one
+(unconditionally for v68.20.12's standalone tree, per `ADRV9002_API_VERSION` for the
+v68.16.2 tree) at configure time. See "Stream Generation Format" in
+`api_version_compatibility.md` for the full mechanism and verified results.
+
+**v68.10.1 remains unresolved.** It builds via the shared, unpinned
+`build_scripts/apply_updates.sh` (also used by deprecated v68.8.1) with a
+`stream-gen-src` checkout that predates the built-in-resources feature, so it currently
+*skips* stream comparisons rather than generating against the wrong version. Fixing it
+means giving v68.10.1 its own pinned `navassa-stream-gen-asm` checkout (0.7.10) and
+CMake wiring, mirroring the v68.16.2 fix — tracked as a follow-up, not yet done.
+
+### SSI Configuration
+
+Some SSI parameters are global (applied to all channels equally):
+- `ssiType` (LVDS/CMOS) — from first RX channel, applied to all
+- `ssiNumLane` — same for all channels
+- `ssiDataRate` (DDR/SDR) — same for all channels
+- `ssiStrobeType` — same for all channels
+
+Per-channel SSI configuration is not supported.
+
+### Other Unmapped Fields
+
+| Blueprint Field | Why Not Mapped |
+|---|---|
+| `gainTableType` | Fixed by hardware configuration |
+| `ssiDataFormat` | Determined by SSI type |
+| `ssiRefClockPin` | TX-only, hardware-specific |
+| `peakLoopbackPower_dBm` | Advanced calibration parameter |
+| `channelFilterInterpolation` | Computed by ProfileArchitect |
+| `warmBootEnable` | System-level setting |
+| `swapExternalLoMapping` | External LO feature |
+
+## Future Work
+
+- Add TX FM mode support (struct field + mapping)
+- Expose per-channel LO source selection
+- Investigate `analogFilterCorner_kHz` stability (previously disabled, now guarded with > 0 check)
+- Add `channelSignalSetup` for narrowband RX support
+- Vendor a pinned `navassa-stream-gen-asm` checkout for v68.10.1 (0.7.10), mirroring the
+  v68.16.2/v68.13.7/v68.14.10 fix, so its stream comparisons run instead of skipping

@@ -1,0 +1,72 @@
+# Repository Architecture
+
+## Purpose
+
+This repository is a **packaging wrapper** around the `navassa-profile-gen` C++ library. It does not contain the library source directly. Instead, it:
+
+1. Pins a specific commit of `navassa-profile-gen` as a git submodule per API version
+2. Applies version-specific patches to adapt the library for packaging
+3. Vendors dependencies (Common API headers) that are not publicly available
+4. Provides build scripts for multi-platform CI/CD
+5. Produces installable packages (DEB, RPM, ZIP, Windows installer, Python wheels)
+
+## Directory Layout
+
+```
+navassa-pg-library/
+├── build_scripts/          # Shared CI build scripts (copied into version dirs at build time)
+│   ├── apply_updates.sh    # Applies patches, copies deps, clones sub-repos
+│   ├── apply_updates.bat   # Windows equivalent
+│   ├── run_preinstall.sh   # Installs OS packages, optionally builds libiio
+│   ├── run_build.sh        # Orchestrates cmake/make/ctest/cpack
+│   └── run_build.bat       # Windows equivalent
+├── packaging/              # Artifactory download + markdown table generation
+│   ├── gen_table.py
+│   └── requirements.txt
+├── tests/                  # Pytest-based hardware tests (labgrid-plugins)
+│   ├── conftest.py
+│   ├── version_map.yaml
+│   └── ...
+├── docs/                   # This documentation (Sphinx)
+├── v68.8.1/                # API version 68.8.1
+│   ├── navassa-profile-gen # Git submodule (Bitbucket)
+│   ├── profile_gen.patch
+│   ├── deps/               # Vendored CommonApi headers
+│   ├── apply_updates.sh
+│   ├── LICENSE.pdf
+│   └── README.md
+├── v68.10.1/               # API version 68.10.1 (same structure)
+├── v68.16.2/               # API version 68.16.2
+│   ├── navassa-profile-gen # Git submodule (GitHub)
+│   ├── profile_gen.patch
+│   ├── stream_gen.patch    # Additional patch for stream-gen-src
+│   ├── ref/                # Reference profiles for tests
+│   ├── deps/
+│   ├── apply_updates.sh
+│   ├── setup_submodule.sh  # Helper for initial GitHub submodule clone
+│   └── README.md
+├── JenkinsfileScripts      # CI build pipeline (multi-platform matrix)
+├── JenkinsfileHW           # CI hardware test pipeline
+└── CLAUDE.md               # AI assistant instructions
+```
+
+## Key Constraints
+
+### Submodules Are Read-Only
+
+The `navassa-profile-gen` submodule and its nested submodules (`libadrv9002`, `stream-gen-src`, `profile-types-c`) **cannot be modified directly**. All changes must be expressed as patch files:
+
+- `profile_gen.patch` — applied to navassa-profile-gen root
+- `stream_gen.patch` — (v68.16.2 only) applied to stream-gen-src
+
+### Build Scripts Are Shared
+
+Scripts in `build_scripts/` are **version-agnostic**. CI copies them into the active version directory before execution (`cp build_scripts/* $API/`). Do not add version-specific logic to these scripts.
+
+### Source Repository Differences
+
+| Version | Source Host | Notes |
+|---------|------------|-------|
+| v68.8.1 | Bitbucket (`bitbucket.analog.com`) | Legacy `.gitmodules` name is `v68.5.0` |
+| v68.10.1 | Bitbucket | |
+| v68.16.2 | GitHub (`github.com/adi-innersource`) | Requires `setup_submodule.sh` for initial clone |

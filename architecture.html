@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="This repository is a packaging wrapper around the navassa-profile-gen C++ library. It does not contain the library source directly. Instead, it:" name="description" />
+
+    <title>Repository Architecture &#8212; navassa-pg-library</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Guide" href="developer_guide.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" />
+   
+  
+  
+  
+  <meta name="repository" content="navassa-pg-library">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>navassa-pg-library</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Repository Architecture</a><ul>
+<li><a class="reference internal" href="#purpose">Purpose</a></li>
+<li><a class="reference internal" href="#directory-layout">Directory Layout</a></li>
+<li><a class="reference internal" href="#key-constraints">Key Constraints</a><ul>
+<li><a class="reference internal" href="#submodules-are-read-only">Submodules Are Read-Only</a></li>
+<li><a class="reference internal" href="#build-scripts-are-shared">Build Scripts Are Shared</a></li>
+<li><a class="reference internal" href="#source-repository-differences">Source Repository Differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      navassa-pg-library
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Developer Guide</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Repository Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Multi-Version Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Testing &amp; CI</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ci_pipeline.html">CI Pipeline</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Reference</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="known_gaps.html">Known Gaps &amp; Limitations</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="repository-architecture">
+<h1>Repository Architecture<a class="headerlink" href="#repository-architecture" title="Link to this heading"></a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This repository is a <strong>packaging wrapper</strong> around the <code class="docutils literal notranslate"><span class="pre">navassa-profile-gen</span></code> C++ library. It does not contain the library source directly. Instead, it:</p>
+<ol class="arabic simple">
+<li><p>Pins a specific commit of <code class="docutils literal notranslate"><span class="pre">navassa-profile-gen</span></code> as a git submodule per API version</p></li>
+<li><p>Applies version-specific patches to adapt the library for packaging</p></li>
+<li><p>Vendors dependencies (Common API headers) that are not publicly available</p></li>
+<li><p>Provides build scripts for multi-platform CI/CD</p></li>
+<li><p>Produces installable packages (DEB, RPM, ZIP, Windows installer, Python wheels)</p></li>
+</ol>
+</section>
+<section id="directory-layout">
+<h2>Directory Layout<a class="headerlink" href="#directory-layout" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>navassa-pg-library/
+├── build_scripts/          # Shared CI build scripts (copied into version dirs at build time)
+│   ├── apply_updates.sh    # Applies patches, copies deps, clones sub-repos
+│   ├── apply_updates.bat   # Windows equivalent
+│   ├── run_preinstall.sh   # Installs OS packages, optionally builds libiio
+│   ├── run_build.sh        # Orchestrates cmake/make/ctest/cpack
+│   └── run_build.bat       # Windows equivalent
+├── packaging/              # Artifactory download + markdown table generation
+│   ├── gen_table.py
+│   └── requirements.txt
+├── tests/                  # Pytest-based hardware tests (labgrid-plugins)
+│   ├── conftest.py
+│   ├── version_map.yaml
+│   └── ...
+├── docs/                   # This documentation (Sphinx)
+├── v68.8.1/                # API version 68.8.1
+│   ├── navassa-profile-gen # Git submodule (Bitbucket)
+│   ├── profile_gen.patch
+│   ├── deps/               # Vendored CommonApi headers
+│   ├── apply_updates.sh
+│   ├── LICENSE.pdf
+│   └── README.md
+├── v68.10.1/               # API version 68.10.1 (same structure)
+├── v68.16.2/               # API version 68.16.2
+│   ├── navassa-profile-gen # Git submodule (GitHub)
+│   ├── profile_gen.patch
+│   ├── stream_gen.patch    # Additional patch for stream-gen-src
+│   ├── ref/                # Reference profiles for tests
+│   ├── deps/
+│   ├── apply_updates.sh
+│   ├── setup_submodule.sh  # Helper for initial GitHub submodule clone
+│   └── README.md
+├── JenkinsfileScripts      # CI build pipeline (multi-platform matrix)
+├── JenkinsfileHW           # CI hardware test pipeline
+└── CLAUDE.md               # AI assistant instructions
+</pre></div>
+</div>
+</section>
+<section id="key-constraints">
+<h2>Key Constraints<a class="headerlink" href="#key-constraints" title="Link to this heading"></a></h2>
+<section id="submodules-are-read-only">
+<h3>Submodules Are Read-Only<a class="headerlink" href="#submodules-are-read-only" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">navassa-profile-gen</span></code> submodule and its nested submodules (<code class="docutils literal notranslate"><span class="pre">libadrv9002</span></code>, <code class="docutils literal notranslate"><span class="pre">stream-gen-src</span></code>, <code class="docutils literal notranslate"><span class="pre">profile-types-c</span></code>) <strong>cannot be modified directly</strong>. All changes must be expressed as patch files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">profile_gen.patch</span></code> — applied to navassa-profile-gen root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stream_gen.patch</span></code> — (v68.16.2 only) applied to stream-gen-src</p></li>
+</ul>
+</section>
+<section id="build-scripts-are-shared">
+<h3>Build Scripts Are Shared<a class="headerlink" href="#build-scripts-are-shared" title="Link to this heading"></a></h3>
+<p>Scripts in <code class="docutils literal notranslate"><span class="pre">build_scripts/</span></code> are <strong>version-agnostic</strong>. CI copies them into the active version directory before execution (<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">build_scripts/*</span> <span class="pre">$API/</span></code>). Do not add version-specific logic to these scripts.</p>
+</section>
+<section id="source-repository-differences">
+<h3>Source Repository Differences<a class="headerlink" href="#source-repository-differences" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Version</p></th>
+<th class="head"><p>Source Host</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v68.8.1</p></td>
+<td><p>Bitbucket (<code class="docutils literal notranslate"><span class="pre">bitbucket.analog.com</span></code>)</p></td>
+<td><p>Legacy <code class="docutils literal notranslate"><span class="pre">.gitmodules</span></code> name is <code class="docutils literal notranslate"><span class="pre">v68.5.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>v68.10.1</p></td>
+<td><p>Bitbucket</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>v68.16.2</p></td>
+<td><p>GitHub (<code class="docutils literal notranslate"><span class="pre">github.com/adi-innersource</span></code>)</p></td>
+<td><p>Requires <code class="docutils literal notranslate"><span class="pre">setup_submodule.sh</span></code> for initial clone</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="user_guide.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">User Guide</a>
+    <a href="developer_guide.html" title="Next document (Alt+Shift+RightArrow)" class="next">Developer Guide</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+(C-target)=
+# C/C++ API Reference
+
+The C API provides direct access to the profile generation engine through a set of configuration structures and functions. Link against `libadrv9002-iio` and include `adrv9002_iio.h` to use these interfaces.
+
+## Structures
+
+```{eval-rst}
+
+.. doxygenstruct:: rx_radio_channel_config
+    :members:
+
+.. doxygenstruct:: tx_radio_channel_config
+    :members:
+
+.. doxygenstruct:: radio_config
+    :members:
+
+.. doxygenstruct:: clock_config
+    :members:
+
+.. doxygenstruct:: adrv9002_config
+    :members:
+
+```
+
+## Functions
+
+```{eval-rst}
+.. doxygenfunction:: adrv9002_generate_profile
+
+
+.. doxygenfunction:: adrv9002_generate_load_profile_iio
+
+
+.. doxygenfunction:: get_message_from_error_code
+
+
+.. doxygenfunction:: get_api_version
+
+
+.. doxygenfunction:: adrv9002_get_interface_mode_iio
+
+```

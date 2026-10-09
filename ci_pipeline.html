@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The main CI pipeline builds all API versions across a matrix of platforms:" name="description" />
+
+    <title>CI Pipeline &#8212; navassa-pg-library</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Known Gaps &amp; Limitations" href="known_gaps.html" />
+    <link rel="prev" title="Testing" href="testing.html" />
+   
+  
+  
+  
+  <meta name="repository" content="navassa-pg-library">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>navassa-pg-library</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">CI Pipeline</a><ul>
+<li><a class="reference internal" href="#build-pipeline-jenkinsfilescripts">Build Pipeline (<code class="docutils literal notranslate"><span class="pre">JenkinsfileScripts</span></code>)</a><ul>
+<li><a class="reference internal" href="#execution-order">Execution Order</a></li>
+<li><a class="reference internal" href="#build-matrix">Build Matrix</a></li>
+<li><a class="reference internal" href="#artifacts">Artifacts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hardware-test-pipeline-jenkinsfilehw">Hardware Test Pipeline (<code class="docutils literal notranslate"><span class="pre">JenkinsfileHW</span></code>)</a><ul>
+<li><a class="reference internal" href="#boards">Boards</a></li>
+<li><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
+<li><a class="reference internal" href="#flow">Flow</a></li>
+<li><a class="reference internal" href="#pytest-hardware-tests">Pytest Hardware Tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#packaging-packaging-gen-table-py">Packaging (<code class="docutils literal notranslate"><span class="pre">packaging/gen_table.py</span></code>)</a></li>
+<li><a class="reference internal" href="#github-actions-development-release">GitHub Actions Development Release</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      navassa-pg-library
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Developer Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Repository Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Multi-Version Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Testing &amp; CI</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CI Pipeline</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Reference</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="known_gaps.html">Known Gaps &amp; Limitations</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="ci-pipeline">
+<h1>CI Pipeline<a class="headerlink" href="#ci-pipeline" title="Link to this heading"></a></h1>
+<section id="build-pipeline-jenkinsfilescripts">
+<h2>Build Pipeline (<code class="docutils literal notranslate"><span class="pre">JenkinsfileScripts</span></code>)<a class="headerlink" href="#build-pipeline-jenkinsfilescripts" title="Link to this heading"></a></h2>
+<p>The main CI pipeline builds all API versions across a matrix of platforms:</p>
+<section id="execution-order">
+<h3>Execution Order<a class="headerlink" href="#execution-order" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Windows builds</strong> — run first (sequential via <code class="docutils literal notranslate"><span class="pre">parallel</span> <span class="pre">deployments_win</span></code>)</p></li>
+<li><p><strong>Linux + ARM builds</strong> — run in parallel</p></li>
+<li><p><strong>Table generation</strong> — <code class="docutils literal notranslate"><span class="pre">packaging/gen_table.py</span></code> downloads artifacts per API version from Artifactory</p></li>
+<li><p><strong>Documentation</strong> — builds Sphinx docs (unstashes <code class="docutils literal notranslate"><span class="pre">table.md</span></code> from step 3)</p></li>
+</ol>
+</section>
+<section id="build-matrix">
+<h3>Build Matrix<a class="headerlink" href="#build-matrix" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Variants</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Linux x86_64</strong></p></td>
+<td><p>Ubuntu 20.04, Ubuntu 22.04, Fedora 28, Fedora 34</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ARM</strong></p></td>
+<td><p>manylinux2014_aarch64, arm64v8/debian bullseye, arm32v7/debian bullseye</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Windows</strong></p></td>
+<td><p>Windows 10 with VS2019</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each variant builds <strong>with and without IIO</strong> support, and all three API versions (v68.8.1, v68.10.1, v68.16.2) are built in every configuration.</p>
+</section>
+<section id="artifacts">
+<h3>Artifacts<a class="headerlink" href="#artifacts" title="Link to this heading"></a></h3>
+<p>Packages are uploaded to Artifactory under <code class="docutils literal notranslate"><span class="pre">NavassaProfileGen/{branch}/{build}/{api_version}/</span></code>:</p>
+<ul class="simple">
+<li><p>DEB packages (Ubuntu)</p></li>
+<li><p>RPM packages (Fedora)</p></li>
+<li><p>ZIP archives (all platforms)</p></li>
+<li><p>Windows installers (.exe via Inno Setup)</p></li>
+<li><p>Python wheels</p></li>
+</ul>
+</section>
+</section>
+<section id="hardware-test-pipeline-jenkinsfilehw">
+<h2>Hardware Test Pipeline (<code class="docutils literal notranslate"><span class="pre">JenkinsfileHW</span></code>)<a class="headerlink" href="#hardware-test-pipeline-jenkinsfilehw" title="Link to this heading"></a></h2>
+<p>The hardware test pipeline runs on physical ADRV9002 boards:</p>
+<section id="boards">
+<h3>Boards<a class="headerlink" href="#boards" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Board</p></th>
+<th class="head"><p>Interface Mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zynq-zed-adv7511-adrv9002-vcmos</span></code></p></td>
+<td><p>CMOS</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">zynqmp-zcu102-rev10-adrv9002-vcmos</span></code></p></td>
+<td><p>CMOS</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zynqmp-zcu102-rev10-adrv9002-vlvds</span></code></p></td>
+<td><p>LVDS</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="infrastructure">
+<h3>Infrastructure<a class="headerlink" href="#infrastructure" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Gauntlet</strong> (<code class="docutils literal notranslate"><span class="pre">sdgtt-lib&#64;adgt-test-harness</span></code>) — test orchestration framework</p></li>
+<li><p><strong>Nebula</strong> — board boot and provisioning</p></li>
+<li><p><strong>Netbox</strong> — network device database for board IP discovery (at <code class="docutils literal notranslate"><span class="pre">primary.englab:8000</span></code>)</p></li>
+</ul>
+</section>
+<section id="flow">
+<h3>Flow<a class="headerlink" href="#flow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Boot boards via Nebula (firmware version <code class="docutils literal notranslate"><span class="pre">v0.34</span></code>, boot files from Artifactory)</p></li>
+<li><p>Discover board IP via Nebula config</p></li>
+<li><p>Build library inside Docker container with <code class="docutils literal notranslate"><span class="pre">-DHARDWARE_TEST=ON</span> <span class="pre">-DENABLE_IIO=ON</span></code></p></li>
+<li><p>Install library (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span> <span class="pre">&amp;&amp;</span> <span class="pre">ldconfig</span></code>)</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-V</span></code> with <code class="docutils literal notranslate"><span class="pre">IIOD_URI=ip:&lt;board_ip&gt;</span></code> set</p></li>
+</ol>
+</section>
+<section id="pytest-hardware-tests">
+<h3>Pytest Hardware Tests<a class="headerlink" href="#pytest-hardware-tests" title="Link to this heading"></a></h3>
+<p>The newer pytest-based tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code> can also be run in CI:</p>
+<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="n">stage</span><span class="o">(</span><span class="s1">'Pytest Hardware'</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">sh</span><span class="w"> </span><span class="s1">'''</span>
+<span class="s1">    pip install -r tests/requirements.txt</span>
+<span class="s1">    pytest tests/ \</span>
+<span class="s1">        --lg-env tests/labgrid/env_zcu102_adrv9002.yaml \</span>
+<span class="s1">        --lg-coordinator=${LG_CROSSBAR_URL} \</span>
+<span class="s1">        --junitxml=results.xml -v</span>
+<span class="s1">    '''</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="packaging-packaging-gen-table-py">
+<h2>Packaging (<code class="docutils literal notranslate"><span class="pre">packaging/gen_table.py</span></code>)<a class="headerlink" href="#packaging-packaging-gen-table-py" title="Link to this heading"></a></h2>
+<p>After all builds complete, <code class="docutils literal notranslate"><span class="pre">gen_table.py</span></code> runs to:</p>
+<ol class="arabic simple">
+<li><p>Download all build artifacts from Artifactory for the current branch/build</p></li>
+<li><p>Generate a Markdown table of available packages using Jinja2 templates</p></li>
+<li><p>Stash the table for inclusion in documentation builds</p></li>
+</ol>
+<p>Environment variables: <code class="docutils literal notranslate"><span class="pre">LIBREV</span></code> (library revision tag), <code class="docutils literal notranslate"><span class="pre">API</span></code> (API version), <code class="docutils literal notranslate"><span class="pre">GIT_COMMIT</span></code>.</p>
+</section>
+<section id="github-actions-development-release">
+<h2>GitHub Actions Development Release<a class="headerlink" href="#github-actions-development-release" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.github/workflows/build-and-test.yml</span></code> runs a separate, newer pipeline that builds on
+every push and attaches a rolling <code class="docutils literal notranslate"><span class="pre">development</span></code> GitHub Release. Every build job (<code class="docutils literal notranslate"><span class="pre">build</span></code>,
+<code class="docutils literal notranslate"><span class="pre">build-windows</span></code>, <code class="docutils literal notranslate"><span class="pre">build-arm</span></code>) runs a <code class="docutils literal notranslate"><span class="pre">matrix.iio:</span> <span class="pre">[&quot;OFF&quot;,</span> <span class="pre">&quot;ON&quot;]</span></code> dimension, so each
+platform/API version combination produces <strong>two</strong> raw library variants. These are zipped
+per-variant as <code class="docutils literal notranslate"><span class="pre">&lt;variant&gt;_libs.zip</span></code> and combined into a single <code class="docutils literal notranslate"><span class="pre">all_packages_*.zip</span></code>:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variant folder</p></th>
+<th class="head"><p>Platform</p></th>
+<th class="head"><p>libiio</p></th>
+<th class="head"><p>Also includes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">windows_x86_64</span></code></p></td>
+<td><p>Windows x86_64</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libadrv9002-iio-api&lt;ver&gt;-setup.exe</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">windows_x86_64_iio</span></code></p></td>
+<td><p>Windows x86_64</p></td>
+<td><p>Yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libadrv9002-iio-api&lt;ver&gt;-iio-setup.exe</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">linux_x86_64</span></code></p></td>
+<td><p>Linux x86_64</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.deb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linux_x86_64_iio</span></code></p></td>
+<td><p>Linux x86_64</p></td>
+<td><p>Yes</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">linux_arm64</span></code></p></td>
+<td><p>Linux ARM64</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.deb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linux_arm64_iio</span></code></p></td>
+<td><p>Linux ARM64</p></td>
+<td><p>Yes</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">linux_armv7</span></code></p></td>
+<td><p>Linux ARMv7</p></td>
+<td><p>No</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.deb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linux_armv7_iio</span></code></p></td>
+<td><p>Linux ARMv7</p></td>
+<td><p>Yes</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">baremetal_arm</span></code></p></td>
+<td><p>Cortex-M4F (bare-metal)</p></td>
+<td><p>N/A</p></td>
+<td><p>static lib only — no OS/userspace stack, so no IIO variant</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python_wheels</span></code></p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>Python wheels (always built non-IIO)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">libiio</span></code> variants link against
+<a class="icon link reference external" href="https://github.com/analogdevicesinc/libiio/releases/tag/v0.25" target="_blank">libiio v0.25</a> and enable
+<code class="docutils literal notranslate"><span class="pre">adrv9002_generate_load_profile_iio()</span></code> to push a generated profile straight to hardware
+over network/USB; non-IIO variants only produce profile JSON/stream binaries on disk and
+carry no libiio dependency. DEB packages and the plain Windows installer are still built
+from the non-IIO leg only — the IIO-enabled Windows installer (<code class="docutils literal notranslate"><span class="pre">*-iio-setup.exe</span></code>) is built
+separately and additionally bundles <code class="docutils literal notranslate"><span class="pre">libiio.dll</span></code>, <code class="docutils literal notranslate"><span class="pre">libxml2.dll</span></code>, <code class="docutils literal notranslate"><span class="pre">libusb-1.0.dll</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">libserialport-0.dll</span></code> so it works without a separate libiio install.</p>
+<p>This release is for CI/development consumption. The officially released end-user
+packages are documented separately in the versioned library docs’ Downloads page.</p>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="testing.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Testing</a>
+    <a href="known_gaps.html" title="Next document (Alt+Shift+RightArrow)" class="next">Known Gaps &amp; Limitations</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

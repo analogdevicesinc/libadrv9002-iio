@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The adrv9002_config struct provides a simplified interface to the full Adrv9001Blueprint. The following blueprint features are not controllable through the config struct:" name="description" />
+
+    <title>Known Gaps &amp; Limitations &#8212; navassa-pg-library</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="CI Pipeline" href="ci_pipeline.html" />
+   
+  
+  
+  
+  <meta name="repository" content="navassa-pg-library">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>navassa-pg-library</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Known Gaps &amp; Limitations</a><ul>
+<li><a class="reference internal" href="#config-struct-limitations">Config Struct Limitations</a><ul>
+<li><a class="reference internal" href="#tx-fm-modes">TX FM Modes</a></li>
+<li><a class="reference internal" href="#narrowband-rx-mode">Narrowband RX Mode</a></li>
+<li><a class="reference internal" href="#external-lo-configuration">External LO Configuration</a></li>
+<li><a class="reference internal" href="#channel-filter-coefficients">Channel Filter Coefficients</a></li>
+<li><a class="reference internal" href="#stream-generation-resources">Stream Generation Resources</a></li>
+<li><a class="reference internal" href="#ssi-configuration">SSI Configuration</a></li>
+<li><a class="reference internal" href="#other-unmapped-fields">Other Unmapped Fields</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#future-work">Future Work</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      navassa-pg-library
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Developer Guide</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Repository Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Multi-Version Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Testing &amp; CI</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ci_pipeline.html">CI Pipeline</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Reference</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Known Gaps &amp; Limitations</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="known-gaps-limitations">
+<h1>Known Gaps &amp; Limitations<a class="headerlink" href="#known-gaps-limitations" title="Link to this heading"></a></h1>
+<section id="config-struct-limitations">
+<h2>Config Struct Limitations<a class="headerlink" href="#config-struct-limitations" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">adrv9002_config</span></code> struct provides a simplified interface to the full <code class="docutils literal notranslate"><span class="pre">Adrv9001Blueprint</span></code>. The following blueprint features are <strong>not controllable</strong> through the config struct:</p>
+<section id="tx-fm-modes">
+<h3>TX FM Modes<a class="headerlink" href="#tx-fm-modes" title="Link to this heading"></a></h3>
+<p>The config struct hardcodes <code class="docutils literal notranslate"><span class="pre">channelSignalType</span> <span class="pre">=</span> <span class="pre">TX_IQ</span></code>. FM modes (Direct FM-FSK, IQ FM-FSK) require:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">channelSignalType</span></code> field in <code class="docutils literal notranslate"><span class="pre">tx_radio_channel_config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frequencyDeviation_Hz</span></code> mapping</p></li>
+</ul>
+<p><strong>Affected profiles</strong>: Any blueprint with <code class="docutils literal notranslate"><span class="pre">txChannel.channelSignalType</span> <span class="pre">!=</span> <span class="pre">0</span></code></p>
+</section>
+<section id="narrowband-rx-mode">
+<h3>Narrowband RX Mode<a class="headerlink" href="#narrowband-rx-mode" title="Link to this heading"></a></h3>
+<p>Narrowband (real-output) mode uses pulse shaping filters and narrowband NCO that are not exposed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">channelSignalSetup</span></code> (0=wideband IQ, 1=narrowband)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pfirRxNbPulShp</span></code> filter coefficients</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rxNbDem</span></code> demodulator settings</p></li>
+</ul>
+<p><strong>Affected profiles</strong>: Any blueprint with <code class="docutils literal notranslate"><span class="pre">rxChannel.channelSignalSetup</span> <span class="pre">!=</span> <span class="pre">0</span></code></p>
+</section>
+<section id="external-lo-configuration">
+<h3>External LO Configuration<a class="headerlink" href="#external-lo-configuration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">handle_lo_mapping()</span></code> function assigns LO1/LO2 based on channel enable states and duplex mode. It does not support:</p>
+<ul class="simple">
+<li><p>External LO sources (<code class="docutils literal notranslate"><span class="pre">loExternal1</span></code>, <code class="docutils literal notranslate"><span class="pre">loExternal2</span></code>)</p></li>
+<li><p>Per-channel LO source selection (<code class="docutils literal notranslate"><span class="pre">loSource</span></code>)</p></li>
+<li><p>Custom LO divisor settings</p></li>
+</ul>
+<p><strong>Workaround</strong>: When using <code class="docutils literal notranslate"><span class="pre">EXT_PROFILE</span></code>, LO settings are preserved from the blueprint.</p>
+</section>
+<section id="channel-filter-coefficients">
+<h3>Channel Filter Coefficients<a class="headerlink" href="#channel-filter-coefficients" title="Link to this heading"></a></h3>
+<p>Digital channel filters (FIR coefficients) are computed by <code class="docutils literal notranslate"><span class="pre">ProfileArchitect</span></code> based on sample rates and bandwidths. Custom filter coefficients from blueprints are not passed through the config struct.</p>
+</section>
+<section id="stream-generation-resources">
+<h3>Stream Generation Resources<a class="headerlink" href="#stream-generation-resources" title="Link to this heading"></a></h3>
+<p>The stream image assembler (<code class="docutils literal notranslate"><span class="pre">StreamImage_Get</span></code>) needs per-release SPI register map and
+top-level processor configuration resources. For <strong>v68.16.2, v68.13.7, v68.14.10, and
+v68.20.12</strong> this is resolved: <code class="docutils literal notranslate"><span class="pre">apply_updates.sh</span></code> vendors pinned checkouts of
+<code class="docutils literal notranslate"><span class="pre">github.com/adi-innersource/navassa-stream-gen-asm</span></code> (0.7.15 for v68.16.2/v68.14.10,
+0.7.11 for v68.13.7, 0.7.18 for v68.20.12), and <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> selects the matching one
+(unconditionally for v68.20.12’s standalone tree, per <code class="docutils literal notranslate"><span class="pre">ADRV9002_API_VERSION</span></code> for the
+v68.16.2 tree) at configure time. See “Stream Generation Format” in
+<code class="docutils literal notranslate"><span class="pre">api_version_compatibility.md</span></code> for the full mechanism and verified results.</p>
+<p><strong>v68.10.1 remains unresolved.</strong> It builds via the shared, unpinned
+<code class="docutils literal notranslate"><span class="pre">build_scripts/apply_updates.sh</span></code> (also used by deprecated v68.8.1) with a
+<code class="docutils literal notranslate"><span class="pre">stream-gen-src</span></code> checkout that predates the built-in-resources feature, so it currently
+<em>skips</em> stream comparisons rather than generating against the wrong version. Fixing it
+means giving v68.10.1 its own pinned <code class="docutils literal notranslate"><span class="pre">navassa-stream-gen-asm</span></code> checkout (0.7.10) and
+CMake wiring, mirroring the v68.16.2 fix — tracked as a follow-up, not yet done.</p>
+</section>
+<section id="ssi-configuration">
+<h3>SSI Configuration<a class="headerlink" href="#ssi-configuration" title="Link to this heading"></a></h3>
+<p>Some SSI parameters are global (applied to all channels equally):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ssiType</span></code> (LVDS/CMOS) — from first RX channel, applied to all</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssiNumLane</span></code> — same for all channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssiDataRate</span></code> (DDR/SDR) — same for all channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssiStrobeType</span></code> — same for all channels</p></li>
+</ul>
+<p>Per-channel SSI configuration is not supported.</p>
+</section>
+<section id="other-unmapped-fields">
+<h3>Other Unmapped Fields<a class="headerlink" href="#other-unmapped-fields" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Blueprint Field</p></th>
+<th class="head"><p>Why Not Mapped</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gainTableType</span></code></p></td>
+<td><p>Fixed by hardware configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ssiDataFormat</span></code></p></td>
+<td><p>Determined by SSI type</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ssiRefClockPin</span></code></p></td>
+<td><p>TX-only, hardware-specific</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">peakLoopbackPower_dBm</span></code></p></td>
+<td><p>Advanced calibration parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">channelFilterInterpolation</span></code></p></td>
+<td><p>Computed by ProfileArchitect</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">warmBootEnable</span></code></p></td>
+<td><p>System-level setting</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">swapExternalLoMapping</span></code></p></td>
+<td><p>External LO feature</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="future-work">
+<h2>Future Work<a class="headerlink" href="#future-work" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Add TX FM mode support (struct field + mapping)</p></li>
+<li><p>Expose per-channel LO source selection</p></li>
+<li><p>Investigate <code class="docutils literal notranslate"><span class="pre">analogFilterCorner_kHz</span></code> stability (previously disabled, now guarded with &gt; 0 check)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">channelSignalSetup</span></code> for narrowband RX support</p></li>
+<li><p>Vendor a pinned <code class="docutils literal notranslate"><span class="pre">navassa-stream-gen-asm</span></code> checkout for v68.10.1 (0.7.10), mirroring the
+v68.16.2/v68.13.7/v68.14.10 fix, so its stream comparisons run instead of skipping</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="ci_pipeline.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">CI Pipeline</a>
+    <div></div>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>
