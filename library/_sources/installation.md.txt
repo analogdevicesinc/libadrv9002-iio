@@ -68,12 +68,12 @@ hardware over network/USB). The two variants are distinguished by an `iio` suffi
 package name, e.g. `<platform>_libs.zip` (non-libiio) vs. `<platform>_iio_libs.zip`
 (libiio-enabled), and `...-setup.exe` vs. `...-iio-setup.exe` for the Windows installer.
 The IIO-enabled Windows installer bundles `libiio.dll` and its runtime dependencies, so no
-separate libiio install is required on Windows; on Linux, install libiio v0.25 yourself
+separate libiio install is required on Windows; on Linux, install libiio v0.26 yourself
 before using an IIO-enabled build.
 
 To use IIO-enabled packages:
 
-1. On Linux, install [libiio v0.25](https://github.com/analogdevicesinc/libiio/releases/tag/v0.25) on your system (Windows installers already bundle it)
+1. On Linux, install [libiio v0.26](https://github.com/analogdevicesinc/libiio/releases/tag/v0.26) on your system (Windows installers already bundle it)
 2. Download the `iio` variant of the package for your platform
 
 With IIO support, you can load profiles directly:

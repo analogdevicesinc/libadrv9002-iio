@@ -104,7 +104,7 @@ per-variant as `<variant>_libs.zip` and combined into a single `all_packages_*.z
 | `python_wheels` | — | — | Python wheels (always built non-IIO) |
 
 `libiio` variants link against
-[libiio v0.25](https://github.com/analogdevicesinc/libiio/releases/tag/v0.25) and enable
+[libiio v0.26](https://github.com/analogdevicesinc/libiio/releases/tag/v0.26) and enable
 `adrv9002_generate_load_profile_iio()` to push a generated profile straight to hardware
 over network/USB; non-IIO variants only produce profile JSON/stream binaries on disk and
 carry no libiio dependency. DEB packages and the plain Windows installer are still built

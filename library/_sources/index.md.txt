@@ -19,14 +19,13 @@ confuse them:
   unrelated version numbers.
 ```
 
-## What's New in v0.3.0
+## What's New in v0.3.1
 
-- Support for API version **{{api_version}}**
-- Rx Port Impedance Control stream settings
-- Built-in stream template files (no external resource directory needed)
-- Debian packages for Ubuntu 22.04/24.04 (x86_64, arm64, armv7)
-- Windows installer with CLI tool
-- Python wheels for Linux and Windows
+- Bare-metal (Cortex-M4F) package support
+- Complete C/C++ API reference, now included in the public documentation
+- Upgraded to libiio v0.26
+- Hardened binaries: stripped debug symbols, no leaked build paths, and the public
+  header is now included in every downloadable ZIP bundle
 - All packages available via the [Downloads](downloads) page
 
 ## Supported Platforms
@@ -35,6 +34,7 @@ confuse them:
 |----------|-------------|----------------|
 | Ubuntu 22.04/24.04 | x86_64, arm64, armv7 | `.deb`, `.whl` |
 | Windows 10/11 | x86_64 | `.exe` installer, `.whl` |
+| Bare-metal | Cortex-M4F | `.zip` (static libs) |
 | Fedora 34+ | x86_64 | `.rpm` |
 
 ## Limitations

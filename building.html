@@ -14,7 +14,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <script async="async" src="_static/app.umd.js?v=048c1170"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Testing" href="testing.html" />
@@ -182,21 +182,21 @@ Content on this topic
 <h1>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h1>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
-<div class="tab-set docutils"><input checked="checked" id="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-0" name="tab-set-a60e861e0fe8b39b6c46f354a257b0e89edea04a" type="radio"></input><label class="tab-label" for="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-0">Ubuntu</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>zip<span class="w"> </span>cmake<span class="w"> </span>build-essential<span class="w"> </span>xxd<span class="w"> </span>python3-pip<span class="w"> </span>python3-setuptools<span class="w"> </span>python3-wheel<span class="w"> </span>python3-dev
-<span class="c1"># For IIO support (also build libiio v0.25 from source):</span>
+<div class="tab-set docutils"><input checked="checked" id="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-0" name="tab-set-f5dd61927e4576c89651146d8cf3bcb51303cb7f" type="radio"></input><label class="tab-label" for="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-0">Ubuntu</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>zip<span class="w"> </span>cmake<span class="w"> </span>build-essential<span class="w"> </span>xxd<span class="w"> </span>python3-pip<span class="w"> </span>python3-setuptools<span class="w"> </span>python3-wheel<span class="w"> </span>python3-dev
+<span class="c1"># For IIO support (also build libiio v0.26 from source):</span>
 apt<span class="w"> </span>install<span class="w"> </span>libavahi-common-dev<span class="w"> </span>libavahi-client-dev<span class="w"> </span>libaio-dev<span class="w"> </span>libusb-1.0-0-dev<span class="w"> </span>libxml2-dev
 </pre></div>
 </div>
-</div><input id="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-1" name="tab-set-a60e861e0fe8b39b6c46f354a257b0e89edea04a" type="radio"></input><label class="tab-label" for="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-1">Fedora</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">"Development Tools"</span>
+</div><input id="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-1" name="tab-set-f5dd61927e4576c89651146d8cf3bcb51303cb7f" type="radio"></input><label class="tab-label" for="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-1">Fedora</label><div class="tab-content docutils"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">"Development Tools"</span>
 yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>zip<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>gcc-c++<span class="w"> </span>vim-common<span class="w"> </span>python3-pip<span class="w"> </span>python3-setuptools<span class="w"> </span>python3-wheel<span class="w"> </span>python3-devel
 </pre></div>
 </div>
-</div><input id="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-2" name="tab-set-a60e861e0fe8b39b6c46f354a257b0e89edea04a" type="radio"></input><label class="tab-label" for="tab-item-a60e861e0fe8b39b6c46f354a257b0e89edea04a-2">Windows</label><div class="tab-content docutils"><ul class="simple">
+</div><input id="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-2" name="tab-set-f5dd61927e4576c89651146d8cf3bcb51303cb7f" type="radio"></input><label class="tab-label" for="tab-item-f5dd61927e4576c89651146d8cf3bcb51303cb7f-2">Windows</label><div class="tab-content docutils"><ul class="simple">
 <li><p>Visual Studio 2019 or 2022 Build Tools (C/C++ workload)</p></li>
 <li><p>CMake (bundled with VS or standalone)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">7z.exe</span></code> on PATH</p></li>
 <li><p>Inno Setup 6 (for installer generation)</p></li>
-<li><p>Optionally: libiio v0.25 release ZIP for IIO support</p></li>
+<li><p>Optionally: libiio v0.26 release ZIP for IIO support</p></li>
 </ul>
 </div></div></section>
 <section id="local-build-linux">
@@ -303,15 +303,15 @@ apply_updates.sh   →  Apply patch, copy deps, clone pinned sub-repos
 </section>
 <section id="building-with-iio-support">
 <h2>Building with IIO Support<a class="headerlink" href="#building-with-iio-support" title="Link to this heading"></a></h2>
-<p>IIO support requires libiio v0.25. On Linux, build from source:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.25<span class="w"> </span>--single-branch<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/analogdevicesinc/libiio.git
+<p>IIO support requires libiio v0.26. On Linux, build from source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>v0.26<span class="w"> </span>--single-branch<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/analogdevicesinc/libiio.git
 <span class="nb">cd</span><span class="w"> </span>libiio
 cmake<span class="w"> </span>.<span class="w"> </span>-DHAVE_DNS_SD<span class="o">=</span>OFF
 make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
 </pre></div>
 </div>
 <p>Then configure with <code class="docutils literal notranslate"><span class="pre">-DENABLE_IIO=ON</span></code>.</p>
-<p>On Windows, download the <a class="icon link reference external" href="https://github.com/analogdevicesinc/libiio/releases/tag/v0.25" target="_blank">libiio v0.25 release ZIP</a> and pass:</p>
+<p>On Windows, download the <a class="icon link reference external" href="https://github.com/analogdevicesinc/libiio/releases/tag/v0.26" target="_blank">libiio v0.26 release ZIP</a> and pass:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">DLIBIIO_LIBRARIES</span><span class="p">:</span><span class="n">FILEPATH</span><span class="o">=</span><span class="s2">"C:\deps\Windows-VS-2019-x64\libiio.lib"</span>
 <span class="o">-</span><span class="n">DLIBIIO_INCLUDEDIR</span><span class="p">:</span><span class="n">PATH</span><span class="o">=</span><span class="s2">"C:\deps\include"</span>
 </pre></div>

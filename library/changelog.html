@@ -4,9 +4,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content="Support for ADRV9001 API version 68.16.2" name="description" />
+<meta content="Upgraded libiio dependency from v0.25 to v0.26" name="description" />
 
-    <title>Changelog &#8212; libadrv9002-iio v0.3.0 (Internal)</title>
+    <title>Changelog &#8212; libadrv9002-iio v0.3.1 (Internal)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -16,7 +16,7 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <script async="async" src="_static/app.umd.js?v=048c1170"></script>
     <script src="_static/js/licensing.js?v=5b6de748"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -100,9 +100,13 @@
         <nav>
           <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
-<li><a class="reference internal" href="#v0-3-0-in-development">v0.3.0 (In Development)</a><ul>
-<li><a class="reference internal" href="#new-features">New Features</a></li>
+<li><a class="reference internal" href="#v0-3-1">v0.3.1</a><ul>
 <li><a class="reference internal" href="#improvements">Improvements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#v0-3-0">v0.3.0</a><ul>
+<li><a class="reference internal" href="#new-features">New Features</a></li>
+<li><a class="reference internal" href="#id1">Improvements</a></li>
 <li><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
 </ul>
 </li>
@@ -170,8 +174,21 @@ Content on this topic
             
   <section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
-<section id="v0-3-0-in-development">
-<h2>v0.3.0 (In Development)<a class="headerlink" href="#v0-3-0-in-development" title="Link to this heading"></a></h2>
+<section id="v0-3-1">
+<h2>v0.3.1<a class="headerlink" href="#v0-3-1" title="Link to this heading"></a></h2>
+<section id="improvements">
+<h3>Improvements<a class="headerlink" href="#improvements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Upgraded libiio dependency from v0.25 to v0.26</p></li>
+<li><p>Bare-metal (Cortex-M4F) package support, built and smoke-tested under QEMU</p></li>
+<li><p>Complete C/C++ API reference, now included in the public documentation</p></li>
+<li><p>Stripped debug symbols and removed leaked build-tree paths from shipped shared libraries</p></li>
+<li><p>Public header (<code class="docutils literal notranslate"><span class="pre">adrv9002_iio.h</span></code>) now included in every downloadable ZIP bundle, not just the <code class="docutils literal notranslate"><span class="pre">.deb</span></code>/installer</p></li>
+</ul>
+</section>
+</section>
+<section id="v0-3-0">
+<h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading"></a></h2>
 <section id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -184,8 +201,8 @@ Content on this topic
 <li><p>All packages published to Cloudsmith</p></li>
 </ul>
 </section>
-<section id="improvements">
-<h3>Improvements<a class="headerlink" href="#improvements" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>Improvements<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improved CI/CD pipeline with automated testing across platforms</p></li>
 <li><p>Profile generation tests validate output against reference profiles</p></li>

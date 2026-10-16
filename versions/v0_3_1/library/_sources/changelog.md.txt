@@ -1,0 +1,46 @@
+# Changelog
+
+## v0.3.1
+
+### Improvements
+- Upgraded libiio dependency from v0.25 to v0.26
+- Bare-metal (Cortex-M4F) package support, built and smoke-tested under QEMU
+- Complete C/C++ API reference, now included in the public documentation
+- Stripped debug symbols and removed leaked build-tree paths from shipped shared libraries
+- Public header (`adrv9002_iio.h`) now included in every downloadable ZIP bundle, not just the `.deb`/installer
+
+## v0.3.0
+
+### New Features
+- Support for ADRV9001 API version 68.16.2
+- Rx Port Impedance Control stream settings (`rx1PortImpedanceControl`, `rx2PortImpedanceControl`)
+- Built-in stream template files — no external resource directory required (MEMORY mode)
+- Debian packages for arm64 and armv7 architectures
+- Python wheels for Linux aarch64
+- Windows installer includes CLI tool
+- All packages published to Cloudsmith
+
+### Improvements
+- Improved CI/CD pipeline with automated testing across platforms
+- Profile generation tests validate output against reference profiles
+- Cross-platform builds (Linux x86_64/arm64/armv7, Windows x86_64)
+
+### Breaking Changes
+- Minimum supported API version is now 68.10.1
+- Stream binary output may differ from v0.2.0 due to PortImpedanceControl fields
+
+## v0.2.0
+
+- Support for API versions 68.8.1, 68.10.1
+- C and Python bindings
+- CLI tool (`adrv9002-iio-cli`)
+- libiio integration for direct hardware loading
+- DEB/RPM packages for Ubuntu 20.04/22.04, Fedora 28/34
+- Windows installer and ZIP packages
+- Python wheels (x86_64)
+
+## v0.1.0
+
+- Initial release
+- Basic profile generation from configuration structures
+- C API only

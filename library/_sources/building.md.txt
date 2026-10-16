@@ -43,10 +43,10 @@ sudo make install
 
 ## IIO Support
 
-To use the `adrv9002_generate_load_profile_iio()` function, you need libiio v0.25 installed:
+To use the `adrv9002_generate_load_profile_iio()` function, you need libiio v0.26 installed:
 
 ```bash
-git clone -b v0.25 https://github.com/analogdevicesinc/libiio.git
+git clone -b v0.26 https://github.com/analogdevicesinc/libiio.git
 cd libiio && cmake . && make -j$(nproc) && sudo make install
 ```
 

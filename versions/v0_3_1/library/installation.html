@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="libadrv9002-iio is distributed as pre-built binaries for all major platforms. Choose the installation method that matches your environment. No compilation is required — all packages include the shared libraries, header files, and command-line tool ready to use." name="description" />
+
+    <title>Installation &#8212; libadrv9002-iio v0.3.1 (Internal)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=048c1170"></script>
+    <script src="_static/js/licensing.js?v=5b6de748"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Downloads" href="downloads.html" />
+   
+  
+  
+  
+  <meta name="repository" content="libadrv9002-iio">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>libadrv9002-iio</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#debian-ubuntu">Debian / Ubuntu</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#python">Python</a></li>
+<li><a class="reference internal" href="#library-zip-archives">Library ZIP Archives</a></li>
+<li><a class="reference internal" href="#iio-support">IIO Support</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      libadrv9002-iio
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c_ref.html">C/C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a></li>
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">Development</span>
+</p>
+
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building from Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p><strong>libadrv9002-iio</strong> is distributed as pre-built binaries for all major platforms. Choose the installation method that matches your environment. No compilation is required — all packages include the shared libraries, header files, and command-line tool ready to use.</p>
+<section id="debian-ubuntu">
+<h2>Debian / Ubuntu<a class="headerlink" href="#debian-ubuntu" title="Link to this heading"></a></h2>
+<p>Debian packages provide system-wide installation of the shared libraries, C header, and CLI tool. This is the recommended approach for embedded Linux targets and CI environments. Packages are available for x86_64, ARM64, and ARMv7.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># x86_64</span>
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>libadrv9002-iio_0.3.0_amd64.deb
+
+<span class="c1"># ARM64 (e.g., ZCU102, Raspberry Pi 4)</span>
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>libadrv9002-iio_0.3.0_arm64.deb
+
+<span class="c1"># ARMv7 (e.g., Zynq-7000)</span>
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>libadrv9002-iio_0.3.0_armhf.deb
+</pre></div>
+</div>
+<p>The package installs:</p>
+<ul class="simple">
+<li><p>Shared libraries (<code class="docutils literal notranslate"><span class="pre">.so</span></code>) to <code class="docutils literal notranslate"><span class="pre">/usr/lib/</span></code></p></li>
+<li><p>Header file <code class="docutils literal notranslate"><span class="pre">adrv9002_iio.h</span></code> to <code class="docutils literal notranslate"><span class="pre">/usr/include/</span></code></p></li>
+<li><p>CLI tool <code class="docutils literal notranslate"><span class="pre">adrv9002-iio-cli</span></code> to <code class="docutils literal notranslate"><span class="pre">/usr/bin/</span></code></p></li>
+</ul>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
+<p>The Windows installer provides a one-click setup for development on Windows. It includes DLLs, import libraries (<code class="docutils literal notranslate"><span class="pre">.lib</span></code>), the C header, and the CLI tool.</p>
+<p>Download and run <code class="docutils literal notranslate"><span class="pre">libadrv9002-iio-setup.exe</span></code> to install. The installer places:</p>
+<ul class="simple">
+<li><p>DLLs and import libraries in the system directory</p></li>
+<li><p>Header file in the Visual Studio include path</p></li>
+<li><p>CLI tool on the system PATH</p></li>
+<li><p>MSVC runtime dependencies (msvcp140.dll, vcruntime140.dll)</p></li>
+</ul>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<p>The Python package bundles the native libraries and provides a clean Python API for profile generation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>adrv9002
+</pre></div>
+</div>
+<p>Pre-built wheels are available for:</p>
+<ul class="simple">
+<li><p>Linux x86_64 (Python 3.10–3.12)</p></li>
+<li><p>Linux aarch64 (Python 3.10–3.12)</p></li>
+<li><p>Windows x86_64 (Python 3.10–3.12)</p></li>
+</ul>
+<p>After installation, verify with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">adrv9002</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"libadrv9002-iio ready"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="library-zip-archives">
+<h2>Library ZIP Archives<a class="headerlink" href="#library-zip-archives" title="Link to this heading"></a></h2>
+<p>Every platform also has a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> alternative to the installer/<code class="docutils literal notranslate"><span class="pre">.deb</span></code>, such as
+<code class="docutils literal notranslate"><span class="pre">libadrv9002-iio-api&lt;version&gt;-windows.zip</span></code> for Windows (see the <a class="reference internal" href="downloads.html"><span class="doc std std-doc">Downloads</span></a>
+page for the exact name per platform). It contains the same shared library, header, and
+CLI tool as the installer, unpacked — use it to embed the library into another build
+system or install to a non-standard location without a system-wide install.</p>
+</section>
+<section id="iio-support">
+<h2>IIO Support<a class="headerlink" href="#iio-support" title="Link to this heading"></a></h2>
+<p><strong>libadrv9002-iio</strong> is built twice for every platform: once <strong>without</strong> libiio (the
+default — only produces profile JSON/stream binaries on disk) and once <strong>with</strong> libiio
+linked in (adds <code class="docutils literal notranslate"><span class="pre">adrv9002_generate_load_profile_iio()</span></code> to push a profile straight to
+hardware over network/USB). The two variants are distinguished by an <code class="docutils literal notranslate"><span class="pre">iio</span></code> suffix on the
+package name, e.g. <code class="docutils literal notranslate"><span class="pre">&lt;platform&gt;_libs.zip</span></code> (non-libiio) vs. <code class="docutils literal notranslate"><span class="pre">&lt;platform&gt;_iio_libs.zip</span></code>
+(libiio-enabled), and <code class="docutils literal notranslate"><span class="pre">...-setup.exe</span></code> vs. <code class="docutils literal notranslate"><span class="pre">...-iio-setup.exe</span></code> for the Windows installer.
+The IIO-enabled Windows installer bundles <code class="docutils literal notranslate"><span class="pre">libiio.dll</span></code> and its runtime dependencies, so no
+separate libiio install is required on Windows; on Linux, install libiio v0.26 yourself
+before using an IIO-enabled build.</p>
+<p>To use IIO-enabled packages:</p>
+<ol class="arabic simple">
+<li><p>On Linux, install <a class="icon link reference external" href="https://github.com/analogdevicesinc/libiio/releases/tag/v0.26" target="_blank">libiio v0.26</a> on your system (Windows installers already bundle it)</p></li>
+<li><p>Download the <code class="docutils literal notranslate"><span class="pre">iio</span></code> variant of the package for your platform</p></li>
+</ol>
+<p>With IIO support, you can load profiles directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">adrv9002</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">adrv9002</span><span class="o">.</span><span class="n">adrv9002_config</span><span class="p">()</span>
+<span class="c1"># ... configure ...</span>
+<span class="n">adrv9002</span><span class="o">.</span><span class="n">generate_load_profile_iio</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">"ip:192.168.2.1"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="downloads.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Downloads</a>
+    <a href="examples.html" title="Next document (Alt+Shift+RightArrow)" class="next">Examples</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2025, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>

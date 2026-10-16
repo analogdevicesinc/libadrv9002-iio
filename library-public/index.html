@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="libadrv9002-iio is a software library for generating configuration profiles for the ADRV9002/3/4 family of RF transceivers. It provides programmatic C and Python interfaces equivalent to the Transceiver Evaluation Software (TES), compiled for multiple CPU architectures and operating systems." name="description" />
 
-    <title>ADRV9002 Transceiver Profile Generator &#8212; libadrv9002-iio v0.3.0</title>
+    <title>ADRV9002 Transceiver Profile Generator &#8212; libadrv9002-iio v0.3.1</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
     <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -16,7 +16,7 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3ee01567"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script async="async" src="_static/app.umd.js?v=daa30c51"></script>
+    <script async="async" src="_static/app.umd.js?v=048c1170"></script>
     <script src="_static/js/licensing.js?v=5b6de748"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -100,7 +100,7 @@
         <nav>
           <ul>
 <li><a class="reference internal" href="#">ADRV9002 Transceiver Profile Generator</a><ul>
-<li><a class="reference internal" href="#what-s-new-in-v0-3-0">What’s New in v0.3.0</a></li>
+<li><a class="reference internal" href="#what-s-new-in-v0-3-1">What’s New in v0.3.1</a></li>
 <li><a class="reference internal" href="#supported-platforms">Supported Platforms</a></li>
 <li><a class="reference internal" href="#limitations">Limitations</a></li>
 <li><a class="reference internal" href="#support">Support</a></li>
@@ -172,7 +172,7 @@ Content on this topic
 <p>This documentation involves three distinct, independently-versioned things — don’t
 confuse them:</p>
 <ul class="simple">
-<li><p><strong>libadrv9002-iio release version</strong> (e.g. <strong>v0.3.0</strong>) — this library’s own version,
+<li><p><strong>libadrv9002-iio release version</strong> (e.g. <strong>v0.3.1</strong>) — this library’s own version,
 used to organize this documentation site.</p></li>
 <li><p><strong>ADRV9002 Device Driver API version</strong> (e.g. <strong>68.16.2</strong>) — the transceiver API
 version a given library release supports.</p></li>
@@ -180,15 +180,14 @@ version a given library release supports.</p></li>
 unrelated version numbers.</p></li>
 </ul>
 </div>
-<section id="what-s-new-in-v0-3-0">
-<h2>What’s New in v0.3.0<a class="headerlink" href="#what-s-new-in-v0-3-0" title="Link to this heading"></a></h2>
+<section id="what-s-new-in-v0-3-1">
+<h2>What’s New in v0.3.1<a class="headerlink" href="#what-s-new-in-v0-3-1" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Support for API version <strong>68.16.2</strong></p></li>
-<li><p>Rx Port Impedance Control stream settings</p></li>
-<li><p>Built-in stream template files (no external resource directory needed)</p></li>
-<li><p>Debian packages for Ubuntu 22.04/24.04 (x86_64, arm64, armv7)</p></li>
-<li><p>Windows installer with CLI tool</p></li>
-<li><p>Python wheels for Linux and Windows</p></li>
+<li><p>Bare-metal (Cortex-M4F) package support</p></li>
+<li><p>Complete C/C++ API reference, now included in the public documentation</p></li>
+<li><p>Upgraded to libiio v0.26</p></li>
+<li><p>Hardened binaries: stripped debug symbols, no leaked build paths, and the public
+header is now included in every downloadable ZIP bundle</p></li>
 <li><p>All packages available via the <a class="reference internal" href="downloads.html"><span class="doc std std-doc">Downloads</span></a> page</p></li>
 </ul>
 </section>
@@ -211,7 +210,11 @@ unrelated version numbers.</p></li>
 <td><p>x86_64</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.exe</span></code> installer, <code class="docutils literal notranslate"><span class="pre">.whl</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Fedora 34+</p></td>
+<tr class="row-even"><td><p>Bare-metal</p></td>
+<td><p>Cortex-M4F</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.zip</span></code> (static libs)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fedora 34+</p></td>
 <td><p>x86_64</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.rpm</span></code></p></td>
 </tr>

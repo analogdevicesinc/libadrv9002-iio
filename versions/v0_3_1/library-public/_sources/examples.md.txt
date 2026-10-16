@@ -1,0 +1,73 @@
+# Examples
+
+This page provides working examples showing how to generate ADRV9002 profiles using the library. Each example creates a complete 2Rx/2Tx LTE 10 MHz configuration — a common starting point that you can modify for your application.
+
+The general workflow is:
+1. Create configuration structures for RX channels, TX channels, radio settings, and clocks
+2. Call `generate_profile()` to produce the profile JSON and stream binary
+3. Write the outputs to files or load them directly onto hardware
+
+## C Example
+
+A complete C example that configures a 2Rx/2Tx LTE 10 MHz profile:
+
+```{literalinclude} _static/example.c
+:language: c
+```
+
+### Compiling
+
+```bash
+gcc -o gen_profile example.c -ladrv9002-iio -ladrv9001-profile-gen -ladrv9001-stream-gen -ladrv9001-filter-designer
+```
+
+## Python Example
+
+The same configuration using the Python bindings:
+
+```{literalinclude} _static/example.py
+:language: python
+```
+
+## Loading Profiles to Hardware (IIO)
+
+If built with IIO support, you can generate and load a profile in one call:
+
+```python
+import adrv9002
+
+cfg = adrv9002.adrv9002_config()
+# ... configure cfg ...
+
+# Generate and load directly to hardware
+adrv9002.generate_load_profile_iio(cfg, "ip:192.168.2.1")
+```
+
+## Configuration Reference
+
+### Radio Modes
+
+| `adc_rate_mode` | Description |
+|-----------------|-------------|
+| 0 | Low Power |
+| 1 | Medium Performance |
+| 2 | High Performance |
+| 3 | Ultra High Performance |
+
+### Interface Options
+
+| Parameter | Values | Description |
+|-----------|--------|-------------|
+| `lvds` | True/False | LVDS (True) or CMOS (False) interface |
+| `ssi_lanes` | 1, 2, 4 | Number of SSI data lanes |
+| `ddr` | True/False | Double data rate |
+| `short_strobe` | True/False | Short strobe mode |
+| `fdd` | True/False | Frequency Division Duplex mode |
+
+### Clock Configuration
+
+| Parameter | Description |
+|-----------|-------------|
+| `device_clock_frequency_khz` | Device clock input (kHz) |
+| `clock_pll_high_performance_enable` | PLL high-perf mode |
+| `processor_clock_divider` | 1, 2, 4, 8, 16, 32, 64, 128, 256 |

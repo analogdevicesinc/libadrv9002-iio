@@ -1,6 +1,15 @@
 # Changelog
 
-## v0.3.0 (In Development)
+## v0.3.1
+
+### Improvements
+- Upgraded libiio dependency from v0.25 to v0.26
+- Bare-metal (Cortex-M4F) package support, built and smoke-tested under QEMU
+- Complete C/C++ API reference, now included in the public documentation
+- Stripped debug symbols and removed leaked build-tree paths from shipped shared libraries
+- Public header (`adrv9002_iio.h`) now included in every downloadable ZIP bundle, not just the `.deb`/installer
+
+## v0.3.0
 
 ### New Features
 - Support for ADRV9001 API version 68.16.2

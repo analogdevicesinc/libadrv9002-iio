@@ -7,7 +7,7 @@
 :::{tab-item} Ubuntu
 ```bash
 apt install git zip cmake build-essential xxd python3-pip python3-setuptools python3-wheel python3-dev
-# For IIO support (also build libiio v0.25 from source):
+# For IIO support (also build libiio v0.26 from source):
 apt install libavahi-common-dev libavahi-client-dev libaio-dev libusb-1.0-0-dev libxml2-dev
 ```
 :::
@@ -24,7 +24,7 @@ yum install -y git zip cmake make gcc gcc-c++ vim-common python3-pip python3-set
 - CMake (bundled with VS or standalone)
 - `7z.exe` on PATH
 - Inno Setup 6 (for installer generation)
-- Optionally: libiio v0.25 release ZIP for IIO support
+- Optionally: libiio v0.26 release ZIP for IIO support
 :::
 
 ::::
@@ -100,10 +100,10 @@ apply_updates.sh   →  Apply patch, copy deps, clone pinned sub-repos
 
 ## Building with IIO Support
 
-IIO support requires libiio v0.25. On Linux, build from source:
+IIO support requires libiio v0.26. On Linux, build from source:
 
 ```bash
-git clone -b v0.25 --single-branch --depth 1 https://github.com/analogdevicesinc/libiio.git
+git clone -b v0.26 --single-branch --depth 1 https://github.com/analogdevicesinc/libiio.git
 cd libiio
 cmake . -DHAVE_DNS_SD=OFF
 make && sudo make install
@@ -111,7 +111,7 @@ make && sudo make install
 
 Then configure with `-DENABLE_IIO=ON`.
 
-On Windows, download the [libiio v0.25 release ZIP](https://github.com/analogdevicesinc/libiio/releases/tag/v0.25) and pass:
+On Windows, download the [libiio v0.26 release ZIP](https://github.com/analogdevicesinc/libiio/releases/tag/v0.26) and pass:
 
 ```
 -DLIBIIO_LIBRARIES:FILEPATH="C:\deps\Windows-VS-2019-x64\libiio.lib"

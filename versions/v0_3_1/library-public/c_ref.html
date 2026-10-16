@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The C API provides direct access to the profile generation engine through a set of configuration structures and functions. Link against libadrv9002-iio and include adrv9002_iio.h to use these interfaces." name="description" />
+
+    <title>C/C++ API Reference &#8212; libadrv9002-iio v0.3.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3ee01567"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="_static/app.umd.js?v=048c1170"></script>
+    <script src="_static/js/licensing.js?v=5b6de748"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command Line Tool" href="cli.html" />
+    <link rel="prev" title="Python API Reference" href="python_ref.html" />
+   
+  
+  
+  
+  <meta name="repository" content="libadrv9002-iio">
+  <meta name="version" content="">
+  
+    <meta name="page_source_suffix" content=".md">
+  
+  
+  
+
+
+<style>
+  body {
+    
+  }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
+    }
+  }
+</style>
+  </head>
+  
+    <body>
+  
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <input type="checkbox" id="input-show-repotoc">
+
+  
+  <div class="search-area">
+    <form action="" method="get">
+      <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+      <button class="icon"></button>
+    </form>
+  </div>
+  
+
+  <header>
+    <div id="left">
+      <label id="show-sidebar" class="icon" for="input-show-toc" title="Show/hide index"></label>
+    </div>
+    <div id="right">
+      <span>
+        <a id="logo-org" href="https://developer.analog.com/" aria-label="Analog Devices Inc. landing page"></a>
+        <div class="vertical-divider"></div>
+        
+        <label id="show-repotoc" for="input-show-repotoc" title="Show/hide docs">Documentation</label>
+        
+        <a id="logo" href="index.html">
+          <div>libadrv9002-iio</div>
+        </a>
+      </span>
+      <span class="reverse">
+        <label id="show-localtoc" class="icon" for="input-show-localtoc" title="Show/hide contents"></label>
+      </span>
+    </div>
+  </header>
+
+
+  <div class="repotoc-tree overlay">
+    <root/>
+
+  </div>
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div class="header localtoc-header">
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">C/C++ API Reference</a><ul>
+<li><a class="reference internal" href="#structures">Structures</a><ul>
+<li><a class="reference internal" href="#_CPPv423rx_radio_channel_config"><code class="docutils literal notranslate"><span class="pre">rx_radio_channel_config</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config7enabledE"><code class="docutils literal notranslate"><span class="pre">enabled</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config25adc_high_performance_modeE"><code class="docutils literal notranslate"><span class="pre">adc_high_performance_mode</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config34frequency_offset_correction_enableE"><code class="docutils literal notranslate"><span class="pre">frequency_offset_correction_enable</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config24analog_filter_power_modeE"><code class="docutils literal notranslate"><span class="pre">analog_filter_power_mode</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config20analog_filter_biquadE"><code class="docutils literal notranslate"><span class="pre">analog_filter_biquad</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config26analog_filter_bandwidth_hzE"><code class="docutils literal notranslate"><span class="pre">analog_filter_bandwidth_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config20channel_bandwidth_hzE"><code class="docutils literal notranslate"><span class="pre">channel_bandwidth_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config14sample_rate_hzE"><code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config10nco_enableE"><code class="docutils literal notranslate"><span class="pre">nco_enable</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config16nco_frequency_hzE"><code class="docutils literal notranslate"><span class="pre">nco_frequency_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23rx_radio_channel_config7rf_portE"><code class="docutils literal notranslate"><span class="pre">rf_port</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv423tx_radio_channel_config"><code class="docutils literal notranslate"><span class="pre">tx_radio_channel_config</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config7enabledE"><code class="docutils literal notranslate"><span class="pre">enabled</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config14sample_rate_hzE"><code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config34frequency_offset_correction_enableE"><code class="docutils literal notranslate"><span class="pre">frequency_offset_correction_enable</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config24analog_filter_power_modeE"><code class="docutils literal notranslate"><span class="pre">analog_filter_power_mode</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config20channel_bandwidth_hzE"><code class="docutils literal notranslate"><span class="pre">channel_bandwidth_hz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config11orx_enabledE"><code class="docutils literal notranslate"><span class="pre">orx_enabled</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N23tx_radio_channel_config8elb_typeE"><code class="docutils literal notranslate"><span class="pre">elb_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv412radio_config"><code class="docutils literal notranslate"><span class="pre">radio_config</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N12radio_config9ssi_lanesE"><code class="docutils literal notranslate"><span class="pre">ssi_lanes</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config3ddrE"><code class="docutils literal notranslate"><span class="pre">ddr</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config12short_strobeE"><code class="docutils literal notranslate"><span class="pre">short_strobe</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config4lvdsE"><code class="docutils literal notranslate"><span class="pre">lvds</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config13adc_rate_modeE"><code class="docutils literal notranslate"><span class="pre">adc_rate_mode</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config3fddE"><code class="docutils literal notranslate"><span class="pre">fdd</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config9rx_configE"><code class="docutils literal notranslate"><span class="pre">rx_config</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12radio_config9tx_configE"><code class="docutils literal notranslate"><span class="pre">tx_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv412clock_config"><code class="docutils literal notranslate"><span class="pre">clock_config</span></code></a><ul>
+<li><a class="reference internal" href="#_CPPv4N12clock_config26device_clock_frequency_khzE"><code class="docutils literal notranslate"><span class="pre">device_clock_frequency_khz</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12clock_config33clock_pll_high_performance_enableE"><code class="docutils literal notranslate"><span class="pre">clock_pll_high_performance_enable</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12clock_config20clock_pll_power_modeE"><code class="docutils literal notranslate"><span class="pre">clock_pll_power_mode</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12clock_config23processor_clock_dividerE"><code class="docutils literal notranslate"><span class="pre">processor_clock_divider</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#_CPPv415adrv9002_config"><code class="docutils literal notranslate"><span class="pre">adrv9002_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv425adrv9002_generate_profileP15adrv9002_configPPcP6size_tPPcP6size_t"><code class="docutils literal notranslate"><span class="pre">adrv9002_generate_profile()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv434adrv9002_generate_load_profile_iioP15adrv9002_configP10iio_device"><code class="docutils literal notranslate"><span class="pre">adrv9002_generate_load_profile_iio()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv427get_message_from_error_codei"><code class="docutils literal notranslate"><span class="pre">get_message_from_error_code()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv415get_api_versionv"><code class="docutils literal notranslate"><span class="pre">get_api_version()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv431adrv9002_get_interface_mode_iioP10iio_devicePc"><code class="docutils literal notranslate"><span class="pre">adrv9002_get_interface_mode_iio()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+    <a id="no-logo" href="index.html">
+      libadrv9002-iio
+    </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root/>
+
+</div>
+<div class="toc-tree">
+  <p class="caption" role="heading">
+  <span class="caption-text">User Guide</span>
+</p>
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_ref.html">Python API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">C/C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Tool</a></li>
+</ul>
+
+
+</div>
+        </div>
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body-header">
+  <nav class="breadcrumb empty"><ol></ol></nav>
+</div>
+          <div class="body" role="main">
+            
+  <section id="c-c-api-reference">
+<span id="c-target"></span><h1>C/C++ API Reference<a class="headerlink" href="#c-c-api-reference" title="Link to this heading"></a></h1>
+<p>The C API provides direct access to the profile generation engine through a set of configuration structures and functions. Link against <code class="docutils literal notranslate"><span class="pre">libadrv9002-iio</span></code> and include <code class="docutils literal notranslate"><span class="pre">adrv9002_iio.h</span></code> to use these interfaces.</p>
+<section id="structures">
+<h2>Structures<a class="headerlink" href="#structures" title="Link to this heading"></a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423rx_radio_channel_config">
+<span id="_CPPv323rx_radio_channel_config"></span><span id="_CPPv223rx_radio_channel_config"></span><span id="rx_radio_channel_config"></span><span class="target" id="structrx__radio__channel__config"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_radio_channel_config</span></span></span><a class="headerlink" href="#_CPPv423rx_radio_channel_config" title="Link to this definition"></a><br /></dt>
+<dd><p>RX channel configuration. </p>
+<p>A structure containing the configuration for a single RX channel </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config7enabledE">
+<span id="_CPPv3N23rx_radio_channel_config7enabledE"></span><span id="_CPPv2N23rx_radio_channel_config7enabledE"></span><span id="rx_radio_channel_config::enabled__b"></span><span class="target" id="structrx__radio__channel__config_1abd859f9d07bef293c383345372fe4712"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config7enabledE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable channel </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config25adc_high_performance_modeE">
+<span id="_CPPv3N23rx_radio_channel_config25adc_high_performance_modeE"></span><span id="_CPPv2N23rx_radio_channel_config25adc_high_performance_modeE"></span><span id="rx_radio_channel_config::adc_high_performance_mode__b"></span><span class="target" id="structrx__radio__channel__config_1a096dcdf294eafc9445d4f9b9234a5c74"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adc_high_performance_mode</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config25adc_high_performance_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable high performance ADC, otherwise use low-power ADC </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config34frequency_offset_correction_enableE">
+<span id="_CPPv3N23rx_radio_channel_config34frequency_offset_correction_enableE"></span><span id="_CPPv2N23rx_radio_channel_config34frequency_offset_correction_enableE"></span><span id="rx_radio_channel_config::frequency_offset_correction_enable__b"></span><span class="target" id="structrx__radio__channel__config_1acb5ddd44efd804c36f90cf2d09ef21a0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frequency_offset_correction_enable</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config34frequency_offset_correction_enableE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable ADC frequency offset correction </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config24analog_filter_power_modeE">
+<span id="_CPPv3N23rx_radio_channel_config24analog_filter_power_modeE"></span><span id="_CPPv2N23rx_radio_channel_config24analog_filter_power_modeE"></span><span id="rx_radio_channel_config::analog_filter_power_mode__uint8_t"></span><span class="target" id="structrx__radio__channel__config_1a38246f7e945ea3b81ea5c96954eabf9f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">analog_filter_power_mode</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config24analog_filter_power_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Power mode of front-end analog filter Options are: 0 - Low power 1 - Medium power 2 - High power </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config20analog_filter_biquadE">
+<span id="_CPPv3N23rx_radio_channel_config20analog_filter_biquadE"></span><span id="_CPPv2N23rx_radio_channel_config20analog_filter_biquadE"></span><span id="rx_radio_channel_config::analog_filter_biquad__b"></span><span class="target" id="structrx__radio__channel__config_1ac18c17a5bb955c673d274456877c25b5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">analog_filter_biquad</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config20analog_filter_biquadE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use second order (Biquad) analog filter, otherwise first order TIA is used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config26analog_filter_bandwidth_hzE">
+<span id="_CPPv3N23rx_radio_channel_config26analog_filter_bandwidth_hzE"></span><span id="_CPPv2N23rx_radio_channel_config26analog_filter_bandwidth_hzE"></span><span id="rx_radio_channel_config::analog_filter_bandwidth_hz__uint32_t"></span><span class="target" id="structrx__radio__channel__config_1a6e08c3657ed7fb4d65510c1e4dbe771f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">analog_filter_bandwidth_hz</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config26analog_filter_bandwidth_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>Front-end analog filter 1dB (Biquad) or 3 dB (TIA) bandwidth in Hz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config20channel_bandwidth_hzE">
+<span id="_CPPv3N23rx_radio_channel_config20channel_bandwidth_hzE"></span><span id="_CPPv2N23rx_radio_channel_config20channel_bandwidth_hzE"></span><span id="rx_radio_channel_config::channel_bandwidth_hz__uint32_t"></span><span class="target" id="structrx__radio__channel__config_1af780d618ab487165e9f0284591ce55a1"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel_bandwidth_hz</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config20channel_bandwidth_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>Channel bandwidth of interest at ADC in Hz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config14sample_rate_hzE">
+<span id="_CPPv3N23rx_radio_channel_config14sample_rate_hzE"></span><span id="_CPPv2N23rx_radio_channel_config14sample_rate_hzE"></span><span id="rx_radio_channel_config::sample_rate_hz__uint32_t"></span><span class="target" id="structrx__radio__channel__config_1a8de706464e497accdf8b420e12bda009"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample_rate_hz</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config14sample_rate_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>RX channel sample rate at digital interface </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config10nco_enableE">
+<span id="_CPPv3N23rx_radio_channel_config10nco_enableE"></span><span id="_CPPv2N23rx_radio_channel_config10nco_enableE"></span><span id="rx_radio_channel_config::nco_enable__b"></span><span class="target" id="structrx__radio__channel__config_1a05e82ccf372414c8323ba42d22f6e3ac"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nco_enable</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config10nco_enableE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable NCO to perform frequency translation </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config16nco_frequency_hzE">
+<span id="_CPPv3N23rx_radio_channel_config16nco_frequency_hzE"></span><span id="_CPPv2N23rx_radio_channel_config16nco_frequency_hzE"></span><span id="rx_radio_channel_config::nco_frequency_hz__int32_t"></span><span class="target" id="structrx__radio__channel__config_1a982663542e44fbbf998dc310e4ff7d02"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nco_frequency_hz</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config16nco_frequency_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>NCO frequency in Hz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23rx_radio_channel_config7rf_portE">
+<span id="_CPPv3N23rx_radio_channel_config7rf_portE"></span><span id="_CPPv2N23rx_radio_channel_config7rf_portE"></span><span id="rx_radio_channel_config::rf_port__uint8_t"></span><span class="target" id="structrx__radio__channel__config_1a2d085a316ea111f253aeacac2dfeb3e9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rf_port</span></span></span><a class="headerlink" href="#_CPPv4N23rx_radio_channel_config7rf_portE" title="Link to this definition"></a><br /></dt>
+<dd><p>RF port source used for channel Options are: 0 - RX_A 1 - RX_B </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423tx_radio_channel_config">
+<span id="_CPPv323tx_radio_channel_config"></span><span id="_CPPv223tx_radio_channel_config"></span><span id="tx_radio_channel_config"></span><span class="target" id="structtx__radio__channel__config"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tx_radio_channel_config</span></span></span><a class="headerlink" href="#_CPPv423tx_radio_channel_config" title="Link to this definition"></a><br /></dt>
+<dd><p>TX channel configuration. </p>
+<p>A structure containing the configuration for a single TX channel </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config7enabledE">
+<span id="_CPPv3N23tx_radio_channel_config7enabledE"></span><span id="_CPPv2N23tx_radio_channel_config7enabledE"></span><span id="tx_radio_channel_config::enabled__b"></span><span class="target" id="structtx__radio__channel__config_1a77f7045bb76329a7480d777f598ed793"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config7enabledE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable channel </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config14sample_rate_hzE">
+<span id="_CPPv3N23tx_radio_channel_config14sample_rate_hzE"></span><span id="_CPPv2N23tx_radio_channel_config14sample_rate_hzE"></span><span id="tx_radio_channel_config::sample_rate_hz__uint32_t"></span><span class="target" id="structtx__radio__channel__config_1a4627ea72c96bf944b67bc2977d5df35b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sample_rate_hz</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config14sample_rate_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data rate at digital interface in Hz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config34frequency_offset_correction_enableE">
+<span id="_CPPv3N23tx_radio_channel_config34frequency_offset_correction_enableE"></span><span id="_CPPv2N23tx_radio_channel_config34frequency_offset_correction_enableE"></span><span id="tx_radio_channel_config::frequency_offset_correction_enable__b"></span><span class="target" id="structtx__radio__channel__config_1a42be0232fb79b8922c3cba18f98958d8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frequency_offset_correction_enable</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config34frequency_offset_correction_enableE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable DAC frequency offset correction </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config24analog_filter_power_modeE">
+<span id="_CPPv3N23tx_radio_channel_config24analog_filter_power_modeE"></span><span id="_CPPv2N23tx_radio_channel_config24analog_filter_power_modeE"></span><span id="tx_radio_channel_config::analog_filter_power_mode__uint8_t"></span><span class="target" id="structtx__radio__channel__config_1ad4557a9b33253631d779bb62752ade5e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">analog_filter_power_mode</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config24analog_filter_power_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Power mode of front-end analog filter Options are: 0 - Low power 1 - Medium power 2 - High power </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config20channel_bandwidth_hzE">
+<span id="_CPPv3N23tx_radio_channel_config20channel_bandwidth_hzE"></span><span id="_CPPv2N23tx_radio_channel_config20channel_bandwidth_hzE"></span><span id="tx_radio_channel_config::channel_bandwidth_hz__uint32_t"></span><span class="target" id="structtx__radio__channel__config_1a61c873eb711bd1b391ffeb904f46ce6c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel_bandwidth_hz</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config20channel_bandwidth_hzE" title="Link to this definition"></a><br /></dt>
+<dd><p>Channel bandwidth of interest at DAC in Hz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config11orx_enabledE">
+<span id="_CPPv3N23tx_radio_channel_config11orx_enabledE"></span><span id="_CPPv2N23tx_radio_channel_config11orx_enabledE"></span><span id="tx_radio_channel_config::orx_enabled__b"></span><span class="target" id="structtx__radio__channel__config_1a7628c4e989ff0da52f27918d5216bbb1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">orx_enabled</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config11orx_enabledE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable observation path </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23tx_radio_channel_config8elb_typeE">
+<span id="_CPPv3N23tx_radio_channel_config8elb_typeE"></span><span id="_CPPv2N23tx_radio_channel_config8elb_typeE"></span><span id="tx_radio_channel_config::elb_type__uint8_t"></span><span class="target" id="structtx__radio__channel__config_1a472964813816dea9af22e8ad77740cef"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">elb_type</span></span></span><a class="headerlink" href="#_CPPv4N23tx_radio_channel_config8elb_typeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Set external loopback mode. Options are: 0 - Disabled 1 - Before PA 2 - After PA </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412radio_config">
+<span id="_CPPv312radio_config"></span><span id="_CPPv212radio_config"></span><span id="radio_config"></span><span class="target" id="structradio__config"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">radio_config</span></span></span><a class="headerlink" href="#_CPPv412radio_config" title="Link to this definition"></a><br /></dt>
+<dd><p>Device configuration. </p>
+<p>A structure containing the configuration for the top-level device </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config9ssi_lanesE">
+<span id="_CPPv3N12radio_config9ssi_lanesE"></span><span id="_CPPv2N12radio_config9ssi_lanesE"></span><span id="radio_config::ssi_lanes__uint8_t"></span><span class="target" id="structradio__config_1a8c9df3f718eb2229007ac09e9702e27b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ssi_lanes</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config9ssi_lanesE" title="Link to this definition"></a><br /></dt>
+<dd><p>SSI lanes to use Valid cases: 1 (CMOS/LVDS) 2 (LVDS) 4 (CMOS) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config3ddrE">
+<span id="_CPPv3N12radio_config3ddrE"></span><span id="_CPPv2N12radio_config3ddrE"></span><span id="radio_config::ddr__b"></span><span class="target" id="structradio__config_1acae54508fc71c307348ec68578d63fb6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ddr</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config3ddrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use DDR mode at digital interface, false will use SDR </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config12short_strobeE">
+<span id="_CPPv3N12radio_config12short_strobeE"></span><span id="_CPPv2N12radio_config12short_strobeE"></span><span id="radio_config::short_strobe__b"></span><span class="target" id="structradio__config_1aeec4601348c2ab965d0325f6323457d4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">short_strobe</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config12short_strobeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use short strobe mode at digital interface, false will use long strobe </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config4lvdsE">
+<span id="_CPPv3N12radio_config4lvdsE"></span><span id="_CPPv2N12radio_config4lvdsE"></span><span id="radio_config::lvds__b"></span><span class="target" id="structradio__config_1a327a36a6798c665702e5ef8630febb4b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lvds</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config4lvdsE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use LVDS mode at digital interface, false will use CMOS </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config13adc_rate_modeE">
+<span id="_CPPv3N12radio_config13adc_rate_modeE"></span><span id="_CPPv2N12radio_config13adc_rate_modeE"></span><span id="radio_config::adc_rate_mode__uint8_t"></span><span class="target" id="structradio__config_1a30a99a102ad2486d41e1ffac7b3414cc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adc_rate_mode</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config13adc_rate_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>ADC clock rate mode select. Options are: 1 = LOW 2 = MEDIUM 3 = HIGH </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config3fddE">
+<span id="_CPPv3N12radio_config3fddE"></span><span id="_CPPv2N12radio_config3fddE"></span><span id="radio_config::fdd__b"></span><span class="target" id="structradio__config_1a9d319995556a5e1fa66e2600c32b76f5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fdd</span></span></span><a class="headerlink" href="#_CPPv4N12radio_config3fddE" title="Link to this definition"></a><br /></dt>
+<dd><p>Use FDD duplex mode, false will use TDD </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config9rx_configE">
+<span id="_CPPv3N12radio_config9rx_configE"></span><span id="_CPPv2N12radio_config9rx_configE"></span><span id="radio_config::rx_config__rx_radio_channel_configA"></span><span class="target" id="structradio__config_1a39a2230d2ff5a36706e74b2cdeae3fa4"></span><a class="reference internal" href="#_CPPv423rx_radio_channel_config" title="rx_radio_channel_config"><span class="n"><span class="pre">rx_radio_channel_config</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_config</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12radio_config9rx_configE" title="Link to this definition"></a><br /></dt>
+<dd><p>Channel configurations for RX1 and RX2 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12radio_config9tx_configE">
+<span id="_CPPv3N12radio_config9tx_configE"></span><span id="_CPPv2N12radio_config9tx_configE"></span><span id="radio_config::tx_config__tx_radio_channel_configA"></span><span class="target" id="structradio__config_1a466cc4d47fcccf4956a8560c95cd143e"></span><a class="reference internal" href="#_CPPv423tx_radio_channel_config" title="tx_radio_channel_config"><span class="n"><span class="pre">tx_radio_channel_config</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tx_config</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12radio_config9tx_configE" title="Link to this definition"></a><br /></dt>
+<dd><p>Channel configurations for TX1 and TX2 </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412clock_config">
+<span id="_CPPv312clock_config"></span><span id="_CPPv212clock_config"></span><span id="clock_config"></span><span class="target" id="structclock__config"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clock_config</span></span></span><a class="headerlink" href="#_CPPv412clock_config" title="Link to this definition"></a><br /></dt>
+<dd><p>Clock configuration. </p>
+<p>A structure containing the configuration for the device clock </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12clock_config26device_clock_frequency_khzE">
+<span id="_CPPv3N12clock_config26device_clock_frequency_khzE"></span><span id="_CPPv2N12clock_config26device_clock_frequency_khzE"></span><span id="clock_config::device_clock_frequency_khz__uint32_t"></span><span class="target" id="structclock__config_1a43415e0e2bb372467f3df0cfea538fe9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device_clock_frequency_khz</span></span></span><a class="headerlink" href="#_CPPv4N12clock_config26device_clock_frequency_khzE" title="Link to this definition"></a><br /></dt>
+<dd><p>Device clock frequency in kHz </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12clock_config33clock_pll_high_performance_enableE">
+<span id="_CPPv3N12clock_config33clock_pll_high_performance_enableE"></span><span id="_CPPv2N12clock_config33clock_pll_high_performance_enableE"></span><span id="clock_config::clock_pll_high_performance_enable__b"></span><span class="target" id="structclock__config_1a692842ea8a65564264e698f3655dbc70"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clock_pll_high_performance_enable</span></span></span><a class="headerlink" href="#_CPPv4N12clock_config33clock_pll_high_performance_enableE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable high performance PLL mode, otherwise low-power mode is used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12clock_config20clock_pll_power_modeE">
+<span id="_CPPv3N12clock_config20clock_pll_power_modeE"></span><span id="_CPPv2N12clock_config20clock_pll_power_modeE"></span><span id="clock_config::clock_pll_power_mode__uint8_t"></span><span class="target" id="structclock__config_1ac41aa87a047061b79a69ce63e231522c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clock_pll_power_mode</span></span></span><a class="headerlink" href="#_CPPv4N12clock_config20clock_pll_power_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>PLL power mode. Options: 0 = low power 1 = medium performance 2 = high performance </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12clock_config23processor_clock_dividerE">
+<span id="_CPPv3N12clock_config23processor_clock_dividerE"></span><span id="_CPPv2N12clock_config23processor_clock_dividerE"></span><span id="clock_config::processor_clock_divider__uint8_t"></span><span class="target" id="structclock__config_1a677ff6c59e277231dd493ff5b609989c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processor_clock_divider</span></span></span><a class="headerlink" href="#_CPPv4N12clock_config23processor_clock_dividerE" title="Link to this definition"></a><br /></dt>
+<dd><p>Processor clock divider. Valid values are 1, 2, 4, 8, 16, 32, 64, 128, 256 </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415adrv9002_config">
+<span id="_CPPv315adrv9002_config"></span><span id="_CPPv215adrv9002_config"></span><span id="adrv9002_config"></span><span class="target" id="structadrv9002__config"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adrv9002_config</span></span></span><a class="headerlink" href="#_CPPv415adrv9002_config" title="Link to this definition"></a><br /></dt>
+<dd><p>Top-level configuration. </p>
+<p>A structure containing the configuration for the top-level device </p>
+</dd></dl>
+
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425adrv9002_generate_profileP15adrv9002_configPPcP6size_tPPcP6size_t">
+<span id="_CPPv325adrv9002_generate_profileP15adrv9002_configPPcP6size_tPPcP6size_t"></span><span id="_CPPv225adrv9002_generate_profileP15adrv9002_configPPcP6size_tPPcP6size_t"></span><span id="adrv9002_generate_profile__adrv9002_configP.cPP.sP.cPP.sP"></span><span class="target" id="group__TopLevel_1gad4473f664f29c0ef3b5f849a24e20b46"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adrv9002_generate_profile</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv415adrv9002_config" title="adrv9002_config"><span class="n"><span class="pre">adrv9002_config</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">cfg</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">profile</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">profile_num_bytes</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream_image</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">stream_image_num_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425adrv9002_generate_profileP15adrv9002_configPPcP6size_tPPcP6size_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Generate profile from configuration. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> – Nested struct of device configuration for shared and individual channels </p></li>
+<li><p><strong>profile</strong> – Resulting json profile </p></li>
+<li><p><strong>profile_num_bytes</strong> – Number of bytes in profile array </p></li>
+<li><p><strong>stream_image</strong> – Stream image for ARM stream processor </p></li>
+<li><p><strong>stream_image_num_bytes</strong> – Number of bytes in stream image array </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>On success, 0 is returned </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On error, a negative errno code is returned </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434adrv9002_generate_load_profile_iioP15adrv9002_configP10iio_device">
+<span id="_CPPv334adrv9002_generate_load_profile_iioP15adrv9002_configP10iio_device"></span><span id="_CPPv234adrv9002_generate_load_profile_iioP15adrv9002_configP10iio_device"></span><span id="adrv9002_generate_load_profile_iio__adrv9002_configP.iio_deviceP"></span><span class="target" id="group__TopLevel_1ga75b57a68d341a12bae9bae87c5829cd2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adrv9002_generate_load_profile_iio</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv415adrv9002_config" title="adrv9002_config"><span class="n"><span class="pre">adrv9002_config</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ac</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">iio_device</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434adrv9002_generate_load_profile_iioP15adrv9002_configP10iio_device" title="Link to this definition"></a><br /></dt>
+<dd><p>Generate profile from configuration and load it to device with IIO driver. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ac</strong> – Nested struct of device configuration for shared and individual channels </p></li>
+<li><p><strong>dev</strong> – A pointer to the iio_device structure of the adrv9002-phy </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>On success, 0 is returned </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On error, a negative errno code is returned </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427get_message_from_error_codei">
+<span id="_CPPv327get_message_from_error_codei"></span><span id="_CPPv227get_message_from_error_codei"></span><span id="get_message_from_error_code__i"></span><span class="target" id="group__TopLevel_1ga3c181be0de856edfb3009ea3b3be63c1"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_message_from_error_code</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">error_code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427get_message_from_error_codei" title="Link to this definition"></a><br /></dt>
+<dd><p>Get error message from error codes. This also includes profile specific codes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>error_code</strong> – Error code to lookup and return message for </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>On code found, message is returned </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On code not found, an empty string is returned </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415get_api_versionv">
+<span id="_CPPv315get_api_versionv"></span><span id="_CPPv215get_api_versionv"></span><span id="get_api_version"></span><span class="target" id="group__TopLevel_1gaeb2f72373efe8ee4aeba38a93d7d0c53"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_api_version</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415get_api_versionv" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the api version. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>profile gen api version as a string </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431adrv9002_get_interface_mode_iioP10iio_devicePc">
+<span id="_CPPv331adrv9002_get_interface_mode_iioP10iio_devicePc"></span><span id="_CPPv231adrv9002_get_interface_mode_iioP10iio_devicePc"></span><span id="adrv9002_get_interface_mode_iio__iio_deviceP.cP"></span><span class="target" id="group__TopLevel_1gaf43ab88d3baa46c239931fd0fbc6ec39"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adrv9002_get_interface_mode_iio</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">iio_device</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dev</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431adrv9002_get_interface_mode_iioP10iio_devicePc" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the interface mode of the device. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – A pointer to the iio_device structure of the adrv9002-phy </p></li>
+<li><p><strong>mode</strong> – 4 character string containing the interface mode. (Malloc before passing) </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>On success, 0 is returned </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On error, a negative errno code is returned </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+              <div class="related">
+                &nbsp;
+    <a href="python_ref.html" title="Previous document (Alt+Shift+LeftArrow)" class="prev">Python API Reference</a>
+    <a href="cli.html" title="Next document (Alt+Shift+RightArrow)" class="next">Command Line Tool</a>
+              </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+    <footer>
+      &#169;2025, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
+</html>
