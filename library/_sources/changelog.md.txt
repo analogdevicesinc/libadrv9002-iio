@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.4.0
+
+### New Features
+- Python wheels for Python 3.11, 3.12, 3.13 and 3.14 on Linux x86_64, aarch64, armv7 and Windows x86_64
+- Dual libiio v0.26 / v1.0.0 support in libadrv9002-iio
+
+### Breaking Changes
+- Python 3.10 wheels are no longer built
+
 ## v0.3.1
 
 ### Improvements

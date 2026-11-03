@@ -1,0 +1,53 @@
+# Building from Source
+
+This page covers building libadrv9002-iio from source. This is only needed for development or if pre-built packages are not available for your platform.
+
+## Prerequisites
+
+::::{tab-set}
+:::{tab-item} Ubuntu/Debian
+```bash
+sudo apt install cmake build-essential git xxd python3-dev
+# For IIO support:
+sudo apt install libavahi-common-dev libavahi-client-dev libaio-dev libusb-1.0-0-dev libxml2-dev
+```
+:::
+:::{tab-item} Windows
+- Visual Studio 2019/2022 Build Tools (C++ workload)
+- CMake 3.16+
+- Git for Windows
+:::
+::::
+
+## Build Steps
+
+```bash
+git clone https://github.com/adi-innersource/cse-navassa-pg-library.git
+cd cse-navassa-pg-library/v68.16.2
+bash apply_updates.sh
+cd navassa-profile-gen
+mkdir build && cd build
+cmake .. -DENABLE_IIO=OFF -DENABLE_TOOLS=ON -DADRV9002_API_VERSION=68.16.2
+make -j$(nproc)
+sudo make install
+```
+
+## CMake Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `ENABLE_IIO` | OFF | Enable libiio integration |
+| `ENABLE_TOOLS` | OFF | Build the CLI tool |
+| `ENABLE_TESTS` | OFF | Build unit tests |
+| `DADRV9002_API_VERSION` | — | API version string (e.g., 68.16.2) |
+
+## IIO Support
+
+To use the `adrv9002_generate_load_profile_iio()` function, you need libiio v0.26 installed:
+
+```bash
+git clone -b v0.26 https://github.com/analogdevicesinc/libiio.git
+cd libiio && cmake . && make -j$(nproc) && sudo make install
+```
+
+Then rebuild with `-DENABLE_IIO=ON`.

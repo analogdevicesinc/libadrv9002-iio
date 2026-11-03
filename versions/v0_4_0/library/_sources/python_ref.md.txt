@@ -1,0 +1,134 @@
+(Python-target)=
+# Python API Reference
+
+The Python bindings provide a high-level interface to the libadrv9002-iio profile generator. Configuration is done through structured objects that mirror the underlying C API, and profile generation is a single function call that returns the profile JSON and stream binary as byte strings.
+
+## Installation
+
+```bash
+pip install adrv9002
+```
+
+## Configuration Objects
+
+### `adrv9002.rx_radio_channel_config`
+
+RX channel configuration structure.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `enabled` | bool | Enable RX channel |
+| `adc_high_performance_mode` | bool | Enable ADC high performance mode |
+| `frequency_offset_correction_enable` | bool | Enable frequency offset correction |
+| `analog_filter_power_mode` | int | Analog filter power mode (0=low, 1=med, 2=high) |
+| `analog_filter_biquad` | bool | Enable analog filter biquad |
+| `analog_filter_bandwidth_hz` | int | Analog filter bandwidth in Hz |
+| `channel_bandwidth_hz` | int | Channel bandwidth in Hz |
+| `sample_rate_hz` | int | Sample rate in Hz |
+| `nco_enable` | bool | Enable NCO |
+| `nco_frequency_hz` | int | NCO frequency in Hz |
+| `rf_port` | int | RF port (0=RX-A, 1=RX-B) |
+
+### `adrv9002.tx_radio_channel_config`
+
+TX channel configuration structure.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `enabled` | bool | Enable TX channel |
+| `sample_rate_hz` | int | Sample rate in Hz |
+| `frequency_offset_correction_enable` | bool | Enable frequency offset correction |
+| `analog_filter_power_mode` | int | Analog filter power mode (0=low, 1=med, 2=high) |
+| `channel_bandwidth_hz` | int | Channel bandwidth in Hz |
+| `orx_enabled` | bool | Enable observation receiver |
+| `elb_type` | int | External loopback type |
+
+### `adrv9002.radio_config`
+
+Radio configuration structure containing SSI interface settings and channel configs.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `ssi_lanes` | int | Number of SSI lanes (1, 2, or 4) |
+| `ddr` | bool | Enable double data rate |
+| `short_strobe` | bool | Enable short strobe mode |
+| `lvds` | bool | LVDS (True) or CMOS (False) interface |
+| `adc_rate_mode` | int | ADC rate mode (0=LP, 1=MP, 2=HP, 3=UHP) |
+| `fdd` | bool | Frequency Division Duplex mode |
+| `rx_config` | list | Array of 2 `rx_radio_channel_config` |
+| `tx_config` | list | Array of 2 `tx_radio_channel_config` |
+
+### `adrv9002.clock_config`
+
+Clock configuration structure.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `device_clock_frequency_khz` | int | Device clock input frequency (kHz) |
+| `device_clock_output_enable` | bool | Enable device clock output |
+| `device_clock_output_divider` | int | Device clock output divider |
+| `clock_pll_high_performance_enable` | bool | PLL high performance mode |
+| `clock_pll_power_mode` | int | Clock PLL power mode |
+| `processor_clock_divider` | int | Processor clock divider (1-256, powers of 2) |
+
+### `adrv9002.adrv9002_config`
+
+Top-level configuration structure combining radio and clock settings.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `radio_cfg` | `radio_config` | Radio configuration |
+| `clk_cfg` | `clock_config` | Clock configuration |
+
+## Functions
+
+### `adrv9002.generate_profile(cfg)`
+
+Generate a profile and stream image from configuration.
+
+**Parameters:**
+- `cfg` (`adrv9002_config`) — Fully populated configuration structure
+
+**Returns:**
+- `tuple[bytes, bytes]` — `(profile_json, stream_image)` where:
+  - `profile_json`: JSON profile as bytes (UTF-8 encoded)
+  - `stream_image`: Binary stream image (may be empty if stream resources unavailable)
+
+**Raises:**
+- `OSError` — If profile generation fails (check `errno` for error code)
+
+**Example:**
+```python
+import adrv9002
+
+cfg = adrv9002.adrv9002_config()
+# ... populate cfg ...
+profile_json, stream_bin = adrv9002.generate_profile(cfg)
+```
+
+### `adrv9002.generate_load_profile_iio(cfg, uri)`
+
+Generate a profile and load it directly onto hardware via IIO.
+
+:::{note}
+Only available when the library is built with IIO support.
+:::
+
+**Parameters:**
+- `cfg` (`adrv9002_config`) — Fully populated configuration structure
+- `uri` (`str`) — IIO context URI (e.g., `"ip:192.168.2.1"`)
+
+**Returns:**
+- `None`
+
+**Raises:**
+- `OSError` — If generation or loading fails
+
+**Example:**
+```python
+import adrv9002
+
+cfg = adrv9002.adrv9002_config()
+# ... populate cfg ...
+adrv9002.generate_load_profile_iio(cfg, "ip:192.168.2.1")
+```

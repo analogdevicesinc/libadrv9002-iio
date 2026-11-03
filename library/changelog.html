@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content="Upgraded libiio dependency from v0.25 to v0.26" name="description" />
+<meta content="Python wheels for Python 3.11, 3.12, 3.13 and 3.14 on Linux x86_64, aarch64, armv7 and Windows x86_64" name="description" />
 
-    <title>Changelog &#8212; libadrv9002-iio v0.3.1 (Internal)</title>
+    <title>Changelog &#8212; libadrv9002-iio v0.4.0 (Internal)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=b1d7a81a" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=a3ee7af8" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
@@ -100,14 +100,19 @@
         <nav>
           <ul>
 <li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#v0-4-0">v0.4.0</a><ul>
+<li><a class="reference internal" href="#new-features">New Features</a></li>
+<li><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#v0-3-1">v0.3.1</a><ul>
 <li><a class="reference internal" href="#improvements">Improvements</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-3-0">v0.3.0</a><ul>
-<li><a class="reference internal" href="#new-features">New Features</a></li>
-<li><a class="reference internal" href="#id1">Improvements</a></li>
-<li><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
+<li><a class="reference internal" href="#id1">New Features</a></li>
+<li><a class="reference internal" href="#id2">Improvements</a></li>
+<li><a class="reference internal" href="#id3">Breaking Changes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v0-2-0">v0.2.0</a></li>
@@ -174,6 +179,22 @@ Content on this topic
             
   <section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<section id="v0-4-0">
+<h2>v0.4.0<a class="headerlink" href="#v0-4-0" title="Link to this heading"></a></h2>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python wheels for Python 3.11, 3.12, 3.13 and 3.14 on Linux x86_64, aarch64, armv7 and Windows x86_64</p></li>
+<li><p>Dual libiio v0.26 / v1.0.0 support in libadrv9002-iio</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python 3.10 wheels are no longer built</p></li>
+</ul>
+</section>
+</section>
 <section id="v0-3-1">
 <h2>v0.3.1<a class="headerlink" href="#v0-3-1" title="Link to this heading"></a></h2>
 <section id="improvements">
@@ -189,8 +210,8 @@ Content on this topic
 </section>
 <section id="v0-3-0">
 <h2>v0.3.0<a class="headerlink" href="#v0-3-0" title="Link to this heading"></a></h2>
-<section id="new-features">
-<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>New Features<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Support for ADRV9001 API version 68.16.2</p></li>
 <li><p>Rx Port Impedance Control stream settings (<code class="docutils literal notranslate"><span class="pre">rx1PortImpedanceControl</span></code>, <code class="docutils literal notranslate"><span class="pre">rx2PortImpedanceControl</span></code>)</p></li>
@@ -201,16 +222,16 @@ Content on this topic
 <li><p>All packages published to Cloudsmith</p></li>
 </ul>
 </section>
-<section id="id1">
-<h3>Improvements<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>Improvements<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improved CI/CD pipeline with automated testing across platforms</p></li>
 <li><p>Profile generation tests validate output against reference profiles</p></li>
 <li><p>Cross-platform builds (Linux x86_64/arm64/armv7, Windows x86_64)</p></li>
 </ul>
 </section>
-<section id="breaking-changes">
-<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Breaking Changes<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Minimum supported API version is now 68.10.1</p></li>
 <li><p>Stream binary output may differ from v0.2.0 due to PortImpedanceControl fields</p></li>
