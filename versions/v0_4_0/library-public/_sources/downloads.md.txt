@@ -89,9 +89,12 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-iio-OFF-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-iio-OFF-v0.26-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.16.2-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.16.2-iio-OFF-windows.zip</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-iio-OFF-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-iio-OFF-v0.26-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.16.2-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.16.2-iio-OFF-windows.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu</p></td>
@@ -101,8 +104,11 @@ By downloading and installing it you agree to its
 <td><p>6.8.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu24-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu24-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu24-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu24-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu24-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Ubuntu</p></td>
@@ -112,8 +118,11 @@ By downloading and installing it you agree to its
 <td><p>5.15.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu2204-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu22-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu2204-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu22-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu22-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu22-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-ubuntu22-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Debian</p></td>
@@ -123,8 +132,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-arm64-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Debian</p></td>
@@ -134,8 +146,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-armv7-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Bare-metal</p></td>
@@ -145,7 +160,7 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-baremetal-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.16.2-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.16.2-baremetal-cortex-m4f.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.16.2-baremetal-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.16.2-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.16.2-baremetal-cortex-m4f.zip</a></p>
 </td>
 </tr>
 </tbody>
@@ -183,9 +198,12 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-iio-OFF-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-iio-OFF-v0.26-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.10.1-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.10.1-iio-OFF-windows.zip</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-iio-OFF-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-iio-OFF-v0.26-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.10.1-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.10.1-iio-OFF-windows.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu</p></td>
@@ -195,8 +213,11 @@ By downloading and installing it you agree to its
 <td><p>6.8.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu24-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu24-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu24-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu24-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu24-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Ubuntu</p></td>
@@ -206,8 +227,11 @@ By downloading and installing it you agree to its
 <td><p>5.15.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu2204-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu22-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu2204-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu22-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu22-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu22-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-ubuntu22-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Debian</p></td>
@@ -217,8 +241,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-arm64-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Debian</p></td>
@@ -228,8 +255,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-armv7-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Bare-metal</p></td>
@@ -239,7 +269,7 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-baremetal-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.10.1-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.10.1-baremetal-cortex-m4f.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.10.1-baremetal-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.10.1-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.10.1-baremetal-cortex-m4f.zip</a></p>
 </td>
 </tr>
 </tbody>
@@ -277,9 +307,12 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-iio-OFF-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-iio-OFF-v0.26-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.20.12-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.20.12-iio-OFF-windows.zip</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-iio-OFF-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-setup.exe" target="_blank">libadrv9002-iio-setup.exe</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-iio-OFF-v0.26-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.20.12-iio-OFF-windows.zip" target="_blank">libadrv9002-iio-v68.20.12-iio-OFF-windows.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-win_amd64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-win_amd64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-win_amd64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Ubuntu</p></td>
@@ -289,8 +322,11 @@ By downloading and installing it you agree to its
 <td><p>6.8.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu24-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu24-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu24-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu24-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu24-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Ubuntu</p></td>
@@ -300,8 +336,11 @@ By downloading and installing it you agree to its
 <td><p>5.15.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu2204-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu22-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu2204-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_amd64.deb" target="_blank">libadrv9002-iio_0.47.0_amd64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu22-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu22-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu22-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_x86_64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-ubuntu22-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_x86_64.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Debian</p></td>
@@ -311,8 +350,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_arm64.deb" target="_blank">libadrv9002-iio_0.47.0_arm64.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_aarch64.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-arm64-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_aarch64.whl</a></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Debian</p></td>
@@ -322,8 +364,11 @@ By downloading and installing it you agree to its
 <td><p>6.1.0</p></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-py3.14-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio_0.47.0_armhf.deb" target="_blank">libadrv9002-iio_0.47.0_armhf.deb</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-py3.11-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp311-cp311-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-py3.12-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp312-cp312-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-py3.13-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp313-cp313-linux_armv7l.whl</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-armv7-py3.14-master-c16ba419e5580e176d813b600014ad9e2bc628ed/adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl" target="_blank">adrv9002-0.3.0-cp314-cp314-linux_armv7l.whl</a></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Bare-metal</p></td>
@@ -333,7 +378,7 @@ By downloading and installing it you agree to its
 <td></td>
 <td><p>NA</p></td>
 <td>
-<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-baremetal-master-6875ba4c2f966cdd9a4f59c85df9378975c97a63/libadrv9002-iio-v68.20.12-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.20.12-baremetal-cortex-m4f.zip</a></p>
+<p><a class="icon link reference external" href="https://packages.analog.com/public/raw/versions/v68.20.12-baremetal-master-c16ba419e5580e176d813b600014ad9e2bc628ed/libadrv9002-iio-v68.20.12-baremetal-cortex-m4f.zip" target="_blank">libadrv9002-iio-v68.20.12-baremetal-cortex-m4f.zip</a></p>
 </td>
 </tr>
 </tbody>
